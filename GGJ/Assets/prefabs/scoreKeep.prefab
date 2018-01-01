@@ -48,41 +48,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1555559242175320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ae094ae017c81d48b15f4dc52896e3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 61fadf94b521c88488b5e9c2039964fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerScores: 
+  randomMap: 0
   ConeHeadMode: 0
-  gamesToWin: 5
+  gamesToWin: 3
   numOfPlayers: 0
   selectedCharacters:
   - {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b, type: 2}
   - {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b, type: 2}
   - {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b, type: 2}
   - {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b, type: 2}
-  maxSmashPower: 10
-  bounciness: 0.6
+  maxSmashPower: 12
+  bounciness: 0.65
   airControl: 1
-  seperateDashCooldown: 1
+  seperateDashCooldown: 0
   canDashOnGround: 1
   instantBounceKill: 0
   maxSmashSpeed: 30
-  maxChargeTime: 1.75
+  maxChargeTime: 1.5
   fullChargeInvinc: 1
   holdMaxSmash: 1
-  tightDash: 0
+  tightDash: 1
   doubleJump: 0
   dashDistance: 15
-  smashDebugInput: {fileID: 0}
-  smashSpeedInput: {fileID: 0}
-  bouncinessDebugInput: {fileID: 0}
-  maxChargeTimeInput: {fileID: 0}
-  dashDistanceInput: {fileID: 0}
-  airControlInput: {fileID: 0}
-  groundDashInput: {fileID: 0}
-  separeteDashCooldownInput: {fileID: 0}
-  fullChargeInvicInput: {fileID: 0}
-  holdMaxSmashInput: {fileID: 0}
-  tightDashInput: {fileID: 0}
-  instantBounceKillInput: {fileID: 0}
-  doubleJumpInput: {fileID: 0}

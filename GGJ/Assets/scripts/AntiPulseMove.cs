@@ -1,19 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class AntiPulseMove : NetworkBehaviour
+public class AntiPulseMove : MonoBehaviour
 {
 
-    [SyncVar]  public float speed = 5;
-    [SyncVar]  public float angularSpeed = 5;
-    [SyncVar]  public float Amplitude = 1;
+    public float speed = 5;
+    public float angularSpeed = 5;
+    public float Amplitude = 1;
     public float Wavelength = 2f;
-    [SyncVar]  public Color color = Color.white;
-    [SyncVar]  public Transform centerOfGravity;
-    [SyncVar]  private bool forward = true;
-    public bool isOnline;
+    public Color color = Color.white;
+    public Transform centerOfGravity;
+    private bool forward = true;
+    bool startup = true;
+
+    private void Start() {
+        Invoke("endStartup", 0.5f);
+        if (centerOfGravity != null) {
+            Wavelength = 3;
+            Amplitude *= 2.5f;
+        }
+    }
+
+    void endStartup() {
+        startup = false;
+    }
 
     // Update is called once per frame
     void Update () {
@@ -45,6 +56,9 @@ public class AntiPulseMove : NetworkBehaviour
             }
             //this.color = Color.Lerp(color, Color.white, Time.deltaTime / 32);
         } else {
+            if (Amplitude < .1f || angularSpeed < 10) {
+                Destroy(this.gameObject);
+            }
             transform.RotateAround(centerOfGravity.position, new Vector3(0, 0, 1), -angularSpeed * Time.deltaTime);
         }
         setPositions();
@@ -54,25 +68,42 @@ public class AntiPulseMove : NetworkBehaviour
         Collider2D[] hitSquares = Physics2D.OverlapCircleAll(transform.position, Wavelength, 1 << 8);
         foreach (Collider2D square in hitSquares)
         {
-            square.GetComponent<SquareBehavior>().getPosition(-Amplitude, speed, Wavelength, transform.position);
+            if (square.GetComponent<SquareBehavior>() != null)
+                square.GetComponent<SquareBehavior>().getPosition(-Amplitude, speed, Wavelength, transform.position);
         }
     }
 
     bool first;
-
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<SquareBehavior>() != null) {
+        if (other.gameObject.GetComponent<SquareBehavior>() != null)
+        {
             other.gameObject.GetComponent<SquareBehavior>().firstBlock = true;
             //other.gameObject.GetComponent<SpriteRenderer>().color = color;
         }
-        else if (other.GetComponent<PulseMove>() != null) {
-            if (!first) {
+        else if (other.GetComponent<PulseMove>() != null)
+        {
+            if (!first)
+            {
                 first = true;
-            } else if(Mathf.Abs(other.GetComponent<PulseMove>().Amplitude - Amplitude) <= 1.25f) {
-                other.GetComponent<PulseMove>().Amplitude /= 2;
-                Amplitude /= 2;
+            }
+            else if (!startup && Mathf.Abs(other.GetComponent<PulseMove>().Amplitude - Amplitude) <= 1.25f)
+            {
+                other.GetComponent<PulseMove>().Amplitude /= 5;
+                Amplitude /= 5;
                 other.GetComponent<PulseMove>().speed /= 1.75f;
+
                 speed /= 1.75f;
+                angularSpeed /= 3f;
+                other.GetComponent<PulseMove>().angularSpeed /= 3f;
+
+                if (Amplitude < .1f || speed < 1.25f)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            else if (other.GetComponent<PulseMove>().Amplitude - Amplitude > 2)
+            {
+                Destroy(this.gameObject);
             }
         }
     }

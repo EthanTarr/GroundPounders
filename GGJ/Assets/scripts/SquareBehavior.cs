@@ -106,16 +106,19 @@ public class SquareBehavior : MonoBehaviour {
             Amplitudes = new ArrayList();
         }
 
-        Vector3 vector = ((-((-transform.localPosition + new Vector3(0, 0, 0)).normalized)) * TotalAmplitude) / dampen;
 
         if (TerrainGenerator.instance != null && TerrainGenerator.instance.shape == Shape.Sphere)
         {
+            Vector3 vector = ((-((-transform.localPosition + new Vector3(0, 0, 0)).normalized)) * TotalAmplitude) / dampen;
+
             TotalAmplitude = Mathf.Clamp(TotalAmplitude, -maxCircleAmplitude, maxCircleAmplitude);
             transform.localPosition = new Vector3(Mathf.Lerp(transform.localPosition.x, initialX + vector.x, Time.deltaTime),
                 Mathf.Lerp(transform.localPosition.y, initialY + vector.y, Time.deltaTime), 0);
         }
         else
         {
+            Vector3 vector = ((-((-transform.position + new Vector3(0, 0, 0)).normalized)) * TotalAmplitude) / dampen;
+
             //transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, standardY + vector.y, Time.deltaTime), transform.position.z);
             TotalAmplitude = Mathf.Clamp(TotalAmplitude, -maxAmplitude, maxAmplitude);
             transform.position = transform.right * transform.position.x + Vector3.up *

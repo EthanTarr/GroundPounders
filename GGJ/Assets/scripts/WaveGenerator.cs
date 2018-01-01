@@ -35,42 +35,26 @@ public class WaveGenerator : NetworkBehaviour {
 
     public void makeWave(Vector2 position, float amplitude, Color color, float velocity, Transform centerOfGravity) {
         if (isOnline) {
-            CmdMakeWave(position, amplitude, color, velocity);
+            // CmdMakeWave(position, amplitude, color, velocity);
             return;
         }
 
         GameObject Pulse = Instantiate(pulse, new Vector3(position.x, position.y, 0), Quaternion.identity);
 
-		Pulse.GetComponent<PulseMove> ().Amplitude = amplitude;
+        float wavelength = Mathf.Clamp(wavelengthModifier * amplitude, 1.5f, 2.15f);
+
+        Pulse.GetComponent<PulseMove> ().Amplitude = amplitude;
         Pulse.GetComponent<PulseMove>().color = color;
         Pulse.GetComponent<PulseMove>().speed = velocity;
         Pulse.GetComponent<PulseMove>().centerOfGravity = centerOfGravity;
-        Pulse.GetComponent<PulseMove>().Wavelength = wavelengthModifier * amplitude;
+        Pulse.GetComponent<PulseMove>().Wavelength = wavelength;
 
         GameObject AntiPulse = Instantiate (antiPulse, new Vector3(position.x, position.y, 0), Quaternion.identity);
 		AntiPulse.GetComponent<AntiPulseMove> ().Amplitude = amplitude;
         AntiPulse.GetComponent<AntiPulseMove>().color = color;
         AntiPulse.GetComponent<AntiPulseMove>().speed = velocity;
         AntiPulse.GetComponent<AntiPulseMove>().centerOfGravity = centerOfGravity;
-        AntiPulse.GetComponent<AntiPulseMove>().Wavelength = wavelengthModifier * amplitude;
-    }
-
-    [Command]
-    public void CmdMakeWave(Vector2 position, float amplitude, Color color, float velocity) {
-        GameObject Pulse = Instantiate(pulse, new Vector3(position.x, position.y, 0), Quaternion.identity);
-
-        Pulse.GetComponent<PulseMove>().Amplitude = amplitude;
-        Pulse.GetComponent<PulseMove>().color = color;
-        Pulse.GetComponent<PulseMove>().speed = velocity;
-
-        NetworkServer.Spawn(Pulse);
-
-        GameObject AntiPulse = Instantiate(antiPulse, new Vector3(position.x, position.y, 0), Quaternion.identity);
-        AntiPulse.GetComponent<AntiPulseMove>().Amplitude = amplitude;
-        AntiPulse.GetComponent<AntiPulseMove>().color = color;
-        AntiPulse.GetComponent<AntiPulseMove>().speed = velocity;
-
-        NetworkServer.Spawn(AntiPulse);
+        AntiPulse.GetComponent<AntiPulseMove>().Wavelength = wavelength;
     }
 }
 

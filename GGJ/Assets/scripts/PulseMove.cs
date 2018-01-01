@@ -1,19 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class PulseMove : NetworkBehaviour{
+public class PulseMove : MonoBehaviour {
 
-    [SyncVar]  public float speed = 5;
-    [SyncVar]  public float angularSpeed = 20;
-    [SyncVar]  public float Amplitude = 1;
+    public float speed = 5;
+    public float angularSpeed = 20;
+    public float Amplitude = 1;
     public float Wavelength = 2f;
-    [SyncVar]  public Color color = Color.white;
-    [SyncVar]  public Transform centerOfGravity;
-    [SyncVar]  private bool forward = true;
+    public Color color = Color.white;
+    public Transform centerOfGravity;
+    private bool forward = true;
     public AudioClip roll;
-    public bool isOnline;
+    bool startup = true;
+
+    private void Start() {
+        Invoke("endStartup", 0.5f);
+        if (centerOfGravity != null) {
+            Wavelength = 3;
+            Amplitude *= 2.5f;
+        }
+    }
+
+    void endStartup() {
+        startup = false;
+    }
 
     // Update is called once per frame
     void Update() {
@@ -42,7 +53,7 @@ public class PulseMove : NetworkBehaviour{
             }
             //this.color = Color.Lerp(color, Color.white, Amplitude);
         } else if (TerrainGenerator.instance.shape == Shape.Sphere) {
-            transform.RotateAround(centerOfGravity.position, new Vector3(0, 0, 1), angularSpeed * Time.deltaTime);
+            transform.RotateAround(centerOfGravity.position, new Vector3(0, 0, 1), angularSpeed * Time.deltaTime * 2);
         }
         setPositions();
         Vector3 size = transform.localScale;
@@ -53,7 +64,8 @@ public class PulseMove : NetworkBehaviour{
     void setPositions() {
         Collider2D[] hitSquares = Physics2D.OverlapCircleAll(transform.position, Wavelength, 1 << 8);
         foreach (Collider2D square in hitSquares) {
-            square.GetComponent<SquareBehavior>().getPosition(Amplitude, speed, Wavelength, transform.position);
+            if (square.GetComponent<SquareBehavior>() != null)
+                square.GetComponent<SquareBehavior>().getPosition(Amplitude, speed, Wavelength, transform.position);
         }
     }
 
@@ -67,6 +79,20 @@ public class PulseMove : NetworkBehaviour{
             }
             other.gameObject.GetComponent<SquareBehavior>().firstBlock = true;
             other.gameObject.GetComponent<SpriteRenderer>().color = color;
+        }
+        else if (!startup && other.GetComponent<AntiPulseMove>() != null)
+        {
+            if (Mathf.Abs(other.GetComponent<AntiPulseMove>().Amplitude - Amplitude) <= 1.25f)
+            {
+                if (Amplitude < .1f || speed < 1.25f)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            else if (other.GetComponent<AntiPulseMove>().Amplitude - Amplitude > 2)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
