@@ -8633,9 +8633,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 695152637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e7f29bf28405c7641bf359bb4d83e9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 3
+  strength: 0.75
 --- !u!102 &695152639
 TextMesh:
   serializedVersion: 3
@@ -8701,7 +8703,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 695152637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.83044565, y: 251.26466, z: 5}
+  m_LocalPosition: {x: -0.83044565, y: 258.45, z: 5}
   m_LocalScale: {x: 0.065735005, y: 0.06573501, z: 0.06573501}
   m_Children:
   - {fileID: 2027302083}
@@ -15147,7 +15149,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 39168
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1701246610}
+  m_TargetTexture: {fileID: 1010076061}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -15612,6 +15614,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 991828564}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!84 &1010076061
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 2464
+  m_Height: 1386
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1015248231
 GameObject:
   m_ObjectHideFlags: 0
@@ -23609,33 +23638,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1701154169}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!84 &1701246610
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 932
-  m_Height: 524
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1710160807
 GameObject:
   m_ObjectHideFlags: 0
@@ -23837,7 +23839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4cb3e306ffd0549ae5b99d0282249f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOnline: 0
   pulse: {fileID: 1370316028781630, guid: 1370e79f7c728624e83e752638651c4f, type: 2}
   antiPulse: {fileID: 1554315179964700, guid: f7b475a5b96c4614fbaa66d82efdb9b0, type: 2}
   wavelengthModifier: 0.25

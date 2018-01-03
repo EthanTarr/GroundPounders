@@ -20407,33 +20407,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4961526769611168, guid: b61e62b1a194ecf43a319e2da42b5b8d,
     type: 2}
   m_PrefabInternal: {fileID: 2085760655}
---- !u!84 &811978538
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 802
-  m_Height: 452
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &813842255
 GameObject:
   m_ObjectHideFlags: 0
@@ -26830,7 +26803,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 38912
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 811978538}
+  m_TargetTexture: {fileID: 2044565872}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -38805,7 +38778,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1371258306}
   - component: {fileID: 1371258305}
-  - component: {fileID: 1371258304}
   - component: {fileID: 1371258303}
   - component: {fileID: 1371258302}
   - component: {fileID: 1371258301}
@@ -38880,14 +38852,6 @@ AudioListener:
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 124902655441720210, guid: 40407fa0295872e4ab4e3fb712abdae6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1371258300}
-  m_Enabled: 1
---- !u!92 &1371258304
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 92208330675972402, guid: 40407fa0295872e4ab4e3fb712abdae6,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1371258300}
@@ -49133,7 +49097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4cb3e306ffd0549ae5b99d0282249f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOnline: 0
   pulse: {fileID: 1370316028781630, guid: 1370e79f7c728624e83e752638651c4f, type: 2}
   antiPulse: {fileID: 1554315179964700, guid: f7b475a5b96c4614fbaa66d82efdb9b0, type: 2}
   wavelengthModifier: 0.25
@@ -54214,6 +54177,33 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!84 &2044565872
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 858
+  m_Height: 482
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &2045295619
 GameObject:
   m_ObjectHideFlags: 0
