@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class pause : MonoBehaviour {
+public class pause : MonoBehaviour
+{
 
     public GameObject Pause;
     public GameObject settings;

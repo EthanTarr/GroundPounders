@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class stageSelectManager : MonoBehaviour {
+public class stageSelectManager : MonoBehaviour
+{
 
-    myInputModule input;
+    StandaloneInputModule input;
     playerController curPlayer;
     public GameObject stageSelect;
     public GameObject extraOptions;
@@ -14,79 +15,107 @@ public class stageSelectManager : MonoBehaviour {
     public GameObject firstMap;
     public GameObject hitA;
 
+    public GameObject cursor;
+
     public string selectedLevel;
 
     // Use this for initialization
-    void Start () {
-        input = EventSystem.current.gameObject.GetComponent<myInputModule>();
-	}
+    void Start()
+    {
+        input = EventSystem.current.gameObject.GetComponent<StandaloneInputModule>();
+    }
 
-    IEnumerator turnOnInput(string controller) {
-        yield return new WaitForSeconds(0.02f);
+    IEnumerator turnOnInput(string controller)
+    {
+        yield return new WaitForSeconds(0.25f);
         extraOptions.SetActive(false);
         yield return new WaitForSeconds(0.25f);
         EventSystem.current.SetSelectedGameObject(firstMap);
         stageSelect.SetActive(true);
         yield return new WaitForSeconds(2f);
         input.horizontalAxis = "Horizontal" + controller;
-        input.submitButton = "Jump" + controller;
+        input.submitButton = "Enter" + controller;
         input.enabled = true;
     }
 
-    private void Update() {
-        if (input.enabled  && curPlayer != null && Input.GetButtonDown(input.submitButton) && GameManager.instance.numOfPlayers >= 2) {
+    private void Update()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            Debug.Log("Reselecting first input");
+            EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+        }
+
+        if (input.enabled && curPlayer != null && Input.GetButtonDown(input.submitButton) && GameManager.instance.numOfPlayers >= 2)
+        {
             input.enabled = false;
             StartCoroutine(screenTransition.instance.fadeOut(selectedLevel));
         }
-        if (curPlayer != null && Input.GetAxis("Vertical" + curPlayer.playerControl) < -0.75f) {
+        if (curPlayer != null && Input.GetButtonDown("Smash" + curPlayer.playerControl))
+        {
             curPlayer.active = true;
             curPlayer.transform.gameObject.layer = LayerMask.NameToLayer("Player");
             curPlayer.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
             curPlayer = null;
             stageSelect.GetComponent<Animator>().Play("exitAnim");
-            Invoke("turnOffInput",0.25f);
+            Invoke("turnOffInput", 0.25f);
         }
     }
 
-    public void changeSelectedLevel(string level) {
+    public void changeSelectedLevel(string level)
+    {
         selectedLevel = level;
     }
 
-    void turnOffInput() {
+    void turnOffInput()
+    {
         extraOptions.SetActive(true);
         stageSelect.SetActive(false);
         hitA.SetActive(true);
         hitA.GetComponent<Animator>().Play("SelectAnim");
+        input.submitButton = "EnterArrow";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<playerController>() && curPlayer == null && !hitA.active) {
+        if (collision.gameObject.GetComponent<playerController>() && curPlayer == null && !hitA.active)
+        {
             hitA.SetActive(true);
             hitA.GetComponent<Animator>().Play("SelectAnim");
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision) {
-        if (collision.gameObject.GetComponent<playerController>() && curPlayer == null) {
-            if (Input.GetAxis("Vertical" + collision.gameObject.GetComponent<playerController>().playerControl) > 0)
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<playerController>() && curPlayer == null)
+        {
+            if (Input.GetButton("Jump" + collision.GetComponent<playerController>().playerControl))
             {
                 curPlayer = collision.gameObject.GetComponent<playerController>();
-                curPlayer.transform.gameObject.layer = LayerMask.NameToLayer("background Objects");
+                curPlayer.transform.gameObject.layer = LayerMask.NameToLayer("PlayerExtra");
                 curPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 curPlayer.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 curPlayer.active = false;
-                StartCoroutine( turnOnInput(curPlayer.playerControl));
+                StartCoroutine(turnOnInput(curPlayer.playerControl));
+                curPlayer.spriteAnim.SetAnimation("think");
+                curPlayer.spriteAnim.SetFramesPerSecond(3);
                 stageSelect.GetComponent<Animator>().Play("introAnim");
                 hitA.SetActive(false);
-            } else {
+
+                Color cursorColor = curPlayer.GetComponent<SpriteRenderer>().color;
+                cursor.GetComponent<Image>().color = cursorColor;
+            }
+            else
+            {
                 hitA.SetActive(true);
             }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.GetComponent<playerController>()){
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<playerController>())
+        {
             hitA.SetActive(false);
         }
     }

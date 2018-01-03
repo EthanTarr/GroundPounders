@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
+using System.Collections;
+using System.Collections.Generic;
 
-public class WaveGenerator : NetworkBehaviour {
-
-    public bool isOnline;
+public class WaveGenerator : MonoBehaviour
+{
 
 	public GameObject pulse;
 	public GameObject antiPulse;
@@ -23,9 +23,25 @@ public class WaveGenerator : NetworkBehaviour {
 			makeWave (); 
 		}
 	}
-     
 
-	void makeWave() {
+    public void timeFreeze(float timescale, float freezeDuration)
+    {
+        StartCoroutine(zaWardo(timescale, freezeDuration));
+    }
+
+    IEnumerator zaWardo(float timescale, float freezeDuration)
+    {
+        Time.timeScale = timescale;
+        yield return new WaitForSecondsRealtime(freezeDuration);
+        Time.timeScale = 1;
+    }
+
+    public void changeTime(float time)
+    {
+        Time.timeScale = time;
+    }
+
+    void makeWave() {
         makeWave(transform.position, -1, fadeIn, 5, null);
 	}
 
@@ -34,10 +50,6 @@ public class WaveGenerator : NetworkBehaviour {
     }
 
     public void makeWave(Vector2 position, float amplitude, Color color, float velocity, Transform centerOfGravity) {
-        if (isOnline) {
-            // CmdMakeWave(position, amplitude, color, velocity);
-            return;
-        }
 
         GameObject Pulse = Instantiate(pulse, new Vector3(position.x, position.y, 0), Quaternion.identity);
 

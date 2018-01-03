@@ -17819,33 +17819,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!84 &673540312
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 802
-  m_Height: 452
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &675932787
 GameObject:
   m_ObjectHideFlags: 0
@@ -20434,6 +20407,33 @@ Transform:
   m_PrefabParentObject: {fileID: 4961526769611168, guid: b61e62b1a194ecf43a319e2da42b5b8d,
     type: 2}
   m_PrefabInternal: {fileID: 2085760655}
+--- !u!84 &811978538
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 802
+  m_Height: 452
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &813842255
 GameObject:
   m_ObjectHideFlags: 0
@@ -26772,10 +26772,9 @@ GameObject:
   - component: {fileID: 950718954}
   - component: {fileID: 950718953}
   - component: {fileID: 950718952}
-  - component: {fileID: 950718951}
   - component: {fileID: 950718950}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: dropshadowCAmera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26798,13 +26797,6 @@ MonoBehaviour:
   changeColor:
     serializedVersion: 2
     rgba: 0
---- !u!81 &950718951
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 950718949}
-  m_Enabled: 1
 --- !u!124 &950718952
 Behaviour:
   m_ObjectHideFlags: 0
@@ -26838,7 +26830,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 38912
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 673540312}
+  m_TargetTexture: {fileID: 811978538}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0

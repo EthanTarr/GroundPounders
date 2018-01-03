@@ -197,7 +197,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1338795899029746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.769537, y: 248.37766, z: 0}
+  m_LocalPosition: {x: 6.6943808, y: 247.37827, z: 0}
   m_LocalScale: {x: 4.5, y: 4.5, z: 4.480927}
   m_Children:
   - {fileID: 4023738435042132}
@@ -473,6 +473,10 @@ MonoBehaviour:
     animation:
       startFrame: 9
       length: 1
+  - name: think
+    animation:
+      startFrame: 11
+      length: 2
 --- !u!114 &114663717933150222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4013,7 +4017,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212830821312952254
 SpriteRenderer:
@@ -4093,12 +4097,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 53ca9e910eadf8741adf4b8902408786, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28482dfd9a9668c458729a537bcd4291, type: 3}
   m_Color: {r: 0.93914807, g: 1, b: 0.5588235, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.26, y: 0.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

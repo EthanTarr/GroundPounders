@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class objectShake : MonoBehaviour {
+public class objectShake : MonoBehaviour
+{
 
-    Vector3 startTransform;
+    protected Vector3 startTransform;
     public float time = 3;
     public float strength = 0.75f;
 
-    void Awake() {
+    void Awake()
+    {
         startTransform = transform.localPosition;
     }
 
-    public void shake() {
+    public void shake()
+    {
         StartCoroutine(screenshake(time, strength));
     }
 
-    protected virtual IEnumerator screenshake(float t, float strength) {
+    protected virtual IEnumerator screenshake(float t, float strength)
+    {
         float z = transform.localPosition.z;
-        while (t > 0) {
+        while (t > 0)
+        {
             t -= Time.deltaTime * 10;
 
             transform.localPosition = new Vector2(startTransform.x, startTransform.y) + Random.insideUnitCircle * strength / 8;
