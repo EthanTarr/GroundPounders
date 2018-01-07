@@ -18,7 +18,7 @@ public class AntiPulseMove : MonoBehaviour
         Invoke("endStartup", 0.5f);
         if (centerOfGravity != null) {
             Wavelength = 3;
-            Amplitude *= 2.5f;
+            Amplitude *= 5f;
         }
     }
 

@@ -35,24 +35,23 @@ public class stageSelectManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         input.horizontalAxis = "Horizontal" + controller;
         input.submitButton = "Enter" + controller;
+        input.cancelButton = "Cancel" + controller;
         input.enabled = true;
     }
 
     private void Update()
     {
-        if (EventSystem.current.currentSelectedGameObject == null)
-        {
+        if (EventSystem.current.currentSelectedGameObject == null) {
             Debug.Log("Reselecting first input");
             EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
         }
 
-        if (input.enabled && curPlayer != null && Input.GetButtonDown(input.submitButton) && GameManager.instance.numOfPlayers >= 2)
-        {
+        if (input.enabled && curPlayer != null && Input.GetButtonDown(input.submitButton) && GameManager.instance.numOfPlayers >= 2) {
             input.enabled = false;
             StartCoroutine(screenTransition.instance.fadeOut(selectedLevel));
         }
-        if (curPlayer != null && Input.GetButtonDown("Smash" + curPlayer.playerControl))
-        {
+
+        if (curPlayer != null && Input.GetButtonDown("Cancel" + curPlayer.playerControl)) {
             curPlayer.active = true;
             curPlayer.transform.gameObject.layer = LayerMask.NameToLayer("Player");
             curPlayer.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -67,12 +66,15 @@ public class stageSelectManager : MonoBehaviour
         selectedLevel = level;
     }
 
-    void turnOffInput()
-    {
+    void turnOffInput() {
         extraOptions.SetActive(true);
         stageSelect.SetActive(false);
         hitA.SetActive(true);
         hitA.GetComponent<Animator>().Play("SelectAnim");
+
+        input.horizontalAxis = "Horizontal";
+        input.submitButton = "Enter";
+        input.cancelButton = "Cancel";
         input.submitButton = "EnterArrow";
     }
 

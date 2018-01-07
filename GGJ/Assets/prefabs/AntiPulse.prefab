@@ -23,8 +23,6 @@ GameObject:
   - component: {fileID: 114827673971016512}
   - component: {fileID: 61592502441605666}
   - component: {fileID: 50702663362993112}
-  - component: {fileID: 114678188979560834}
-  - component: {fileID: 114163857242773584}
   m_Layer: 0
   m_Name: AntiPulse
   m_TagString: AntiPulse
@@ -90,59 +88,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114163857242773584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554315179964700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0
-  m_SyncRotationAxis: 3
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &114678188979560834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554315179964700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 247
-    i1: 180
-    i2: 117
-    i3: 165
-    i4: 185
-    i5: 108
-    i6: 70
-    i7: 20
-    i8: 251
-    i9: 170
-    i10: 102
-    i11: 216
-    i12: 46
-    i13: 253
-    i14: 185
-    i15: 176
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114827673971016512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,11 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  angularSpeed: 20
+  angularSpeed: 70
   Amplitude: 1
+  Wavelength: 2
   color: {r: 1, g: 1, b: 1, a: 1}
   centerOfGravity: {fileID: 0}
-  isOnline: 0
 --- !u!212 &212587825395812110
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -169,6 +114,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -184,6 +130,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -200,3 +147,5 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
