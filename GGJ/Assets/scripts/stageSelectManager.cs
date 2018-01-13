@@ -25,8 +25,8 @@ public class stageSelectManager : MonoBehaviour
         input = EventSystem.current.gameObject.GetComponent<StandaloneInputModule>();
     }
 
-    IEnumerator turnOnInput(string controller)
-    {
+    IEnumerator turnOnInput(string controller) {
+        input.enabled = false;
         yield return new WaitForSeconds(0.25f);
         extraOptions.SetActive(false);
         yield return new WaitForSeconds(0.25f);

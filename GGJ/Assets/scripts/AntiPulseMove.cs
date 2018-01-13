@@ -17,8 +17,8 @@ public class AntiPulseMove : MonoBehaviour
     private void Start() {
         Invoke("endStartup", 0.5f);
         if (centerOfGravity != null) {
-            Wavelength = 3;
-            Amplitude *= 5f;
+            Wavelength = 2;
+            Amplitude *= TerrainGenerator.instance.pulseAmplitudeMultiplier;
         }
     }
 
@@ -59,7 +59,7 @@ public class AntiPulseMove : MonoBehaviour
             if (Amplitude < .1f || angularSpeed < 10) {
                 Destroy(this.gameObject);
             }
-            transform.RotateAround(centerOfGravity.position, new Vector3(0, 0, 1), -angularSpeed * Time.deltaTime);
+            transform.RotateAround(centerOfGravity.position, new Vector3(0, 0, 1), -angularSpeed * Time.deltaTime * TerrainGenerator.instance.pulseSpeedMultiplier);
         }
         setPositions();
     }

@@ -17,8 +17,8 @@ public class PulseMove : MonoBehaviour {
     private void Start() {
         Invoke("endStartup", 0.5f);
         if (centerOfGravity != null) {
-            Wavelength = 3;
-            Amplitude *= 5f;
+            Wavelength = 2;
+            Amplitude *= TerrainGenerator.instance.pulseAmplitudeMultiplier;
         }
     }
 
@@ -53,7 +53,7 @@ public class PulseMove : MonoBehaviour {
             }
             //this.color = Color.Lerp(color, Color.white, Amplitude);
         } else if (TerrainGenerator.instance.shape == Shape.Sphere) {
-            transform.RotateAround(centerOfGravity.position, new Vector3(0, 0, 1), angularSpeed * Time.deltaTime * 2);
+            transform.RotateAround(centerOfGravity.position, new Vector3(0, 0, 1), angularSpeed * Time.deltaTime * TerrainGenerator.instance.pulseSpeedMultiplier);
         }
         setPositions();
         Vector3 size = transform.localScale;

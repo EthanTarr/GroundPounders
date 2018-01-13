@@ -21,6 +21,9 @@ public class TerrainGenerator : MonoBehaviour {
     public bool mapDebug;
     public int mapIndex;
 
+    public float pulseSpeedMultiplier = 2;
+    public float pulseAmplitudeMultiplier = 8;
+
     //Later on this might not work if we end up using 
     //Terrain Generator to do background/enviornmental Objects
     public static TerrainGenerator instance; 
@@ -31,7 +34,7 @@ public class TerrainGenerator : MonoBehaviour {
     [SerializeField][HideInInspector]
     public Platform plat = Platform.Square;
 
-    void Start () {
+    void Awake () {
         instance = this;
         boundary = FloorSpawns * 0.5f;
         Generate();

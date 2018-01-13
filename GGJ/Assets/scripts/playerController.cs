@@ -555,16 +555,18 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
                     SquareBehavior square = hit.transform.GetComponent<SquareBehavior>();
                     //print(square.GetComponent<SquareBehavior>().TotalAmplitude);
 
-                    float minimumAmp = (centerOfGravity == null) ? 2 : 0;
+                    float minimumAmp = (centerOfGravity == null) ? 2 : 0.2f;
 
-                    if (square.GetComponent<SquareBehavior>().TotalAmplitude > minimumAmp)
-                    {
-
+                    if (square.GetComponent<SquareBehavior>().TotalAmplitude > minimumAmp) {
                         print(square.GetComponent<SquareBehavior>().TotalAmplitude);
-                        print("hoi");
-
+  
                         minimumAmp = centerOfGravity == null ? 1.75f : 0.75f;
                         bounceDirection += Vector2.up * square.GetComponent<SquareBehavior>().TotalAmplitude / minimumAmp;
+
+                        if (centerOfGravity != null) {
+                            bounceDirection += Vector2.up * TerrainGenerator.instance.pulseAmplitudeMultiplier / 4;
+                        }
+
                         bounceDirection.y *= bounceForce / (jumped ? 3 : 1);
                         square.GetComponent<SpriteRenderer>().color = Color.red;
                         grounded = false;

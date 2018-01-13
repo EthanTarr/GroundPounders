@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/iceberg.unity
     guid: e90370bbfe656284495dd556c5bf29ba
   - enabled: 1
+    path: Assets/Scenes/halfPlanet.unity
+    guid: 29958f8a22333bc47a36b111bb50316e
+  - enabled: 1
     path: Assets/Scenes/VictoryScreen.unity
     guid: 88f138af051812e43b5787826e3eb3cd
   - enabled: 0
