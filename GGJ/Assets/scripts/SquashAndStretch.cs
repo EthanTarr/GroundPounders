@@ -10,7 +10,10 @@ public class SquashAndStretch : MonoBehaviour
     public GameObject sprite;
     private Rigidbody2D rigid;
     [Space()]
+
     public float animatedStretch;
+    private float curAnimatedStretch;
+
     public float elasticForce = 25;
     public float collisionSquish = 0.75f;
 
@@ -23,15 +26,26 @@ public class SquashAndStretch : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
+    public void setAnimatedStretch(float val) {
+        animatedStretch = val;
+    }
+
     void FixedUpdate() {
         Vector2 newScale = Vector2.one;
         if (Application.isPlaying) {
             float yVel = Mathf.Abs(rigid.velocity.y) * 0.05f;
             verticalStretch = Mathf.Lerp(verticalStretch, yVel, Time.fixedDeltaTime * elasticForce);
-        
+
+            animatedStretch = Mathf.Lerp(animatedStretch, 0, Time.fixedDeltaTime * 15);
+            curAnimatedStretch = Mathf.Lerp(animatedStretch, animatedStretch, Time.fixedDeltaTime * 5);
+
             verticalSquish = Mathf.Lerp(verticalSquish, 0, Time.fixedDeltaTime * 10);
             verticalStretch = Mathf.Max(verticalStretch, 0.1f);
             lastVelocity = rigid.velocity.y;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            setAnimatedStretch(1);
         }
 
         newScale.x = Mathf.Max(originalScale.x + animatedStretch - verticalStretch + verticalSquish + 0.1f, 0.5f);

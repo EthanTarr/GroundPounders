@@ -154,6 +154,10 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
     void LateUpdate() {
         float HorizInput = Input.GetAxis("Horizontal" + playerControl);
 
+        if (centerOfGravity != null) {
+            gravityDirection = (transform.position - centerOfGravity.position).normalized;
+        }
+
         if (Time.timeScale > 0) {
             CmdinputAudit(HorizInput);
             if (Input.GetButtonDown("Pause" + playerControl)) {
@@ -237,17 +241,15 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
                     Invoke("jumpDelay", 0.05f);
                 }
 
-                if (Input.GetAxis("Vertical" + playerControl) >= -0.7f)
+                if (Input.GetAxis("Vertical" + playerControl) < -0.7f)
                 {
-                    canFastFall = true;
-                    if (sqetch.animatedStretch > 0.1f) {
-                        StartCoroutine(squishControl(0f, 0.01f));
+                    if (sqetch.animatedStretch < 0.5f)
+                    {
+                        audioManager.instance.Play(softLanding[0], 0.05f);
+                        sqetch.setAnimatedStretch(0.5f);
                     }
                 } else {
-                    if (sqetch.animatedStretch < 0.5f) {
-                        audioManager.instance.Play(softLanding[0], 0.05f);
-                        StartCoroutine(squishControl(0.5f, 0.05f));
-                    }
+                    canFastFall = true;
                 }
 
                 //dashingOnGround
@@ -276,8 +278,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
                     }
                     */
 
-                    if (canDash && Mathf.Abs(Input.GetAxis("Dash" + playerControl)) > 0.5f && !smashing)
-                    {
+                    if (canDash && Mathf.Abs(Input.GetAxis("Dash" + playerControl)) > 0.5f && !smashing) {
                         StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, false));
                     }
 
@@ -640,7 +641,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
         {
             colParticle.GetComponent<ParticleSystem>().startSize = 1.5f;
             colParticle.GetComponent<ParticleSystem>().startSpeed = 70f;
-            StartCoroutine(headBoopSquish());
+            sqetch.setAnimatedStretch(1);
             audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], 1, UnityEngine.Random.Range(0.96f, 1.03f));
         }
         bounceDirection += dir;
@@ -706,10 +707,6 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
     }
 
     void collisionWithPlayer(Collision2D other) {
-        GameObject colParticle = Instantiate(collisionParticle, other.contacts[0].point, transform.rotation);
-        colParticle.GetComponent<ParticleSystem>().startColor = baseColor;
-        Destroy(colParticle, 0.75f);
-
         if (smashing && other.transform.GetComponent<playerController>().touchingGround) {
             WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, 0.75f, Color.white, chargeValue >= maxChargeTime ? 5 : 3, centerOfGravity);
         }
@@ -726,52 +723,44 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
 
         Vector2 dir = Vector2.zero;
 
+        //horizontal collision
+        dir.x = transform.InverseTransformDirection(other.relativeVelocity).x * (smashing ? 0.2f : 1);
+        if (!touchingGround) {
+            dir.x *= 1.25f;
+        }
+        dir.x = Mathf.Min(Mathf.Abs(dir.x), 32) * Mathf.Sign(dir.x) * 1.5f;
+
         bool onTop = false;
         if (centerOfGravity == null) {
             onTop = other.transform.position.y + downLazy / 1.25f < this.transform.position.y - downLazy / 1.25f;
         } else {
-            onTop = Vector3.Distance(centerOfGravity.position, transform.position - downLazy * transform.up) < Vector3.Distance(centerOfGravity.position, other.transform.position + transform.GetComponent<playerController>().downLazy / 2 * other.transform.up);
-            onTop = !onTop;
-            //print(onTop);
+            float distanceFromCenter = Vector3.Distance(centerOfGravity.position, transform.position - downLazy * transform.up);
+            float opponenetsDistFromCenter = Vector3.Distance(centerOfGravity.position, other.transform.position + transform.GetComponent<playerController>().downLazy / 2 * other.transform.up);
+            onTop = distanceFromCenter >= opponenetsDistFromCenter;
         }
 
         float aboveMultiplyer = (onTop) ? (instantBounceKill ? 20 : 10) : 0;
 
         dir.y = Mathf.Clamp(transform.InverseTransformDirection(other.relativeVelocity).y, aboveMultiplyer, 50);
-        //dir.y *= (smashing ? 1 : 1.5f) * (chargeValue > 0.1f ? 1.25f : 1);
-        dir.y = Mathf.Min(dir.y, 10);
+        //dir.y = Mathf.Min(dir.y, 10);
 
-        audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], onTop ? 1 : 0.5f, UnityEngine.Random.Range(0.96f, 1.03f));
-
-        if (onTop)
-        {
+        if (onTop) {
             dir.y = Mathf.Max(dir.y, 25);
-            //print(dir.y + " " + playerControl);
+            sqetch.setAnimatedStretch(1);
+            other.transform.GetComponent<playerController>().sqetch.setAnimatedStretch(2);
+            audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], 1, UnityEngine.Random.Range(0.96f, 1.03f));
         }
+        bounceDirection += dir;
 
-        dir.x = transform.InverseTransformDirection(other.relativeVelocity).x * (smashing ? 0.2f : 1);
-        if (!touchingGround)
-        {
-            dir.x *= 1.25f;
-        }
-        dir.x = Mathf.Min(Mathf.Abs(dir.x), 32) * Mathf.Sign(dir.x) * 1.5f;
-
-        if (onTop)
-        {
+        //juice   
+        GameObject colParticle = Instantiate(collisionParticle, other.contacts[0].point, transform.rotation);
+        colParticle.GetComponent<ParticleSystem>().startColor = baseColor;
+        if (onTop) {
             colParticle.GetComponent<ParticleSystem>().startSize = 1.5f;
             colParticle.GetComponent<ParticleSystem>().startSpeed = 70f;
-            StartCoroutine(headBoopSquish());
-            StartCoroutine(other.transform.GetComponent<playerController>().headBoopSquish());
-            audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], 1, UnityEngine.Random.Range(0.96f, 1.03f));
-            //WaveGenerator.instance.timeFreeze(0, 0.1f);
-
-            //if (smashing) {
-            //print("smash");
-            //WaveGenerator.instance.timeFreeze(0.25f, 0.75f);
-            //}
         }
-
-        bounceDirection += dir;
+        Destroy(colParticle, 0.75f);
+        audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], onTop ? 1 : 0.5f, UnityEngine.Random.Range(0.96f, 1.03f));
     }
 
     //checks neighboring wave segments and allows player to walk up slopes to some extent
@@ -850,40 +839,6 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
         Destroy(trailPart, 2f); // replace 0.5f with needed lifeTime
 
         StartCoroutine("FadeTrailPart", trailPartRenderer);
-    }
-
-    public IEnumerator headBoopSquish() {
-        StopCoroutine("squishControl");
-        float t = 1f;
-        while (sqetch.animatedStretch < 1.5f && t > 0) {
-            sqetch.animatedStretch += 0.5f;
-            t -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-
-        while (sqetch.animatedStretch > 0.1f && t > 0) {
-            sqetch.animatedStretch -= 0.55f;
-            t -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        sqetch.animatedStretch = 0;
-
-    }
-
-    public IEnumerator squishControl(float squatchAmount, float speed) {
-        if (sqetch.animatedStretch < squatchAmount) {
-            float t = 1f;
-            while (sqetch.animatedStretch < squatchAmount){
-                sqetch.animatedStretch += speed;
-                yield return new WaitForEndOfFrame();
-            }
-        } else {
-            while (sqetch.animatedStretch >squatchAmount)
-            {
-                sqetch.animatedStretch -= speed;
-                yield return new WaitForEndOfFrame();
-            }
-        }
     }
 
     IEnumerator FadeTrailPart(SpriteRenderer trailPartRenderer) {
