@@ -710,14 +710,12 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
         colParticle.GetComponent<ParticleSystem>().startColor = baseColor;
         Destroy(colParticle, 0.75f);
 
-        if (smashing && other.transform.GetComponent<playerController>().touchingGround)
-        {
+        if (smashing && other.transform.GetComponent<playerController>().touchingGround) {
             WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, 0.75f, Color.white, chargeValue >= maxChargeTime ? 5 : 3, centerOfGravity);
         }
 
         //if fully charged, and th mod is on, player cannot be bounced
-        if (chargeValue >= maxChargeTime && fullChargeInvinc)
-        {
+        if (chargeValue >= maxChargeTime && fullChargeInvinc) {
             float pushBack = other.relativeVelocity.x * 2;
             pushBack = Mathf.Sign(pushBack) * Mathf.Max(30, Mathf.Abs(pushBack));
             other.transform.GetComponent<playerController>().bounceDirection += pushBack * Vector2.right + Vector2.up * 10;
@@ -729,15 +727,14 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
         Vector2 dir = Vector2.zero;
 
         bool onTop = false;
-        if (centerOfGravity == null)
-        {
+        if (centerOfGravity == null) {
             onTop = other.transform.position.y + downLazy / 1.25f < this.transform.position.y - downLazy / 1.25f;
-        }
-        else
-        {
-            onTop = Vector3.Distance(centerOfGravity.position, transform.position + downLazy / 1.25f * transform.up) < Vector3.Distance(other.transform.GetComponent<playerController>().centerOfGravity.position, other.transform.position - transform.GetComponent<playerController>().downLazy / 1.25f * other.transform.up);
+        } else {
+            onTop = Vector3.Distance(centerOfGravity.position, transform.position - downLazy * transform.up) < Vector3.Distance(centerOfGravity.position, other.transform.position + transform.GetComponent<playerController>().downLazy / 2 * other.transform.up);
             onTop = !onTop;
+            //print(onTop);
         }
+
         float aboveMultiplyer = (onTop) ? (instantBounceKill ? 20 : 10) : 0;
 
         dir.y = Mathf.Clamp(transform.InverseTransformDirection(other.relativeVelocity).y, aboveMultiplyer, 50);
@@ -913,6 +910,11 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
         //Gizmos.color = Color.red;
         //Gizmos.DrawWireCube(transform.position + Vector3.right * transform.GetComponent<playerController>().topWidth / 2, new Vector2(0.1f,1));
         //Gizmos.DrawWireCube(transform.position - Vector3.right * transform.GetComponent<playerController>().topWidth / 2, new Vector2(0.1f, 1));
+
+        //Vector2 angleFromCenter = (transform.position - centerOfGravity.position).normalized;
+        //Debug.DrawLine(transform.position, transform.position + downLazy / 1.25f * transform.up, Color.green);
+        //Debug.DrawLine(transform.position, transform.position - downLazy / 1.25f * transform.up, Color.blue);
+        //Debug.DrawRay(transform.position, angleFromCenter * 5, Color.green);
     }
 
     [Command] //dumb ugly internet stuffs
