@@ -2,48 +2,205 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class squareBehaviorv2 : RaycastController {
-
-    public LayerMask passengerMask;
-    public Vector3 move;
+public class squareBehaviorv2 : MonoBehaviour
+{
 
     public float TotalAmplitude;
-    public float Wavelength = 2f;
+    private ArrayList Amplitudes;
+    public float previousAmplitude;
+    //public float Wavelength = 2f;
     public float FloorOscillation = .02f;
     public float OscillationSpeed = 0.01f;
-    private float initialY = 0;
-    private float standardY;
-
-    List<PassengerMovement> passengerMovement;
-    Dictionary<Transform, Controller2D> PassengerDictionary = new Dictionary<Transform, Controller2D>();
-
+    [HideInInspector]
+    public float initialY = 0;
+    [HideInInspector]
+    public float initialX = 0;
+    private float radius;
+    private Vector3 initialPositon;
+    protected float standardY;
+    protected float standardX;
     [HideInInspector]
     public bool firstBlock;
+    [HideInInspector]
+    public Vector3 CenterOfGravity;
+    Renderer squareMaterial;
+    public Color matColor;
+    public Color ampColor;
+    private float circleLength;
 
-    // Use this for initialization
     Vector2 lastPosition;
-    float velocity;
-    public float deltaVelocity = 0;
-    float lastVelocity = 0;
-
-    public override void Start() {
+    protected void Start()
+    {
         lastPosition = transform.position;
+
+        initialY = transform.localPosition.y;
+        initialX = transform.localPosition.x;
+
+        initialPositon = transform.position;
+
         standardY = transform.position.y;
-        base.Start();
+        standardX = transform.position.x;
+
+        radius = Mathf.Sqrt(Mathf.Pow(transform.localPosition.x, 2) + Mathf.Pow(transform.localPosition.y, 2));
+
+        squareMaterial = transform.GetChild(0).GetComponent<Renderer>();
+
+        Amplitudes = new ArrayList();
+        //Debug.Log(this.gameObject.layer);
+
+        //StartCoroutine(physicsCheck());
     }
 
-    void Update() {
-        initialY = transform.position.y;
+    public float maxAmplitude = 15f;
+
+    public float maxCircleAmplitude = 12f;
+
+    public float dampen = 1;
+
+    public float circleDampen = 1;
+
+    public void getPosition(float Amplitude, float speed, float Wavelength, Vector3 pulsePosition)
+    {
+        if (TerrainGenerator.instance.shape == Shape.Sphere && circleLength == 0)
+        {
+            circleLength = Mathf.Sqrt(Mathf.Pow(radius - Mathf.Cos(Wavelength / radius), 2) + Mathf.Pow(radius - Mathf.Sin(Wavelength / radius), 2));
+        }
+
+        standardY += FloorOscillation * (Mathf.Sin(Time.time * OscillationSpeed));
+        standardX += FloorOscillation * (Mathf.Sin(Time.time * OscillationSpeed));
+
+        float xPos = transform.position.x;
+        float xPulsePos = pulsePosition.x;
+
+        //Debug.Log("pi " + (2 * Mathf.PI));
+        //Debug.Log("magnitude " + ((initialPositon - pulsePosition).magnitude / circleLength));
+        //Debug.Log("magnitude2 " + ((initialPositon - pulsePosition).magnitude));
+        //Debug.Log("magnitude3 " + circleLength);
+        //Debug.Log("wavelength " + Wavelength);
+        //Debug.Log("both " + (2 * Mathf.PI) * ((initialPositon - pulsePosition).magnitude / circleLength));
+        Debug.Log(this.gameObject.name + " " + pulsePosition.y + " " + CenterOfGravity.y);
+
+        if (TerrainGenerator.instance.shape == Shape.Plane)
+        {
+            Amplitudes.Add(Amplitude * (speed / 4) * Mathf.Sin(((Mathf.PI / Wavelength) * (xPos - xPulsePos))));
+        }
+        else
+        {
+            if (pulsePosition.y > CenterOfGravity.y)
+            {
+                if ((initialY > 0 && standardX < pulsePosition.x) || (initialY <= 0 && initialX < 0))
+                {
+                    Amplitudes.Add((1 / (circleDampen * radius)) * Amplitude * Mathf.Sin(Mathf.PI *
+                        ((initialPositon - pulsePosition).magnitude / Wavelength)));
+                }
+                else
+                {
+                    Amplitudes.Add(-(1 / (circleDampen * radius)) * Amplitude * Mathf.Sin(Mathf.PI *
+                        ((initialPositon - pulsePosition).magnitude / Wavelength)));
+                }
+            }
+            else
+            {
+                if ((initialY < 0 && standardX > pulsePosition.x) || (initialY >= 0 && initialX > 0))
+                {
+                    Amplitudes.Add((1 / (circleDampen * radius)) * Amplitude * Mathf.Sin(Mathf.PI *
+                        ((initialPositon - pulsePosition).magnitude / Wavelength)));
+                }
+                else
+                {
+                    Amplitudes.Add(-(1 / (circleDampen * radius)) * Amplitude * Mathf.Sin(Mathf.PI *
+                        ((initialPositon - pulsePosition).magnitude / Wavelength)));
+                }
+            }
+        }
+    }
+
+    void setPosition()
+    {
+        TotalAmplitude = 0;
+        if (Amplitudes.Count != 0)
+        {
+            foreach (float value in Amplitudes)
+            {
+                TotalAmplitude += value;
+            }
+
+            Amplitudes = new ArrayList();
+        }
+
+
+        if (TerrainGenerator.instance != null && TerrainGenerator.instance.shape == Shape.Sphere)
+        {
+            Vector3 vector = ((-((-transform.localPosition + new Vector3(0, 0, 0)).normalized)) * TotalAmplitude) / dampen;
+
+            TotalAmplitude = Mathf.Clamp(TotalAmplitude, -maxCircleAmplitude, maxCircleAmplitude);
+            transform.localPosition = new Vector3(Mathf.Lerp(transform.localPosition.x, initialX + vector.x, Time.deltaTime),
+                Mathf.Lerp(transform.localPosition.y, initialY + vector.y, Time.deltaTime), 0);
+        }
+        else
+        {
+            Vector3 vector = ((-((-transform.position + new Vector3(0, 0, 0)).normalized)) * TotalAmplitude) / dampen;
+
+            //transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, standardY + vector.y, Time.deltaTime), transform.position.z);
+            TotalAmplitude = Mathf.Clamp(TotalAmplitude, -maxAmplitude, maxAmplitude);
+            transform.position = transform.right * transform.position.x + Vector3.up *
+                Mathf.Lerp(transform.position.y, standardY + vector.y, Time.deltaTime) + transform.forward * transform.position.z;
+        }
+
+        getVelocity();
+
+        if (firstBlock)
+        {
+            //GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, floorColor, Time.deltaTime);
+        }
+    }
+    /*
+    void getPosition() {
+
+        if (TerrainGenerator.instance.shape == Shape.Sphere && circleLength == 0) {
+            circleLength = Mathf.Sqrt(Mathf.Pow(radius - Mathf.Cos(Wavelength / radius), 2) + Mathf.Pow(radius - Mathf.Sin(Wavelength / radius), 2));
+        }
+
         TotalAmplitude = 0;
         standardY += FloorOscillation * (Mathf.Sin(Time.time * OscillationSpeed));
+        standardX += FloorOscillation * (Mathf.Sin(Time.time * OscillationSpeed));
 
-        foreach (GameObject pulse in GameObject.FindGameObjectsWithTag("Pulse")) {
+        foreach (GameObject pulse in GameObject.FindGameObjectsWithTag("Pulse"))
+        {
             float xPos = transform.position.x;
             float xPulsePos = pulse.transform.position.x;
 
-            if (xPos - xPulsePos < Wavelength && xPos - xPulsePos > -Wavelength)
+            if (TerrainGenerator.instance.shape == Shape.Plane)
             {
-                TotalAmplitude += pulse.GetComponent<PulseMove>().Amplitude * Mathf.Sin(((Mathf.PI / Wavelength) * (xPos - xPulsePos)));
+                if ((transform.position - pulse.transform.position).x < Wavelength && (transform.position - pulse.transform.position).x > -Wavelength) { 
+                    TotalAmplitude += pulse.GetComponent<PulseMove>().Amplitude * (pulse.GetComponent<PulseMove>().speed / 4) * 
+                        Mathf.Sin(((Mathf.PI / Wavelength) * (xPos - xPulsePos)));
+                }
+            }
+            else {
+                if ((initialPositon - pulse.transform.position).magnitude < circleLength) {
+                    if (pulse.transform.position.y > CenterOfGravity.y) {
+                        if ((initialY > 0 && standardX < pulse.transform.position.x) ||
+                            (initialY <= 0 && initialX < 0)) {
+                            TotalAmplitude += (1/(circleDampen * radius)) * pulse.GetComponent<PulseMove>().Amplitude * 
+                                Mathf.Sin((Mathf.PI / circleLength) * (initialPositon - pulse.transform.position).magnitude);
+                        }
+                        else {
+                            TotalAmplitude -= (1 / (circleDampen * radius)) * pulse.GetComponent<PulseMove>().Amplitude * 
+                                Mathf.Sin((Mathf.PI / circleLength) * (initialPositon - pulse.transform.position).magnitude);
+                        }
+                    } else {
+                        if ((initialY < 0 && standardX > pulse.transform.position.x) ||
+                            (initialY >= 0 && initialX > 0)) {
+                            TotalAmplitude += (1 / (circleDampen * radius)) * pulse.GetComponent<PulseMove>().Amplitude * 
+                                Mathf.Sin((Mathf.PI / circleLength) * (initialPositon - pulse.transform.position).magnitude);
+                        }
+                        else {
+                            TotalAmplitude -= (1 / (circleDampen * radius)) * pulse.GetComponent<PulseMove>().Amplitude * 
+                                Mathf.Sin((Mathf.PI / circleLength) * (initialPositon - pulse.transform.position).magnitude);
+                        }
+                    }
+                }
             }
         }
         foreach (GameObject pulse in GameObject.FindGameObjectsWithTag("AntiPulse"))
@@ -51,118 +208,79 @@ public class squareBehaviorv2 : RaycastController {
             float xPos = transform.position.x;
             float xPulsePos = pulse.transform.position.x;
 
-            if (xPos - xPulsePos < Wavelength && xPos - xPulsePos > -Wavelength) {
-                TotalAmplitude += -pulse.GetComponent<AntiPulseMove>().Amplitude * Mathf.Sin((Mathf.PI / Wavelength) * (xPos - xPulsePos));
+            if (TerrainGenerator.instance.shape == Shape.Plane)
+            {
+                if ((transform.position - pulse.transform.position).x < Wavelength && (transform.position - pulse.transform.position).x > -Wavelength)  { //when working with sphere switch .x to .magnitude
+                    TotalAmplitude += -pulse.GetComponent<AntiPulseMove>().Amplitude * (pulse.GetComponent<AntiPulseMove>().speed / 4) * 
+                        Mathf.Sin((Mathf.PI / Wavelength) * (xPos - xPulsePos));
+                }
+            }
+            else {
+                if ((initialPositon - pulse.transform.position).magnitude < circleLength)
+                {
+                    if (pulse.transform.position.y > CenterOfGravity.y)
+                    {
+                        if ((initialY > 0 && standardX < pulse.transform.position.x) ||
+                            (initialY <= 0 && initialX < 0))
+                        {
+                            TotalAmplitude += -(1 / (circleDampen * radius)) * pulse.GetComponent<AntiPulseMove>().Amplitude *
+                                Mathf.Sin((Mathf.PI / circleLength) * (initialPositon - pulse.transform.position).magnitude);
+                        }
+                        else
+                        {
+                            TotalAmplitude -= -(1 / (circleDampen * radius)) * pulse.GetComponent<AntiPulseMove>().Amplitude *
+                                Mathf.Sin((Mathf.PI / circleLength) * (initialPositon - pulse.transform.position).magnitude);
+                        }
+                    }
+                    else
+                    {
+                        if ((initialY < 0 && standardX > pulse.transform.position.x) ||
+                            (initialY >= 0 && initialX > 0))
+                        {
+                            TotalAmplitude += -(1 / (circleDampen * radius)) * pulse.GetComponent<AntiPulseMove>().Amplitude *
+                                Mathf.Sin((Mathf.PI / circleLength) * (initialPositon - pulse.transform.position).magnitude);
+                        }
+                        else
+                        {
+                            TotalAmplitude -= -(1 / (circleDampen * radius)) * pulse.GetComponent<AntiPulseMove>().Amplitude *
+                                Mathf.Sin((Mathf.PI / circleLength) * (initialPositon - pulse.transform.position).magnitude);
+                        }
+                    }
+                }
             }
         }
-        TotalAmplitude = Mathf.Clamp(TotalAmplitude, -10, 10);
+        //TotalAmplitude = Mathf.Clamp(TotalAmplitude, -1, 1);
+        
+        Vector3 vector = ((-((-transform.localPosition + new Vector3(0,0,0)).normalized)) * TotalAmplitude) /dampen;
 
-        transform.position = new Vector3(transform.position.x, Mathf.Lerp(initialY, TotalAmplitude + standardY, Time.deltaTime), 0);
-
-        if (firstBlock) {
-            GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, Color.white, Time.deltaTime);
+        if (TerrainGenerator.instance != null && TerrainGenerator.instance.shape == Shape.Sphere) {
+            TotalAmplitude = Mathf.Clamp(TotalAmplitude, -maxCircleAmplitude, maxCircleAmplitude);
+            transform.localPosition = new Vector3(Mathf.Lerp(transform.localPosition.x, initialX + vector.x, Time.deltaTime), Mathf.Lerp(transform.localPosition.y, initialY + vector.y, Time.deltaTime), 0);
+        } else {
+            //transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, standardY + vector.y, Time.deltaTime), transform.position.z);
+            TotalAmplitude = Mathf.Clamp(TotalAmplitude, -maxAmplitude, maxAmplitude);
+            transform.position = transform.right * transform.position.x + Vector3.up * Mathf.Lerp(transform.position.y, standardY + vector.y, Time.deltaTime)+ transform.forward * transform.position.z;
         }
+
 
         getVelocity();
-        UpdateRaycastOrigins();
-        CalculatePassengerMovement(new Vector3(0, velocity));
 
-
-        MovePassengers(true);
-        //transform.Translate(new Vector3(0, velocity));
-        //MovePassengers(false);
-    }
-
-    void MovePassengers(bool beforeMovePlatfrom) {
-        foreach (PassengerMovement passenger in passengerMovement) {
-            if (!PassengerDictionary.ContainsKey(passenger.transforms)) {
-                PassengerDictionary.Add(passenger.transforms, passenger.transforms.GetComponent<Controller2D>());
-            }
-
-            if (passenger.moveBeforePlatform == beforeMovePlatfrom) {
-                PassengerDictionary[passenger.transforms].Move(passenger.velocity, passenger.standingOnPlatform);            
-            } 
+        if (firstBlock) {
+            //GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, floorColor, Time.deltaTime);
         }
-    }
+    }*/
 
-    void CalculatePassengerMovement(Vector3 velocity) {
-        HashSet<Transform> movedPassengers = new HashSet<Transform>();
-        passengerMovement = new List<PassengerMovement>();
-        float directionY = Mathf.Sign(velocity.y);
-
-        // Vertically moving platform
-        if (velocity.y != 0) {
-            float rayLength = Mathf.Abs(velocity.y) + skinWidth;
-
-            for (int i = 0; i < VerticalRayCount; i++)
-            {
-                Vector2 rayOrigin = (directionY == -1) ? raycastOrigin.bottomLeft : raycastOrigin.topRight;
-                rayOrigin += (Vector2)(-directionY * transform.right) * (VecticalRaySpacing * i + velocity.x);
-
-                RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, passengerMask);
-                if (hit) {
-                    if (!movedPassengers.Contains(hit.transform)) {
-                        movedPassengers.Add(hit.transform);
-                        float pushX = (directionY == 1) ? velocity.x : 0;
-                        float pushY = velocity.y - (hit.distance - skinWidth) * directionY;
-
-                        passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), directionY == 1, true));
-                    }
-                }
-            }
-        }
-
-        // Passenger on top of a horizontally or downward moving platform
-        if (directionY == -1 || velocity.y == 0 && velocity.x != 0)
-        {
-            float rayLength = skinWidth * 2;
-
-            for (int i = 0; i < VerticalRayCount; i++)
-            {
-                Vector2 rayOrigin = raycastOrigin.topLeft + Vector2.right * (VerticalRayCount * i);
-                RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, rayLength, passengerMask);
-
-                if (hit)
-                {
-                    if (!movedPassengers.Contains(hit.transform))
-                    {
-                        movedPassengers.Add(hit.transform);
-                        float pushX = velocity.x;
-                        float pushY = velocity.y;
-
-                        passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), true, false));
-                    }
-                }
-            }
-        }
-    }
-
-    void getVelocity() {
+    [HideInInspector]
+    public float velocity;
+    void getVelocity()
+    {
         velocity = transform.position.y - lastPosition.y;
         lastPosition = transform.position;
-        getDeltaVelocity();
     }
 
-
-    public float getDeltaVelocity() {
-        deltaVelocity = velocity - lastVelocity;
-        lastVelocity = velocity;
-        return deltaVelocity;
+    void LateUpdate()
+    {
+        setPosition();
+        squareMaterial.material.SetColor("_Color", Color.Lerp(matColor, ampColor, (transform.localPosition.y - initialY)));
     }
-
-    struct PassengerMovement{
-        public Transform transforms;
-        public Vector3 velocity;
-        public bool standingOnPlatform;
-        public bool moveBeforePlatform;
-
-        public PassengerMovement(Transform _transforms, Vector3 _velocity, bool _standingOnPlatform, bool _movePlatform) {
-            transforms = _transforms;
-            velocity = _velocity;
-            standingOnPlatform = _standingOnPlatform;
-            moveBeforePlatform = _movePlatform;
-        }
-    }
-        
 }
-
