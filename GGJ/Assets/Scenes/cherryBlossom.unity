@@ -17437,6 +17437,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 683662314}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!84 &710117515
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 906
+  m_Height: 510
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &710185525
 GameObject:
   m_ObjectHideFlags: 0
@@ -25640,7 +25667,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 38912
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1553292202}
+  m_TargetTexture: {fileID: 710117515}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -25656,7 +25683,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 950718949}
   m_LocalRotation: {x: -0.99998385, y: -0.005691663, z: -0, w: 0}
-  m_LocalPosition: {x: -0.22, y: 247.26, z: 8.09}
+  m_LocalPosition: {x: -0.16, y: 247, z: 8.09}
   m_LocalScale: {x: 2.0416555, y: 3.1551514, z: 1}
   m_Children:
   - {fileID: 2024001956}
@@ -40484,33 +40511,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!84 &1553292202
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1048
-  m_Height: 590
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1557925454
 GameObject:
   m_ObjectHideFlags: 0
