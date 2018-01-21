@@ -73,11 +73,11 @@ public class Player : MonoBehaviour {
         foreach (GameObject square in controller.collisions.belowCollisions) {
             //print(square.GetComponent<squareBehaviorv2>().TotalAmplitude - previousAmplitude);
             //if (Mathf.Abs(square.transform.position.x - transform.position.x) < GameObject.Find("Managers").GetComponent<GameManager>().Square.transform.localScale.x) {
-                if (square.GetComponent<squareBehaviorv2>().TotalAmplitude - previousAmplitude < 0.01f) {
+                /*if (square.GetComponent<squareBehaviorv2>().TotalAmplitude - previousAmplitude < 0.01f) {
                     velocity = new Vector2(0, square.GetComponent<squareBehaviorv2>().TotalAmplitude * bounceForce);
                 }
 
-                previousAmplitude = square.GetComponent<squareBehaviorv2>().TotalAmplitude;
+                previousAmplitude = square.GetComponent<squareBehaviorv2>().TotalAmplitude;*/
             
             //}
         }

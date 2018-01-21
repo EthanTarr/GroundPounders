@@ -558,7 +558,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
                     float minimumAmp = (centerOfGravity == null) ? 2 : 0.2f;
 
                     if (square.GetComponent<SquareBehavior>().TotalAmplitude > minimumAmp) {
-                        print(square.GetComponent<SquareBehavior>().TotalAmplitude);
+                        //print(square.GetComponent<SquareBehavior>().TotalAmplitude);
   
                         minimumAmp = centerOfGravity == null ? 1.75f : 0.75f;
                         bounceDirection += Vector2.up * square.GetComponent<SquareBehavior>().TotalAmplitude / minimumAmp;
@@ -670,7 +670,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
                 //WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, strength * smashPower, color, Mathf.Lerp(5,10, strength / 0.8f), null);
                 //print(chargeValue >= maxChargeTime);
                 //WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, strength * smashPower, color, chargeValue >= maxChargeTime ? 10 : 7, centerOfGravity);
-                WaveGenerator.instance.makeWave(other.transform.position, strength * smashPower, color, chargeValue >= maxChargeTime ? 10 : 7, centerOfGravity);
+                WaveGenerator.instance.makeWave(other.gameObject.GetComponent<SquareBehavior>().initialPosition, strength * smashPower, color, chargeValue >= maxChargeTime ? 10 : 7, centerOfGravity);
             }
 
             audioManager.instance.Play(smash, 0.75f, UnityEngine.Random.Range(0.95f, 1.05f));

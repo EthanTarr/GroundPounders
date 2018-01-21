@@ -58,6 +58,7 @@ public class WaveGenerator : MonoBehaviour
         Pulse.GetComponent<PulseMove> ().Amplitude = amplitude;
         Pulse.GetComponent<PulseMove>().color = color;
         Pulse.GetComponent<PulseMove>().speed = velocity;
+        Pulse.GetComponent<PulseMove>().angularSpeed = velocity * 7;
         Pulse.GetComponent<PulseMove>().centerOfGravity = centerOfGravity;
         Pulse.GetComponent<PulseMove>().Wavelength = wavelength;
 
@@ -65,6 +66,7 @@ public class WaveGenerator : MonoBehaviour
 		AntiPulse.GetComponent<AntiPulseMove> ().Amplitude = amplitude;
         AntiPulse.GetComponent<AntiPulseMove>().color = color;
         AntiPulse.GetComponent<AntiPulseMove>().speed = velocity;
+        AntiPulse.GetComponent<AntiPulseMove>().angularSpeed = velocity * 7;
         AntiPulse.GetComponent<AntiPulseMove>().centerOfGravity = centerOfGravity;
         AntiPulse.GetComponent<AntiPulseMove>().Wavelength = wavelength;
     }
