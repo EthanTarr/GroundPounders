@@ -213,11 +213,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 11639520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: -2.2, z: 8.24}
+  m_LocalPosition: {x: 10, y: 9.6, z: 8.24}
   m_LocalScale: {x: 4.4, y: 4.4, z: 1}
   m_Children: []
   m_Father: {fileID: 1976918549}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11639522
 MonoBehaviour:
@@ -271,7 +271,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 182.44356, y: 1.0913963}
+  m_Size: {x: 182.44356, y: 3.3121626}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -532,11 +532,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -660,11 +660,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -747,93 +747,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &69101901
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 69101902}
-  - component: {fileID: 69101904}
-  - component: {fileID: 69101903}
-  m_Layer: 0
-  m_Name: clouds (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &69101902
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 69101901}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 6.1, z: 8.24}
-  m_LocalScale: {x: 4.4, y: 4.4, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1976918549}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &69101903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 69101901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61c6887e874a3d94094dcb52fa3ee55d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: 1, y: 0}
-  speed: 0.02
---- !u!212 &69101904
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 69101901}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 535064817
-  m_SortingLayer: -1
-  m_SortingOrder: -7
-  m_Sprite: {fileID: 21300000, guid: 6323e6c7909e92c4f90dab9cb50e58e0, type: 3}
-  m_Color: {r: 0.9485294, g: 0.65742064, b: 0.46031573, a: 0.572}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 182.44356, y: 1.0913963}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &76142200
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,9 +809,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   window:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1236205690}
+  - {fileID: 1272719889}
+  - {fileID: 225710868}
   - {fileID: 1350707921}
 --- !u!4 &78405049
 Transform:
@@ -909,13 +822,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0604495, y: 238.17998, z: 3.7304688}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1350707922}
-  - {fileID: 225710869}
-  - {fileID: 1272719890}
-  - {fileID: 1236205691}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &78555358
 GameObject:
@@ -1021,7 +930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4cb3e306ffd0549ae5b99d0282249f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOnline: 0
   pulse: {fileID: 1370316028781630, guid: 1370e79f7c728624e83e752638651c4f, type: 2}
   antiPulse: {fileID: 1554315179964700, guid: f7b475a5b96c4614fbaa66d82efdb9b0, type: 2}
   wavelengthModifier: 0.25
@@ -1116,6 +1024,8 @@ MonoBehaviour:
   FloorSpawns: 20
   mapDebug: 0
   mapIndex: 1
+  pulseSpeedMultiplier: 2
+  pulseAmplitudeMultiplier: 8
   shape: 0
   plat: 0
 --- !u!4 &81931117
@@ -1187,7 +1097,7 @@ Transform:
   - {fileID: 1835643912}
   - {fileID: 1560127188}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: -2, y: 0, z: 0}
 --- !u!1 &87222950
 GameObject:
@@ -1249,7 +1159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &93089645
 GameObject:
@@ -5075,11 +4985,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -8657,11 +8567,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -8671,6 +8581,93 @@ MonoBehaviour:
   dampen: 1
   circleDampen: 1
   velocity: 0
+--- !u!1 &198616863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 198616864}
+  - component: {fileID: 198616866}
+  - component: {fileID: 198616865}
+  m_Layer: 0
+  m_Name: city (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &198616864
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 198616863}
+  m_LocalRotation: {x: -0, y: 0.03489949, z: -0, w: 0.99939084}
+  m_LocalPosition: {x: 7.951, y: 2.036, z: 5.235}
+  m_LocalScale: {x: 6.248027, y: 5.566328, z: 0.7788601}
+  m_Children: []
+  m_Father: {fileID: 1976918549}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 4, z: 0}
+--- !u!114 &198616865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 198616863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a417ac1b3cfc304b8b5693f8c64abfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 3
+  strength: 0.75
+--- !u!212 &198616866
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 198616863}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 535064817
+  m_SortingLayer: -1
+  m_SortingOrder: -8
+  m_Sprite: {fileID: 21300000, guid: bc1cbe440fd77be41a8693512343ec9a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.52, y: 2.42}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &201894305
 GameObject:
   m_ObjectHideFlags: 0
@@ -9007,11 +9004,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -9048,12 +9045,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 225710868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.0095506, y: -8.5099945, z: -6.72}
+  m_LocalPosition: {x: -5.07, y: 240.27998, z: -2.989531}
   m_LocalScale: {x: 3.6880598, y: 3.6880598, z: 0}
   m_Children:
   - {fileID: 668084574}
-  m_Father: {fileID: 78405049}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &225710870
 MonoBehaviour:
@@ -9067,11 +9064,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
-  FloorOscillation: 0
+  FloorOscillation: 0.1
   OscillationSpeed: 0.01
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 0}
@@ -9425,11 +9422,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -9553,11 +9550,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -9681,11 +9678,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -9695,93 +9692,6 @@ MonoBehaviour:
   dampen: 1
   circleDampen: 1
   velocity: 0
---- !u!1 &239566053
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 239566056}
-  - component: {fileID: 239566055}
-  - component: {fileID: 239566054}
-  m_Layer: 0
-  m_Name: clouds
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &239566054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 239566053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61c6887e874a3d94094dcb52fa3ee55d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: -1, y: 0}
-  speed: 0.002
---- !u!212 &239566055
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 239566053}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -4
-  m_Sprite: {fileID: 21300000, guid: e353d7bb94c59f7489b9015bf6512648, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.497}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 70.58725, y: 2.98938}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
---- !u!4 &239566056
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 239566053}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 174.2, y: 246, z: 4.56}
-  m_LocalScale: {x: 5.2442546, y: 5.2442546, z: 1.191876}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &261964951
 GameObject:
   m_ObjectHideFlags: 0
@@ -9810,7 +9720,7 @@ Transform:
   m_LocalScale: {x: 4.5900927, y: 4.5900908, z: 1.1475266}
   m_Children: []
   m_Father: {fileID: 1976918549}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 4, z: 0}
 --- !u!212 &261964953
 SpriteRenderer:
@@ -9847,7 +9757,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300004, guid: bc1cbe440fd77be41a8693512343ec9a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10054,11 +9964,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -10387,11 +10297,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -10588,11 +10498,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -10716,11 +10626,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -10764,7 +10674,7 @@ Transform:
   - {fileID: 749656151}
   - {fileID: 1063723255}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &337310719
 SpriteRenderer:
@@ -10850,11 +10760,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 0}
@@ -11254,7 +11164,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 38912
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 391578222}
+  m_TargetTexture: {fileID: 2067259747}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -11275,7 +11185,7 @@ Transform:
   m_Children:
   - {fileID: 157849769}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 179.348}
 --- !u!1 &360800576
 GameObject:
@@ -11423,33 +11333,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!84 &391578222
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 932
-  m_Height: 524
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &398953125
 GameObject:
   m_ObjectHideFlags: 0
@@ -11759,7 +11642,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 2100000, guid: 0fc6acaefabda0342afa62cd9072b5f5, type: 2}
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11857,7 +11740,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 421887352
+  randomSeed: -282256056
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -14307,11 +14190,11 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    ratio: 1
+    ratio: 0.5
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.11
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14349,11 +14232,11 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 0.2
+    minVertexDistance: 1.41
     textureMode: 0
     worldSpace: 0
     dieWithParticles: 1
-    sizeAffectsWidth: 1
+    sizeAffectsWidth: 0
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
@@ -14361,7 +14244,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 0.441}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14422,9 +14305,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     widthOverTrail:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.03
+      minScalar: 0.17
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14465,7 +14348,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 0.141}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15006,7 +14889,7 @@ Transform:
   m_Children:
   - {fileID: 1294812857}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0.577, y: 270.785, z: -90.00001}
 --- !u!1 &411926191
 GameObject:
@@ -15122,11 +15005,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -15822,11 +15705,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -16155,11 +16038,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -16718,7 +16601,7 @@ Transform:
   m_LocalScale: {x: 24.171309, y: 1.4865712, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &589029900
 GameObject:
@@ -16834,11 +16717,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -17106,11 +16989,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -17234,11 +17117,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -17425,7 +17308,7 @@ Transform:
   - {fileID: 930663322}
   - {fileID: 995561380}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &632683656
 SpriteRenderer:
@@ -17511,11 +17394,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 0}
@@ -17914,11 +17797,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -18389,7 +18272,7 @@ Transform:
   m_LocalScale: {x: 4.0163746, y: 4.016372, z: 1.0040965}
   m_Children: []
   m_Father: {fileID: 1976918549}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 4, z: 0}
 --- !u!212 &732716581
 SpriteRenderer:
@@ -18426,7 +18309,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300008, guid: bc1cbe440fd77be41a8693512343ec9a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -18562,11 +18445,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -18690,11 +18573,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -18968,7 +18851,7 @@ Transform:
   m_LocalScale: {x: 4.8368053, y: 4.836804, z: 1.209205}
   m_Children: []
   m_Father: {fileID: 1976918549}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 4, z: 0}
 --- !u!212 &776689411
 SpriteRenderer:
@@ -19005,7 +18888,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300006, guid: bc1cbe440fd77be41a8693512343ec9a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -19406,7 +19289,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1274672027
+  randomSeed: -1850413604
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -22882,11 +22765,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -23066,11 +22949,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 838917775}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8, y: 1.2, z: 8.24}
+  m_LocalPosition: {x: -8, y: 7.1, z: 8.24}
   m_LocalScale: {x: 4.4, y: 4.4, z: 1}
   m_Children: []
   m_Father: {fileID: 1976918549}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &838917777
 MonoBehaviour:
@@ -23118,13 +23001,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 535064817
   m_SortingLayer: -1
-  m_SortingOrder: -7
+  m_SortingOrder: -4
   m_Sprite: {fileID: 21300000, guid: 6323e6c7909e92c4f90dab9cb50e58e0, type: 3}
-  m_Color: {r: 0.9485294, g: 0.65742064, b: 0.46031573, a: 0.572}
+  m_Color: {r: 0.9705882, g: 0.59185666, b: 0.33542383, a: 0.166}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 182.44356, y: 1.0913963}
+  m_Size: {x: 182.44356, y: 2.610868}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -23515,11 +23398,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -27056,11 +26939,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -27404,11 +27287,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -27678,11 +27561,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -28049,11 +27932,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -28063,6 +27946,93 @@ MonoBehaviour:
   dampen: 1
   circleDampen: 1
   velocity: 0
+--- !u!1 &992110823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 992110824}
+  - component: {fileID: 992110826}
+  - component: {fileID: 992110825}
+  m_Layer: 0
+  m_Name: clouds (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &992110824
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992110823}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10, y: -7.4, z: 8.24}
+  m_LocalScale: {x: 4.4, y: 4.4, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1976918549}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &992110825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992110823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c6887e874a3d94094dcb52fa3ee55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 1, y: 0}
+  speed: 0.002
+--- !u!212 &992110826
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992110823}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 535064817
+  m_SortingLayer: -1
+  m_SortingOrder: -9
+  m_Sprite: {fileID: 21300000, guid: 6323e6c7909e92c4f90dab9cb50e58e0, type: 3}
+  m_Color: {r: 0.9485294, g: 0.65742064, b: 0.46031573, a: 0.572}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 2
+  m_Size: {x: 182.44356, y: 3.3121626}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &995561379
 GameObject:
   m_ObjectHideFlags: 0
@@ -28326,11 +28296,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -28454,11 +28424,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -28701,11 +28671,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -29033,7 +29003,7 @@ Transform:
   m_LocalScale: {x: 3.8668113, y: 3.8668106, z: 0.9667059}
   m_Children: []
   m_Father: {fileID: 1976918549}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 4, z: 0}
 --- !u!212 &1137647259
 SpriteRenderer:
@@ -29070,7 +29040,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300002, guid: bc1cbe440fd77be41a8693512343ec9a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -29279,11 +29249,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -29407,11 +29377,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -29450,9 +29420,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visible: 0
   clouds:
-  - {fileID: 69101903}
   - {fileID: 838917777}
   - {fileID: 11639522}
+  - {fileID: 1519518438}
   windAngle: 0
   windDirection: {x: 1, y: 0}
   randomDirection: 1
@@ -29473,7 +29443,7 @@ Transform:
   - {fileID: 473489247}
   - {fileID: 307793413}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1152052849
 GameObject:
@@ -29589,11 +29559,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -29861,11 +29831,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -29875,6 +29845,93 @@ MonoBehaviour:
   dampen: 1
   circleDampen: 1
   velocity: 0
+--- !u!1 &1173263987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1173263988}
+  - component: {fileID: 1173263990}
+  - component: {fileID: 1173263989}
+  m_Layer: 0
+  m_Name: city (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1173263988
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1173263987}
+  m_LocalRotation: {x: -0, y: 0.03489949, z: -0, w: 0.99939084}
+  m_LocalPosition: {x: 0.16, y: -0.19, z: 7.18}
+  m_LocalScale: {x: 5.5422406, y: 3.1154299, z: 0.7788601}
+  m_Children: []
+  m_Father: {fileID: 1976918549}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 4, z: 0}
+--- !u!114 &1173263989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1173263987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a417ac1b3cfc304b8b5693f8c64abfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 3
+  strength: 0.75
+--- !u!212 &1173263990
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1173263987}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 535064817
+  m_SortingLayer: -1
+  m_SortingOrder: -8
+  m_Sprite: {fileID: 21300010, guid: bc1cbe440fd77be41a8693512343ec9a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.52, y: 2.42}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1189472889
 GameObject:
   m_ObjectHideFlags: 0
@@ -30383,12 +30440,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1236205690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.78, y: -8.5099945, z: -6.72}
+  m_LocalPosition: {x: -1.8404495, y: 240.27998, z: -2.989531}
   m_LocalScale: {x: 3.6880598, y: 3.6880598, z: 0}
   m_Children:
   - {fileID: 538584426}
-  m_Father: {fileID: 78405049}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1236205692
 MonoBehaviour:
@@ -30402,11 +30459,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
-  FloorOscillation: 0
+  FloorOscillation: 0.1
   OscillationSpeed: 0.01
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 0}
@@ -30601,11 +30658,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -30879,12 +30936,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1272719889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.67, y: -8.5099945, z: -6.72}
+  m_LocalPosition: {x: 1.6095506, y: 240.27998, z: -2.989531}
   m_LocalScale: {x: 3.6880598, y: 3.6880598, z: 0}
   m_Children:
   - {fileID: 2059491812}
-  m_Father: {fileID: 78405049}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1272719891
 MonoBehaviour:
@@ -30898,11 +30955,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
-  FloorOscillation: 0
+  FloorOscillation: 0.1
   OscillationSpeed: 0.01
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 0}
@@ -31097,11 +31154,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -31255,7 +31312,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -412027077
+  randomSeed: -21431960
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -35169,12 +35226,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1350707921}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.84, y: -8.51, z: -6.72}
+  m_LocalPosition: {x: 4.7795506, y: 240.27998, z: -2.989531}
   m_LocalScale: {x: 3.6880598, y: 3.6880598, z: 0}
   m_Children:
   - {fileID: 1313868654}
-  m_Father: {fileID: 78405049}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1350707923
 SpriteRenderer:
@@ -35259,11 +35316,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
-  FloorOscillation: 0
+  FloorOscillation: 0.1
   OscillationSpeed: 0.01
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 0}
@@ -35379,7 +35436,7 @@ RectTransform:
   - {fileID: 1331542213}
   - {fileID: 762367349}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -36567,11 +36624,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -36987,11 +37044,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -37554,7 +37611,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1274672027
+  randomSeed: 382937073
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -41080,6 +41137,93 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &1519518437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1519518440}
+  - component: {fileID: 1519518439}
+  - component: {fileID: 1519518438}
+  m_Layer: 0
+  m_Name: lowHangingClouds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1519518438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1519518437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c6887e874a3d94094dcb52fa3ee55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 1, y: 0}
+  speed: 0.008
+--- !u!212 &1519518439
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1519518437}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 535064817
+  m_SortingLayer: -1
+  m_SortingOrder: -5
+  m_Sprite: {fileID: 21300000, guid: cde67b1f09ec6424f808130c640b5db5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.084}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 2
+  m_Size: {x: 33.85866, y: 1.5058472}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+--- !u!4 &1519518440
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1519518437}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5302286, y: -1.300003, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1976918549}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1529279187
 GameObject:
   m_ObjectHideFlags: 0
@@ -41497,11 +41641,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -41511,6 +41655,93 @@ MonoBehaviour:
   dampen: 1
   circleDampen: 1
   velocity: 0
+--- !u!1 &1568268414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1568268415}
+  - component: {fileID: 1568268417}
+  - component: {fileID: 1568268416}
+  m_Layer: 0
+  m_Name: city (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1568268415
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1568268414}
+  m_LocalRotation: {x: -0, y: 0.03489949, z: -0, w: 0.99939084}
+  m_LocalPosition: {x: -7.27, y: 0.678, z: 6.85}
+  m_LocalScale: {x: 3.8668103, y: 8.44529, z: 0.9667101}
+  m_Children: []
+  m_Father: {fileID: 1976918549}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 4, z: 0}
+--- !u!114 &1568268416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1568268414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a417ac1b3cfc304b8b5693f8c64abfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 3
+  strength: 0.75
+--- !u!212 &1568268417
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1568268414}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 535064817
+  m_SortingLayer: -1
+  m_SortingOrder: -8
+  m_Sprite: {fileID: 21300002, guid: bc1cbe440fd77be41a8693512343ec9a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.52, y: 2.42}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1581853073
 GameObject:
   m_ObjectHideFlags: 0
@@ -41698,11 +41929,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -45417,11 +45648,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -45545,11 +45776,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -45741,11 +45972,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -45877,7 +46108,7 @@ RectTransform:
   m_LocalScale: {x: 0.46499997, y: 0.465, z: 0.465}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -45998,11 +46229,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -46197,11 +46428,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -46401,11 +46632,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -46529,11 +46760,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -46852,11 +47083,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -47207,7 +47438,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4356900362816308, guid: 80040e8a73dd43a4fb110e629d3cdf4a, type: 2}
       propertyPath: m_RootOrder
-      value: 22
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80040e8a73dd43a4fb110e629d3cdf4a, type: 2}
@@ -47448,11 +47679,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -47647,11 +47878,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -47775,11 +48006,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -47903,11 +48134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -47941,11 +48172,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1882690856}
   m_LocalRotation: {x: -0, y: 0.03489949, z: -0, w: 0.99939084}
-  m_LocalPosition: {x: 9.33, y: -2.31, z: 6.54}
+  m_LocalPosition: {x: 9.33, y: -2.52, z: 6.54}
   m_LocalScale: {x: 3.1154304, y: 3.1154299, z: 0.7788601}
   m_Children: []
   m_Father: {fileID: 1976918549}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 4, z: 0}
 --- !u!212 &1882690858
 SpriteRenderer:
@@ -47982,7 +48213,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300010, guid: bc1cbe440fd77be41a8693512343ec9a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -48689,11 +48920,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -48806,7 +49037,6 @@ Transform:
   m_Children:
   - {fileID: 646486104}
   - {fileID: 2051926702}
-  - {fileID: 69101902}
   - {fileID: 838917776}
   - {fileID: 11639521}
   - {fileID: 1137647258}
@@ -48814,6 +49044,11 @@ Transform:
   - {fileID: 776689410}
   - {fileID: 732716580}
   - {fileID: 1882690857}
+  - {fileID: 1568268415}
+  - {fileID: 1173263988}
+  - {fileID: 198616864}
+  - {fileID: 992110824}
+  - {fileID: 1519518440}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49002,11 +49237,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -52440,7 +52675,7 @@ Transform:
   m_Children:
   - {fileID: 166062633}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0.577, y: 90.00001, z: -90.00001}
 --- !u!1 &2018696650
 GameObject:
@@ -52590,11 +52825,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -52957,7 +53192,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: bc1cbe440fd77be41a8693512343ec9a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -53142,6 +53377,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2062673832}
+--- !u!84 &2067259747
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 980
+  m_Height: 552
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &2067595854
 GameObject:
   m_ObjectHideFlags: 0
@@ -53827,11 +54089,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}
@@ -54260,11 +54522,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0, g: 0, b: 0, a: 1}

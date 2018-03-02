@@ -24,14 +24,6 @@ public class pause : MonoBehaviour
         input = EventSystem.current.gameObject.GetComponent<StandaloneInputModule>(); ;
     }
 
-    void Update()
-    {
-        if ((Pause.activeSelf || settings.activeSelf) && Input.GetButtonDown("Pause" + currentPlayer))
-        {
-            //togglePause();
-        }
-    }
-
     public void togglePause(playerController curPlayer)
     {
         currentPlayer = curPlayer.playerControl;
@@ -45,8 +37,7 @@ public class pause : MonoBehaviour
 
         Pause.transform.GetChild(0).GetComponent<Text>().text = "- pause p" + (curPlayer.playerNum + 1) + " -";
 
-        foreach (Text text in Pause.GetComponentsInChildren<Text>())
-        {
+        foreach (Text text in Pause.GetComponentsInChildren<Text>()) {
             text.color = curPlayer.GetComponent<SpriteRenderer>().color;
         }
 
@@ -89,6 +80,10 @@ public class pause : MonoBehaviour
     public void quit()
     {
         Application.Quit();
+    }
+
+    public bool paused() {
+        return Pause.activeSelf || settings.activeSelf;
     }
 
     public void toggleSettings()

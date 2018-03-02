@@ -40,8 +40,9 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
     protected float smashPower = 3;
     public float maxSmashPower = 3;
 
-    public float bounceForce;
+    public float waveBounciness;
     [HideInInspector] public bool jumped;
+    public float playerBounceAmplifier = 2;
 
     protected float maxSmashVulnerabilityTime;
     [HideInInspector] public bool smashing;
@@ -140,7 +141,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
         seperateDashCooldown = GameManager.instance.seperateDashCooldown;
         canDashOnGround = GameManager.instance.canDashOnGround;
         maxSmashPower = GameManager.instance.maxSmashPower;
-        bounceForce = GameManager.instance.bounciness;
+        waveBounciness = GameManager.instance.bounciness;
         maxSmashSpeed = GameManager.instance.maxSmashSpeed;
         fullChargeInvinc = GameManager.instance.fullChargeInvinc;
         holdMaxSmash = GameManager.instance.holdMaxSmash;
@@ -170,7 +171,6 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
             print("hoi");
             StartCoroutine(dropoutOfLobby());
         }
-
     }
 
     // movement for online multiplayer
@@ -200,9 +200,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
 
                 //rigid.AddForce(gravityDirection * gravityStrength);
                 rigid.velocity -= (Vector2)transform.up * gravityStrength * Time.deltaTime;
-
                 Vector2 dirUp = -gravityDirection;
-
                 this.transform.up = Vector2.Lerp(this.transform.up, dirUp, Time.deltaTime * 500);
             }
         }
@@ -282,8 +280,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
                         StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, false));
                     }
 
-                    if (Input.GetButtonDown("Smash" + playerControl) && !smashing)
-                    {
+                    if (Input.GetButtonDown("Smash" + playerControl) && !smashing) {
                         StartCoroutine(chargeSmash(Input.GetAxis("Horizontal" + playerControl)));
                     }
                     
@@ -491,6 +488,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
             yield return new WaitForSeconds(0.25f);
 
             chargeParticle.gameObject.transform.localScale = new Vector3(rigid.velocity.x, 0);
+            yield return new WaitForSeconds(0.05f);
             CancelInvoke("SpawnTrail");
         } else {
             canSmash = false;
@@ -506,9 +504,10 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
 
             canSmash = true;
             chargeParticle.gameObject.transform.localScale = new Vector3(rigid.velocity.x, 0);
+            yield return new WaitForSeconds(0.05f);
             CancelInvoke("SpawnTrail");
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.95f);
             canDash = true;
         }
         spriteAnim.GetComponent<SpriteRenderer>().color = changeOpacity(spriteAnim.GetComponent<SpriteRenderer>().color, 225);
@@ -568,7 +567,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
                             bounceDirection += Vector2.up * TerrainGenerator.instance.pulseAmplitudeMultiplier / 4;
                         }
 
-                        bounceDirection.y *= bounceForce / (jumped ? 3 : 1);
+                        bounceDirection.y *= waveBounciness / (jumped ? 3 : 1);
                         square.GetComponent<SpriteRenderer>().color = Color.red;
                         grounded = false;
                     }
@@ -708,8 +707,10 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
 
     void collisionWithPlayer(Collision2D other) {
         if (smashing && other.transform.GetComponent<playerController>().touchingGround) {
-            WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, 0.75f, Color.white, chargeValue >= maxChargeTime ? 5 : 3, centerOfGravity);
+            WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, 0.75f, Color.white, chargeValue >= maxChargeTime ? 10 : 6, centerOfGravity);
         }
+
+        GameObject colParticle = Instantiate(collisionParticle, other.contacts[0].point, transform.rotation);
 
         //if fully charged, and th mod is on, player cannot be bounced
         if (chargeValue >= maxChargeTime && fullChargeInvinc) {
@@ -732,28 +733,35 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
 
         bool onTop = false;
         if (centerOfGravity == null) {
-            onTop = other.transform.position.y + downLazy / 1.25f < this.transform.position.y - downLazy / 1.25f;
+            onTop = other.transform.position.y + downLazy/ 1.5f < this.transform.position.y - downLazy / 1.25f;
         } else {
             float distanceFromCenter = Vector3.Distance(centerOfGravity.position, transform.position - downLazy * transform.up);
             float opponenetsDistFromCenter = Vector3.Distance(centerOfGravity.position, other.transform.position + transform.GetComponent<playerController>().downLazy / 2 * other.transform.up);
             onTop = distanceFromCenter >= opponenetsDistFromCenter;
         }
 
-        float aboveMultiplyer = (onTop) ? (instantBounceKill ? 20 : 10) : 0;
-
-        dir.y = Mathf.Clamp(transform.InverseTransformDirection(other.relativeVelocity).y, aboveMultiplyer, 50);
-        //dir.y = Mathf.Min(dir.y, 10);
+        float aboveMultiplyer = (onTop) ? (instantBounceKill ? 13 : 5) : 0;
+        aboveMultiplyer *= playerBounceAmplifier;
+        dir.y = transform.InverseTransformDirection(other.relativeVelocity).y;
+        dir.y = Mathf.Clamp(dir.y, aboveMultiplyer, 50);
 
         if (onTop) {
             dir.y = Mathf.Max(dir.y, 25);
+            print(dir.y);
             sqetch.setAnimatedStretch(1);
-            other.transform.GetComponent<playerController>().sqetch.setAnimatedStretch(2);
+            other.transform.GetComponent<playerController>().sqetch.setAnimatedStretch(smashing ? 50 : 2);
             audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], 1, UnityEngine.Random.Range(0.96f, 1.03f));
-        }
-        bounceDirection += dir;
 
+            if (smashing) {
+                Shake.instance.shake(1, 2.5f);
+                other.transform.GetComponent<Rigidbody2D>().velocity = new Vector3(other.transform.GetComponent<Rigidbody2D>().velocity.x, -20); 
+            }
+        }
+
+        rigid.velocity = new Vector2(rigid.velocity.x, 0);
+        bounceDirection += dir;
+        
         //juice   
-        GameObject colParticle = Instantiate(collisionParticle, other.contacts[0].point, transform.rotation);
         colParticle.GetComponent<ParticleSystem>().startColor = baseColor;
         if (onTop) {
             colParticle.GetComponent<ParticleSystem>().startSize = 1.5f;
@@ -800,7 +808,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
         rechargeCircle.transform.SetParent(transform);
         rechargeCircle.GetComponent<SpriteRenderer>().color = changeOpacity(spriteAnim.GetComponent<SpriteRenderer>().color, rechargeCircle.GetComponent<SpriteRenderer>().color.a);
         spriteAnim.GetComponent<SpriteRenderer>().color = changeOpacity(spriteAnim.GetComponent<SpriteRenderer>().color, 225f);
-        audioManager.instance.Play(loadPower, 0.5f, UnityEngine.Random.Range(0.96f, 1.03f));
+        //audioManager.instance.Play(loadPower, 0.5f, UnityEngine.Random.Range(0.96f, 1.03f));
         SmashCooldownTime = 0.25f;
         canSmash = true;
     }
@@ -832,7 +840,7 @@ public class playerController : NetworkBehaviour, IComparable<playerController> 
         trailPartRenderer.sprite = spriteAnim.GetComponent<SpriteRenderer>().sprite;
         trailPartRenderer.flipX = spriteAnim.GetComponent<SpriteRenderer>().flipX;
 
-        trailPartRenderer.color = changeOpacity(fullColor, 0.25f);
+        trailPartRenderer.color = changeOpacity(GetComponent<SpriteRenderer>().color, 0.5f);
 
         trailPart.transform.position = transform.position;
         trailPart.transform.localScale = transform.localScale;

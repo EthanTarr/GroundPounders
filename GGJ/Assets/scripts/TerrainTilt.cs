@@ -20,9 +20,10 @@ public class TerrainTilt : MonoBehaviour {
     }
 
     private void Update() {
-        playerController[] players = FindObjectsOfType<playerController>();
-        targetRotation = 0;
-        foreach (playerController player in players) {
+        if (!pause.instance.Pause.active) {
+            playerController[] players = FindObjectsOfType<playerController>();
+            targetRotation = 0;
+            foreach (playerController player in players) {
             if (!player.checkGround()) {
                 continue;
             }
@@ -32,17 +33,20 @@ public class TerrainTilt : MonoBehaviour {
             targetRotation += direction * magnitude;
 
             targetRotation = Mathf.Clamp(targetRotation, -rotationMax, rotationMax);
+            }
+
+            smashOffset = Mathf.Lerp(smashOffset, 0, Time.deltaTime * 7);
+            rotation = Mathf.Lerp(rotation, targetRotation + smashOffset, Time.deltaTime * 3);
+
+            rotation = Mathf.Clamp(rotation, -rotationMax, rotationMax);
+
+            if (slipperiess != null) {
+                foreach (windController i in slipperiess) {
+                    i.speed = Mathf.Sign(rotation) * Mathf.Lerp(0, 0.05f, Mathf.Abs(rotation) / rotationMax);
+                }
+            }
+            transform.eulerAngles = Vector3.forward * rotation;
         }
-
-        smashOffset = Mathf.Lerp(smashOffset, 0, Time.deltaTime * 7);
-        rotation = Mathf.Lerp(rotation, targetRotation + smashOffset, Time.deltaTime * 3);
-        //rotation = Mathf.Clamp(rotation, -rotationMax, rotationMax);
-
-        foreach (windController i in slipperiess) {
-            i.speed = Mathf.Sign(rotation) * Mathf.Lerp(0, 0.05f, Mathf.Abs(rotation) / rotationMax);
-        }
-
-        transform.eulerAngles = Vector3.forward * rotation;
     }
 
     public void applySmashForce(Vector2 position, float strength) {

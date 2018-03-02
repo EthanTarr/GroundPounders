@@ -39,18 +39,7 @@ public class stageSelectManager : MonoBehaviour
         input.enabled = true;
     }
 
-    private void Update()
-    {
-        if (EventSystem.current.currentSelectedGameObject == null) {
-            Debug.Log("Reselecting first input");
-            EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
-        }
-
-        if (input.enabled && curPlayer != null && Input.GetButtonDown(input.submitButton) && GameManager.instance.numOfPlayers >= 2) {
-            input.enabled = false;
-            StartCoroutine(screenTransition.instance.fadeOut(selectedLevel));
-        }
-
+    private void Update() {
         if (curPlayer != null && Input.GetButtonDown("Cancel" + curPlayer.playerControl)) {
             curPlayer.active = true;
             curPlayer.transform.gameObject.layer = LayerMask.NameToLayer("Player");
@@ -61,9 +50,12 @@ public class stageSelectManager : MonoBehaviour
         }
     }
 
-    public void changeSelectedLevel(string level)
-    {
+    public void changeSelectedLevel(string level) {
         selectedLevel = level;
+        if (input.enabled && curPlayer != null && Input.GetButtonDown(input.submitButton) && GameManager.instance.numOfPlayers >= 2) {
+            input.enabled = false;
+            StartCoroutine(screenTransition.instance.fadeOut(selectedLevel));
+        }
     }
 
     void turnOffInput() {

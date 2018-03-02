@@ -181,11 +181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}

@@ -308,11 +308,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -441,11 +441,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -949,11 +949,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -1082,11 +1082,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -1291,11 +1291,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -1598,11 +1598,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -1807,11 +1807,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -2091,11 +2091,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -2300,11 +2300,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -2726,11 +2726,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -2859,11 +2859,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -2992,11 +2992,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -3201,11 +3201,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -3334,11 +3334,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -3467,11 +3467,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -3720,11 +3720,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -3928,11 +3928,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -4287,11 +4287,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -4864,11 +4864,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -4997,11 +4997,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -5695,11 +5695,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -5904,11 +5904,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -6293,11 +6293,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -6652,11 +6652,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -7004,11 +7004,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -7137,11 +7137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -7270,11 +7270,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -7414,7 +7414,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.58, y: 0.08}
+    oldSize: {x: 0.13, y: 0.12}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -7824,11 +7824,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -8186,11 +8186,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -8422,11 +8422,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -8684,11 +8684,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -8893,11 +8893,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -9176,11 +9176,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -9385,11 +9385,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -9518,11 +9518,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -9651,11 +9651,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -10188,11 +10188,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -10321,11 +10321,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -10529,11 +10529,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -10662,11 +10662,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -11452,11 +11452,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -11660,11 +11660,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -11793,11 +11793,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -12923,11 +12923,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -13414,11 +13414,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -13937,11 +13937,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -14145,11 +14145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -14706,11 +14706,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -19325,11 +19325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -19814,11 +19814,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -20263,11 +20263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -20396,11 +20396,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -21003,11 +21003,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -21288,11 +21288,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -21497,11 +21497,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -22034,11 +22034,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -22468,11 +22468,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -22751,11 +22751,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -22988,11 +22988,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -23197,11 +23197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -23481,11 +23481,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -24493,11 +24493,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -24626,11 +24626,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -24903,11 +24903,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -25156,11 +25156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -25630,11 +25630,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 1, g: 1, b: 1, a: 1}
@@ -25943,11 +25943,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -26151,11 +26151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -26388,11 +26388,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -27258,11 +27258,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -28559,11 +28559,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -29120,11 +29120,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -29329,11 +29329,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -29462,11 +29462,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -30253,11 +30253,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -30461,11 +30461,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -30896,11 +30896,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -31029,11 +31029,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -31238,11 +31238,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -31493,11 +31493,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -31937,11 +31937,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -35574,11 +35574,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -35962,11 +35962,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -36500,11 +36500,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -36802,6 +36802,8 @@ MonoBehaviour:
   FloorSpawns: 20
   mapDebug: 0
   mapIndex: 1
+  pulseSpeedMultiplier: 2
+  pulseAmplitudeMultiplier: 8
   shape: 0
   plat: 0
 --- !u!1 &1625479484
@@ -37073,11 +37075,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -37550,11 +37552,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -37683,11 +37685,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -38321,11 +38323,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -38765,11 +38767,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -38974,11 +38976,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -39107,11 +39109,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -39472,11 +39474,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -40166,11 +40168,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -40600,11 +40602,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -40733,11 +40735,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -41092,11 +41094,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -41225,11 +41227,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -41959,11 +41961,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -42243,11 +42245,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -42862,11 +42864,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -43239,11 +43241,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -43372,11 +43374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -43626,11 +43628,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -43835,11 +43837,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0.5
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
   matColor: {r: 0.075692035, g: 0.3502878, b: 0.41176468, a: 1}
@@ -44092,7 +44094,7 @@ MonoBehaviour:
   fallingSpike: {fileID: 1152123269662348, guid: 98c83b4996ccbf245a73b7a61ea43416,
     type: 2}
   spikeFall: {fileID: 8300000, guid: 043f844bd31bc9240b6fb9dbf26352e0, type: 3}
-  fallChance: 0.2
+  fallChance: 0.4
 --- !u!212 &2116381462
 SpriteRenderer:
   m_ObjectHideFlags: 0

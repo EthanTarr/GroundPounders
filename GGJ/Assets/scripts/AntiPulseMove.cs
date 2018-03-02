@@ -86,18 +86,17 @@ public class AntiPulseMove : MonoBehaviour
             {
                 first = true;
             }
-            else if (!startup && Mathf.Abs(other.GetComponent<PulseMove>().Amplitude - Amplitude) <= 1.25f)
+            else if (!startup && Mathf.Abs(other.GetComponent<PulseMove>().Amplitude - Amplitude) <= 1.5f)
             {
-                other.GetComponent<PulseMove>().Amplitude /= 5;
-                Amplitude /= 5;
-                other.GetComponent<PulseMove>().speed /= 1.75f;
+                other.GetComponent<PulseMove>().Amplitude /= 2;
+                Amplitude /= 2;
+                other.GetComponent<PulseMove>().speed /= 1.25f;
 
-                speed /= 1.75f;
+                speed /= 1.25f;
                 angularSpeed /= 3f;
                 other.GetComponent<PulseMove>().angularSpeed /= 3f;
 
-                if (Amplitude < .1f || speed < 1.25f)
-                {
+                if (Amplitude < .1f || speed < 1.25f) {
                     Destroy(this.gameObject);
                 }
             }

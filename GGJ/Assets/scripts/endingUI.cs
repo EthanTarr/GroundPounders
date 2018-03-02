@@ -119,7 +119,7 @@ public class endingUI : MonoBehaviour {
         for (int i = 0; i < levelNum - 1; i++)
         {
             GameObject text = Instantiate(scoreText, transform.position - Vector3.right * (width / 2 - width / (levelNum - 1) * i) + Vector3.right * (width / (levelNum - 1)) / 2, transform.rotation);
-            text.transform.parent = this.transform;
+            text.transform.SetParent(this.transform);
 
             text.transform.position = transform.position - Vector3.right * (width / 2 - width / (levelNum - 1) * i) + Vector3.right * (width / (levelNum - 1)) / 2;
             text.gameObject.SetActive(false);
@@ -129,7 +129,7 @@ public class endingUI : MonoBehaviour {
         for (int i = 0; i < levelNum; i++)
         {
             GameObject text = Instantiate(scoreText, transform.position - Vector3.right * (width / 2 - width / (levelNum - 1) * i), transform.rotation);
-            text.transform.parent = this.transform;
+            text.transform.SetParent(this.transform);
 
             text.GetComponent<Text>().color = Color.red;
             text.GetComponent<Text>().text = "" + GameManager.instance.playerScores[i];

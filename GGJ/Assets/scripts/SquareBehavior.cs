@@ -63,10 +63,6 @@ public class SquareBehavior : MonoBehaviour {
         float xPos = transform.position.x;
         float xPulsePos = pulsePosition.x;
 
-        if (initialY < .015f && initialY > -.015f) {
-            Debug.Log(this.gameObject.name + " : " + standardX + " : " + pulsePosition.x);
-        }
-
         if (TerrainGenerator.instance.shape == Shape.Plane) {
             Amplitudes.Add(Amplitude * (speed / 4) * Mathf.Sin(((Mathf.PI / Wavelength) * (xPos - xPulsePos))));
         } else {
@@ -132,6 +128,10 @@ public class SquareBehavior : MonoBehaviour {
     }
 
     void LateUpdate(){
+        if (pause.instance.paused()) {
+            return;
+        }
+
         setPosition();
         squareMaterial.material.SetColor("_Color", Color.Lerp(matColor, ampColor, (transform.localPosition.y - initialY)));
     }
