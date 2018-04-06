@@ -63,34 +63,7 @@ public class Player : MonoBehaviour {
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        //checkForWave();
-
         handleAnim(targetVelocityX);
-    }
-
-    public void checkForWave() {
-        fart = true;
-        foreach (GameObject square in controller.collisions.belowCollisions) {
-            //print(square.GetComponent<squareBehaviorv2>().TotalAmplitude - previousAmplitude);
-            //if (Mathf.Abs(square.transform.position.x - transform.position.x) < GameObject.Find("Managers").GetComponent<GameManager>().Square.transform.localScale.x) {
-                /*if (square.GetComponent<squareBehaviorv2>().TotalAmplitude - previousAmplitude < 0.01f) {
-                    velocity = new Vector2(0, square.GetComponent<squareBehaviorv2>().TotalAmplitude * bounceForce);
-                }
-
-                previousAmplitude = square.GetComponent<squareBehaviorv2>().TotalAmplitude;*/
-            
-            //}
-        }
-        //fart = false;
-        /* foreach (GameObject square in GameObject.FindGameObjectsWithTag("Floor")) {
-             if (Mathf.Abs(square.transform.position.x - transform.position.x) < GameObject.Find("Managers").GetComponent<GameManager>().Square.transform.localScale.x) {
-                 print("hio");
-                 if (square.GetComponent<squareBehaviorv2>().TotalAmplitude - previousAmplitude < .1) {
-                     velocity = new Vector2(velocity.x, square.GetComponent<squareBehaviorv2>().TotalAmplitude * bounceForce);
-                 }
-                 previousAmplitude = square.GetComponent<squareBehaviorv2>().TotalAmplitude;
-             }
-         } */
     }
 
     void handleAnim(float xInput) {

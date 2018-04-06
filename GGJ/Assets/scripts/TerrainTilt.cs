@@ -10,6 +10,7 @@ public class TerrainTilt : MonoBehaviour {
     public float size;
     public float smashOffset;
     windController[] slipperiess;
+    public GameObject snowman;
 
     private void Start() {
         Invoke("getSlippery", 0.25f);
@@ -45,6 +46,7 @@ public class TerrainTilt : MonoBehaviour {
                     i.speed = Mathf.Sign(rotation) * Mathf.Lerp(0, 0.05f, Mathf.Abs(rotation) / rotationMax);
                 }
             }
+            snowman.transform.Translate(-Vector3.right * rotation / 15); 
             transform.eulerAngles = Vector3.forward * rotation;
         }
     }

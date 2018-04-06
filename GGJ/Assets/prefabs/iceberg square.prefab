@@ -102,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317533740026974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.63, y: 223.68, z: -3.3530893}
+  m_LocalPosition: {x: -12, y: 227.53, z: -3.3530893}
   m_LocalScale: {x: 0.3, y: 10, z: 1}
   m_Children:
   - {fileID: 4921841344088406}
@@ -273,15 +273,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalAmplitude: 0
-  previousAmplitude: 0
   FloorOscillation: 0.01
   OscillationSpeed: 0
   initialY: 0
   initialX: 0
+  initialPosition: {x: 0, y: 0, z: 0}
   firstBlock: 0
   CenterOfGravity: {x: 0, y: 0, z: 0}
-  matColor: {r: 0.9411765, g: 0.9892396, b: 1, a: 1}
-  ampColor: {r: 0.3913819, g: 0.834596, b: 0.9338235, a: 0.409}
+  matColor: {r: 0.9117647, g: 0.98904663, b: 1, a: 1}
+  ampColor: {r: 0.9490197, g: 0.91372555, b: 1, a: 0.409}
   maxAmplitude: 15
   maxCircleAmplitude: 12
   dampen: 1
