@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class onlineClient : NetworkBehaviour {
-
+    /*
     public playerController targetPlayer;
     [SyncVar] public float HorizInput;
 
@@ -23,5 +23,5 @@ public class onlineClient : NetworkBehaviour {
             }
             
        }
-    }
+    }*/
 }

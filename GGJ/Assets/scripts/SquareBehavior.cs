@@ -128,7 +128,7 @@ public class SquareBehavior : MonoBehaviour {
     }
 
     void LateUpdate(){
-        if (pause.instance.paused()) {
+        if (pause.instance != null && pause.instance.paused()) {
             return;
         }
 

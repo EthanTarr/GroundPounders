@@ -8720,33 +8720,6 @@ RectTransform:
   m_AnchoredPosition: {x: 60.5, y: -24.2}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!84 &332358655
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1062
-  m_Height: 598
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &336594970
 GameObject:
   m_ObjectHideFlags: 0
@@ -11717,7 +11690,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 104448
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 332358655}
+  m_TargetTexture: {fileID: 1970890202}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -43892,6 +43865,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1964935270}
+--- !u!84 &1970890202
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 2464
+  m_Height: 1386
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1981352456
 GameObject:
   m_ObjectHideFlags: 0
@@ -44452,13 +44452,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
         type: 2}
-      propertyPath: dashDistance
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: tightDash
-      value: 1
+      propertyPath: gamesToWin
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea95174612e095c4abfc9cadc91e1961, type: 2}

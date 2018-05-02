@@ -393,8 +393,9 @@ MonoBehaviour:
   maxSmashSpeed: 100
   minSmashPower: 3
   maxSmashPower: 25
-  bounceForce: 0.85
+  waveBounciness: 0
   jumped: 0
+  playerBounceAmplifier: 2.25
   smashing: 0
   waveSpeed: 7
   maxChargeTime: 1.5
@@ -423,6 +424,8 @@ MonoBehaviour:
   charge: {fileID: 8300000, guid: 68ae9f5d4d86e454dbf8bb8152aa9ddf, type: 3}
   cancel: {fileID: 8300000, guid: 1a97530295f2d61468f45f3c99ed6771, type: 3}
   extraBounce: {fileID: 8300000, guid: c86466f6045a49f44b657d8c38878823, type: 3}
+  squash: {fileID: 8300000, guid: 7e8b03ff050493041b6a8fbe13c67384, type: 3}
+  unsqaush: {fileID: 8300000, guid: 12697f4e5eb442547870bfdd00e5bbd6, type: 3}
   bounciness: 1.25
   bounceDirection: {x: 0, y: 0}
   airControl: 0
@@ -433,10 +436,8 @@ MonoBehaviour:
   holdMaxSmash: 0
   tightDash: 1
   doubleJump: 1
-  onlinePlayer: 0
   pulse: {fileID: 0}
   antiPulse: {fileID: 0}
-  client: {fileID: 0}
   inLobby: 0
   active: 1
   downLazy: 0.56

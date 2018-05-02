@@ -15413,6 +15413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 571868645}
   - component: {fileID: 571868644}
+  - component: {fileID: 571868643}
   m_Layer: 0
   m_Name: Settings
   m_TagString: Untagged
@@ -15420,6 +15421,86 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &571868643
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571868642}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &571868644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16987,33 +17068,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!84 &670892434
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 980
-  m_Height: 552
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &675932787
 GameObject:
   m_ObjectHideFlags: 0
@@ -18119,116 +18173,6 @@ Prefab:
     - target: {fileID: 1555559242175320, guid: ea95174612e095c4abfc9cadc91e1961, type: 2}
       propertyPath: m_Name
       value: GameManager (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: smashDebugInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: smashSpeedInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: bouncinessDebugInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: maxChargeTimeInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: dashDistanceInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: airControlInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: groundDashInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: separeteDashCooldownInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: fullChargeInvicInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: holdMaxSmashInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: tightDashInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: instantBounceKillInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: doubleJumpInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: maxSmashSpeed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: maxChargeTime
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: dashDistance
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: fullChargeInvinc
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: bounciness
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: instantBounceKill
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: numOfPlayers
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550037253284612, guid: ea95174612e095c4abfc9cadc91e1961,
-        type: 2}
-      propertyPath: randomMap
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea95174612e095c4abfc9cadc91e1961, type: 2}
@@ -25592,7 +25536,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 38912
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 670892434}
+  m_TargetTexture: {fileID: 1793884514}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -48526,6 +48470,33 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!84 &1793884514
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1122
+  m_Height: 632
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1808113222
 GameObject:
   m_ObjectHideFlags: 0

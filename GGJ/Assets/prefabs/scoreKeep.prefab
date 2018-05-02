@@ -54,7 +54,7 @@ MonoBehaviour:
   playerScores: 
   randomMap: 0
   ConeHeadMode: 0
-  gamesToWin: 3
+  gamesToWin: 1
   numOfPlayers: 0
   selectedCharacters:
   - {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b, type: 2}
@@ -62,15 +62,15 @@ MonoBehaviour:
   - {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b, type: 2}
   - {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b, type: 2}
   maxSmashPower: 12
-  bounciness: 0.65
+  bounciness: 0.7
   airControl: 1
   seperateDashCooldown: 0
   canDashOnGround: 1
-  instantBounceKill: 0
-  maxSmashSpeed: 30
-  maxChargeTime: 1.5
-  fullChargeInvinc: 1
+  instantBounceKill: 1
+  maxSmashSpeed: 50
+  maxChargeTime: 1.25
+  fullChargeInvinc: 0
   holdMaxSmash: 1
   tightDash: 1
   doubleJump: 0
-  dashDistance: 15
+  dashDistance: 13

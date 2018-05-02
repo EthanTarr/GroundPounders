@@ -24,8 +24,7 @@ public class pause : MonoBehaviour
         input = EventSystem.current.gameObject.GetComponent<StandaloneInputModule>(); ;
     }
 
-    public void togglePause(playerController curPlayer)
-    {
+    public void togglePause(playerController curPlayer) {
         currentPlayer = curPlayer.playerControl;
 
         input.verticalAxis = "Vertical" + currentPlayer;

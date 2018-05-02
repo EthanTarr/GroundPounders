@@ -6,8 +6,13 @@ public class rotationThingy : MonoBehaviour {
 
     public float speed = 1;
 
-	// Update is called once per frame
-	void Update () {
+    private void Start()
+    {
+        transform.Rotate(Vector3.forward * Random.Range(0, 360));
+    }
+
+    // Update is called once per frame
+    void Update () {
         transform.Rotate(Vector3.forward * Time.deltaTime * speed);
 	}
 }

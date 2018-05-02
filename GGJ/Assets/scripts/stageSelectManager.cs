@@ -27,11 +27,12 @@ public class stageSelectManager : MonoBehaviour
 
     IEnumerator turnOnInput(string controller) {
         input.enabled = false;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.05f);
         extraOptions.SetActive(false);
+        stageSelect.SetActive(true);
         yield return new WaitForSeconds(0.25f);
         EventSystem.current.SetSelectedGameObject(firstMap);
-        stageSelect.SetActive(true);
+
         yield return new WaitForSeconds(2f);
         input.horizontalAxis = "Horizontal" + controller;
         input.submitButton = "Enter" + controller;
@@ -79,12 +80,10 @@ public class stageSelectManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<playerController>() && curPlayer == null)
-        {
-            if (Input.GetButton("Jump" + collision.GetComponent<playerController>().playerControl))
-            {
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (collision.gameObject.GetComponent<playerController>() && curPlayer == null) {
+            if (Input.GetButton("Jump" + collision.GetComponent<playerController>().playerControl)) {
+                stageSelect.GetComponent<Animator>().Play("introAnim");
                 curPlayer = collision.gameObject.GetComponent<playerController>();
                 curPlayer.transform.gameObject.layer = LayerMask.NameToLayer("PlayerExtra");
                 curPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -93,7 +92,6 @@ public class stageSelectManager : MonoBehaviour
                 StartCoroutine(turnOnInput(curPlayer.playerControl));
                 curPlayer.spriteAnim.SetAnimation("think");
                 curPlayer.spriteAnim.SetFramesPerSecond(3);
-                stageSelect.GetComponent<Animator>().Play("introAnim");
                 hitA.SetActive(false);
 
                 Color cursorColor = curPlayer.GetComponent<SpriteRenderer>().color;

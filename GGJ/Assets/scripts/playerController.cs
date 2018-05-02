@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEngine;
 
 
-public class playerController : MonoBehaviour, IComparable<playerController> {
+public class playerController : MonoBehaviour{
 
     protected Rigidbody2D rigid;
-    public SpriteScript spriteAnim;
+    [HideInInspector] public SpriteScript spriteAnim;
     public LayerMask groundCheck;
 
     public string playerControl;
@@ -86,6 +86,8 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
     public AudioClip charge;
     public AudioClip cancel;
     public AudioClip extraBounce;
+    public AudioClip squash;
+    public AudioClip unsqaush;
 
     [Header("Bounciness")]
     public float bounciness;
@@ -104,13 +106,11 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
     public bool doubleJump;
 
     [Space()]
-    //online stuffs
-    public bool onlinePlayer;
     public GameObject pulse;
     public GameObject antiPulse;
-    public onlineClient client;
-
     [HideInInspector] public bool inLobby;
+
+    public bool active = true;
 
     protected virtual void Start() {
         rigid = GetComponent<Rigidbody2D>();
@@ -124,12 +124,6 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
 
         chargeVisualEffects(0);
         chargeCircle.transform.localScale = Vector3.zero;
-    }
-
-    public void setColors(Color baseColor) {
-        spriteAnim.GetComponent<SpriteRenderer>().color = baseColor;
-        this.baseColor = baseColor;
-        chargeParticle.startColor = Color.Lerp(baseColor, Color.white, 0.5f);
     }
 
     protected void changeModifiers() {
@@ -149,65 +143,58 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
     }
 
     void LateUpdate() {
-        float HorizInput = Input.GetAxis("Horizontal" + playerControl);
-
-        if (centerOfGravity != null) {
-            gravityDirection = (transform.position - centerOfGravity.position).normalized;
-        }
-
         if (Time.timeScale > 0) {
-            CmdinputAudit(HorizInput);
-            if (Input.GetButtonDown("Pause" + playerControl)) {
-                print("Pause" + playerControl);
+            float HorizInput = Input.GetAxis("Horizontal" + playerControl);
+            if (centerOfGravity != null) {
+                gravityDirection = (transform.position - centerOfGravity.position).normalized;
+            }
+            checkGround();
+
+            bounceDirection = new Vector2(Mathf.Lerp(bounceDirection.x, 0, Time.deltaTime * (smashing ? 25 : 2.25f) * (Mathf.Abs(xSpeed) > 0.5f ? 2f : 1)),
+                Mathf.Lerp(bounceDirection.y, 0, Time.deltaTime * (smashing ? 2 : 35)));
+            dashDirection = Mathf.Lerp(dashDirection, 0, Time.deltaTime * dashDecel);
+
+            if (!smashing && !vunrabilityFrames && playerControl != "" && rigid.bodyType == RigidbodyType2D.Dynamic){
+                movement(HorizInput);
+            } if (!smashing && !vunrabilityFrames && active) {
+                rigid.velocity = transform.TransformDirection(new Vector2(xSpeed, transform.InverseTransformDirection(rigid.velocity).y));
+            }
+
+            if ((canSmash || !seperateDashCooldown || !tightDash)) {
+                if (centerOfGravity == null) {
+                    rigid.velocity += gravityDirection * gravityStrength;
+                    if (Input.GetAxis("Vertical" + playerControl) < -0.7f) {
+                        rigid.velocity += gravityDirection * 0.25f;
+                    }
+                } else {
+                    Vector2 gravityDirection = (-transform.position + centerOfGravity.position).normalized;
+                    rigid.velocity -= (Vector2)transform.up * gravityStrength * Time.deltaTime;
+                    Vector2 dirUp = -gravityDirection;
+                    this.transform.up = Vector2.Lerp(this.transform.up, dirUp, Time.deltaTime * 500);
+                }
+            }
+
+            if (Input.GetButtonDown("Pause" + playerControl) && pause.instance != null) {
                 pause.instance.togglePause(this);
             }
         }
 
         if (inLobby && Input.GetButtonDown("Dropout" + playerControl)) {
-            print("hoi");
             StartCoroutine(dropoutOfLobby());
         }
     }
 
-    // movement for online multiplayer
-    public virtual void CmdinputAudit(float HorizInput) {
-        checkGround();
-        bounceDirection = new Vector2(Mathf.Lerp(bounceDirection.x, 0, Time.deltaTime * (smashing ? 25 : 2.25f) * (Mathf.Abs(xSpeed) > 0.5f ? 2f : 1)),
-            Mathf.Lerp(bounceDirection.y, 0, Time.deltaTime * (smashing ? 2 : 35)));
-        dashDirection = Mathf.Lerp(dashDirection, 0, Time.deltaTime * dashDecel);
-
-        if (!smashing && !vunrabilityFrames && playerControl != "" && rigid.bodyType == RigidbodyType2D.Dynamic) {
-            movement(HorizInput);
-        } if (!smashing && !vunrabilityFrames && active) {
-            rigid.velocity = transform.TransformDirection(new Vector2(xSpeed, transform.InverseTransformDirection(rigid.velocity).y));
-        }
-
-        if ((canSmash || !seperateDashCooldown || !tightDash)) {
-            if (centerOfGravity == null) {
-                rigid.velocity += gravityDirection * gravityStrength;
-                if (Input.GetAxis("Vertical" + playerControl) < -0.7f) {
-                    rigid.velocity += gravityDirection * 0.25f;
-                }
-            } else {
-                Vector2 gravityDirection = (-transform.position + centerOfGravity.position).normalized;
-                rigid.velocity -= (Vector2)transform.up * gravityStrength * Time.deltaTime;
-                Vector2 dirUp = -gravityDirection;
-                this.transform.up = Vector2.Lerp(this.transform.up, dirUp, Time.deltaTime * 500);
-            }
-        }
-
-        rigid.velocity += (Vector2)transform.up * bounceDirection.y;
-        if (active) {
-            rigid.velocity += (Vector2)transform.right * (dashDirection + bounceDirection.x);
-        }
+    void jumpDelay() {
+        jumped = true;
     }
 
-    public bool active = true;
-    protected virtual void movement(float horizInput) {
-        //Horizontal Movement
-        touchingGround = checkGround();
 
+    bool squishing = true;
+    protected virtual void movement(float horizInput) {
+        
+        touchingGround = checkGround();
         if (active) {
+            //Horizontal Movement
             if (Mathf.Abs(horizInput) > 0.1f && (canSmash || !seperateDashCooldown)) {
                 xSpeed += speed * horizInput / (accelerate * 4);
                 spriteAnim.GetComponent<SpriteRenderer>().flipX = horizInput < 0;
@@ -229,14 +216,21 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
                 }
 
                 if (Input.GetAxis("Vertical" + playerControl) < -0.7f) {
-                    if (sqetch.animatedStretch < 0.5f) {
-                        audioManager.instance.Play(softLanding[0], 0.05f);
+                    if (sqetch.animatedStretch < 0.5f)
+                    {
+
                         sqetch.setAnimatedStretch(0.5f);
+                        if (!squishing) {
+                            squishing = true;
+                            audioManager.instance.Play(squash, 0.1f, UnityEngine.Random.Range(0.9f, 1.1f));
+                        }
                     }
                 } else {
-                    canFastFall = true;
+                    if(squishing) {
+                        squishing = false;
+                        audioManager.instance.Play(unsqaush, 0.1f, UnityEngine.Random.Range(0.9f, 1.1f));
+                    }
                 }
-
                 //dashingOnGround
                 if (canDash && Mathf.Abs(Input.GetAxis("Dash" + playerControl)) > 0.5f && (canDashOnGround && canSmash)) {
                     StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, true));
@@ -253,25 +247,15 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
                         Destroy(dashExpurosion, 1.5f);
                     }
 
-                    //fastFall
-                    /*
-                    if (Input.GetAxis("Vertical" + playerControl) < -0.7 && !fastFall && canFastFall && !smashing) {
-                        fastFall = true;
-                        canFastFall = false;
-                    }
-                    */
-
                     if (canDash && Mathf.Abs(Input.GetAxis("Dash" + playerControl)) > 0.5f && !smashing) {
                         StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, false));
                     }
 
                     if (Input.GetButtonDown("Smash" + playerControl) && !smashing) {
                         StartCoroutine(chargeSmash(Input.GetAxis("Horizontal" + playerControl)));
-                    }
-                    
+                    }               
                 }
             }
-
             //shortHop
             if (Input.GetButtonUp("Jump" + playerControl) && transform.InverseTransformDirection(rigid.velocity).y > minJumpHeight && jumped) {
                 rigid.velocity = (Vector2)transform.up * minJumpHeight;
@@ -281,36 +265,33 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
     }
 
     private void FixedUpdate() {
-        if (Time.timeScale == 1)
+        if (Time.timeScale == 1) {
+            rigid.velocity += (Vector2)transform.up * bounceDirection.y;
+            if (active) {
+                rigid.velocity += (Vector2)transform.right * (dashDirection + bounceDirection.x);
+            }
             checkGround();
+        }
     }
 
     protected void spriteAnimationManager(float HorizInput, bool touchingGround) {
-        if (!touchingGround)
-        {
+        if (!touchingGround) {
             spriteAnim.SetAnimation("jump");
             return;
         }
 
-        if (vunrabilityFrames)
-        {
+        if (vunrabilityFrames) {
             spriteAnim.SetAnimation("crush");
             return;
         }
 
         spriteAnim.SetAnimation(Mathf.Abs(HorizInput) > 0.1f ? "walk" : "idle");
-
         spriteAnim.SetFramesPerSecond(20);
 
-        if (Mathf.Abs(HorizInput) > 0.1f && Mathf.Sign(xSpeed) != Mathf.Sign(HorizInput))
-        {
+        if (Mathf.Abs(HorizInput) > 0.1f && Mathf.Sign(xSpeed) != Mathf.Sign(HorizInput)) {
             spriteAnim.SetFramesPerSecond(10);
             spriteAnim.SetAnimation("walk");
         }
-    }
-
-    void jumpDelay() {
-        jumped = true;
     }
 
     IEnumerator dropoutOfLobby() {
@@ -328,7 +309,6 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
 
         GameObject particle = Instantiate(deathParticle, transform.position, Quaternion.identity) as GameObject;
         particle.GetComponent<ParticleSystem>().startColor = Color.Lerp(baseColor, Color.white, 0.5f);
-
         GetComponent<SpriteRenderer>().color = fullColor;
 
         FindObjectOfType<controlAssigmentManager>().characterDropout(this);
@@ -340,11 +320,9 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
         chargeParticle.startSize = Mathf.Lerp(0.25f, 0.75f, toggle * 10);
         float changeSize = Mathf.Lerp(0, 1, toggle * 2);
         chargeCircle.transform.localScale = Vector3.one * Mathf.Lerp(0.6f,0.1f, toggle);
-
         Color chargeColor= GetComponent<SpriteRenderer>().color;
         chargeColor.a = Mathf.Lerp(0,0.5f,toggle);
         chargeCircle.GetComponent<SpriteRenderer>().color = chargeColor;
-
         chargeParticle.transform.localScale = new Vector3(changeSize, changeSize, changeSize);
     }
 
@@ -353,11 +331,9 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
         bounceDirection.y *= 10;
         
         dashDirection = 0;
-
         bool direction = GetComponent<SpriteRenderer>().flipX;
 
         fastFall = false;
-
         smashing = true;
         bool maxed = false;
         chargeValue = 0;
@@ -412,8 +388,7 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
             rigid.velocity = ((Vector2)transform.right * transform.InverseTransformDirection(rigid.velocity).x) * 0.95f + (Vector2)transform.up * initialY + (Vector2)transform.InverseTransformDirection((Vector3)bounceDirection);
 
             initialY /= 1.1f;
-            if (airControl)
-            {
+            if (airControl) {
                 rigid.velocity += (Vector2)transform.right * Input.GetAxis("Horizontal" + playerControl) * 0.2f;
             }
 
@@ -523,7 +498,7 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
 
     [Space()]
     //this is really lazy to position raycasts to size
-    public float downLazy = 0.33f;
+    [HideInInspector] public float downLazy = 0.56f;
 	public bool checkGround() {
         bool grounded = false;
         for (int i = 0; i < 5; i++) {
@@ -561,12 +536,9 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag.Equals("Floor")) {
             collisionWithFloor(other);
-        } else if (other.gameObject.GetComponent<Ball>() != null) {
-            collisionWithBall(other);
         } else if (other.gameObject.tag.Equals("Player")) {
             collisionWithPlayer(other);
-        }
-        else if (other.gameObject.tag.Equals("Spike") && !alreadyDead) {
+        } else if (other.gameObject.tag.Equals("Spike") && !alreadyDead) {
             die();
         } else if (other.gameObject.tag.Equals("top")) {
             bounceDirection.y = 0;
@@ -580,47 +552,6 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
         }
     }
 
-    void collisionWithBall(Collision2D other) {
-        GameObject colParticle = Instantiate(collisionParticle, other.contacts[0].point, transform.rotation);
-        colParticle.GetComponent<ParticleSystem>().startColor = baseColor;
-        Destroy(colParticle, 0.75f);
-
-        //if (smashing && other.transform.GetComponent<playerController>().touchingGround) {
-        //    WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, 0.75f, Color.white, chargeValue >= maxChargeTime ? 5 : 3, null);
-        //}
-
-        audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], 1, UnityEngine.Random.Range(0.96f, 1.03f));
-
-        Vector2 dir = Vector2.zero;
-
-        bool onTop = false;
-        if (centerOfGravity == null) {
-            onTop = other.transform.position.y + downLazy / 2 < this.transform.position.y - downLazy;
-        } else {
-            onTop = Vector3.Distance(centerOfGravity.position, transform.position + downLazy / 2 * transform.up) < Vector3.Distance(other.transform.GetComponent<Ball>().centerOfGravity.position, other.transform.position - transform.GetComponent<Ball>().downLazy / 2 * other.transform.up);
-        }
-        float aboveMultiplyer = (onTop) ? (instantBounceKill ? 20 : 10) : 0;
-
-        dir.y = Mathf.Clamp(transform.InverseTransformDirection(other.relativeVelocity).y, aboveMultiplyer, 50);
-        dir.y *= (smashing ? 1 : 1.5f) * (chargeValue > 0.1f ? 2 : 1);
-
-        dir.x = transform.InverseTransformDirection(other.relativeVelocity).x * (smashing ? 0.2f : 1);
-        if (!touchingGround)
-        {
-            dir.x *= 1.25f;
-        }
-        dir.x = Mathf.Min(Mathf.Abs(dir.x), 50) * Mathf.Sign(dir.x);
-
-        if (onTop)
-        {
-            colParticle.GetComponent<ParticleSystem>().startSize = 1.5f;
-            colParticle.GetComponent<ParticleSystem>().startSpeed = 70f;
-            sqetch.setAnimatedStretch(1);
-            audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], 1, UnityEngine.Random.Range(0.96f, 1.03f));
-        }
-        bounceDirection += dir;
-    }
-
     void collisionWithFloor(Collision2D other) {
         float strength = Mathf.Clamp(other.relativeVelocity.magnitude / 40f, 0, .8f);
         if (smashing) {
@@ -631,21 +562,13 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
 
             if (Shake.instance != null)
                 Shake.instance.shake(2, 3);
-
             
             rigid.velocity = Vector3.zero;
-            // *= smashPower;
             Color color = GetComponent<SpriteRenderer>().color;
             color.a = 0.75f;
-
-            //print(strength);
-            //WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, strength * smashPower, color, Mathf.Lerp(5,10, strength / 0.8f), null);
-            //print(chargeValue >= maxChargeTime);
-            //WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, strength * smashPower, color, chargeValue >= maxChargeTime ? 10 : 7, centerOfGravity);
             WaveGenerator.instance.makeWave(other.gameObject.GetComponent<SquareBehavior>().initialPosition, strength * smashPower, color, chargeValue >= maxChargeTime ? 10 : 7, centerOfGravity);
-            
-
             audioManager.instance.Play(smash, 0.75f, UnityEngine.Random.Range(0.95f, 1.05f));
+
             SmashSpeed = 0;
             smashPower = 0;
             chargeValue = 0;
@@ -654,27 +577,7 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
             if (FindObjectOfType<TerrainTilt>() != null) {
                 FindObjectOfType<TerrainTilt>().applySmashForce(this.transform.position, strength);
             }
-        } else {
-            /*
-            if (other.relativeVelocity.magnitude > 12 && !onlinePlayer) {
-                audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], 0.05f, UnityEngine.Random.Range(0.96f, 1.03f));
-                if (canMakeWave) {
-                    if (onlinePlayer)
-                    {
-                        CmdMakeWave(transform.position + Vector3.up * -1, strength / 2, Color.white, 1.5f);
-                    }
-                    else
-                    {
-                        WaveGenerator.instance.makeWave(transform.position + Vector3.up * -1, strength / 2, Color.white, 1.5f, null);
-                    }
-                } else {
-                    StartCoroutine("checkIfWaved");
-                }
-            }
-            */
-        }
-
-
+        } 
     }
 
     void collisionWithPlayer(Collision2D other) {
@@ -705,9 +608,8 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
 
         bool onTop = false;
 
-        for (int i = 0; i < 5; i++)
-        {
-            float direction = -1 + (i % 2) * 2;
+        for (int i = 0; i < 5; i++) {
+            float direction = -1.6f + (i % 2) * 2.9f;
             Vector3 downward = transform.position - transform.up * downLazy * 1.25f + transform.right * 0.15f * Mathf.Ceil(i / 2f) * direction;
             RaycastHit2D hit = Physics2D.Raycast(downward, -transform.up, 0.4f);
             Debug.DrawRay(downward, -transform.up, Color.blue);
@@ -719,17 +621,7 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
             }
         }
 
-        /*
-        if (centerOfGravity == null) {
-            onTop = other.transform.position.y + downLazy/ 1.5f < this.transform.position.y - downLazy / 1.25f;
-        } else {
-            float distanceFromCenter = Vector3.Distance(centerOfGravity.position, transform.position - downLazy * transform.up);
-            float opponenetsDistFromCenter = Vector3.Distance(centerOfGravity.position, other.transform.position + transform.GetComponent<playerController>().downLazy / 2 * other.transform.up);
-            onTop = distanceFromCenter >= opponenetsDistFromCenter;
-        }
-        */
-
-        float aboveMultiplyer = (onTop) ? (instantBounceKill ? 13 : 5) : 0;
+        float aboveMultiplyer = (onTop) ? (instantBounceKill ? 15 : 5) : 1;
         aboveMultiplyer *= playerBounceAmplifier;
         dir.y = transform.InverseTransformDirection(other.relativeVelocity).y;
         dir.y = Mathf.Clamp(dir.y, aboveMultiplyer, 50);
@@ -784,26 +676,20 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
         smashing = false;
         canSmash = false;
         
-
         vunrabilityFrames = true;
-
         yield return new WaitForSeconds(recoveryTime);
-
         vunrabilityFrames = false;
 
         yield return new WaitForSeconds(recoveryTime);
-
         GameObject rechargeCircle = Instantiate(shockWave, transform.position, transform.rotation) as GameObject;
         rechargeCircle.transform.SetParent(transform);
         rechargeCircle.GetComponent<SpriteRenderer>().color = changeOpacity(spriteAnim.GetComponent<SpriteRenderer>().color, rechargeCircle.GetComponent<SpriteRenderer>().color.a);
         spriteAnim.GetComponent<SpriteRenderer>().color = changeOpacity(spriteAnim.GetComponent<SpriteRenderer>().color, 225f);
-        //audioManager.instance.Play(loadPower, 0.5f, UnityEngine.Random.Range(0.96f, 1.03f));
         SmashCooldownTime = 0.25f;
         canSmash = true;
     }
 
     protected bool alreadyDead;
-
     public virtual void die() {
         if (!endingUI.instance.endConditionMet) {
             alreadyDead = true;
@@ -817,7 +703,6 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
 
             endingUI.instance.StopAllCoroutines();
             endingUI.instance.StartCoroutine(endingUI.instance.checkPlayersLeft());
-
             Destroy(this.gameObject);
         }
 
@@ -857,8 +742,22 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
         return color;
     }
 
+    public void setColors(Color baseColor) {
+        spriteAnim.GetComponent<SpriteRenderer>().color = baseColor;
+        this.baseColor = baseColor;
+        chargeParticle.startColor = Color.Lerp(baseColor, Color.white, 0.5f);
+    }
+
+    
     private void OnDrawGizmos()
     {
+        
+        for (int i = 0; i < 5; i++)
+        {
+            float direction = -1.6f + (i % 2) * 2.9f;
+            Vector3 downward = transform.position - transform.up * 0.33f * 1.25f + transform.right * 0.15f * Mathf.Ceil(i / 2f) * direction;
+            Debug.DrawRay(downward, -transform.up, Color.blue);
+        }
         //Gizmos.color = Color.red;
         //Gizmos.DrawWireCube(transform.position + Vector3.right * transform.GetComponent<playerController>().topWidth / 2, new Vector2(0.1f,1));
         //Gizmos.DrawWireCube(transform.position - Vector3.right * transform.GetComponent<playerController>().topWidth / 2, new Vector2(0.1f, 1));
@@ -868,9 +767,6 @@ public class playerController : MonoBehaviour, IComparable<playerController> {
         //Debug.DrawLine(transform.position, transform.position - downLazy / 1.25f * transform.up, Color.blue);
         //Debug.DrawRay(transform.position, angleFromCenter * 5, Color.green);
     }
-
-    public int CompareTo(playerController other) {
-        return GameManager.instance.playerScores[playerNum].CompareTo(GameManager.instance.playerScores[other.playerNum]);
-    }
+    
 }
 
