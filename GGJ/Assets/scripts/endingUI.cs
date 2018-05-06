@@ -35,7 +35,7 @@ public class endingUI : MonoBehaviour {
                 Application.LoadLevel("VictoryScreen");
             } else {
                 if(GameManager.instance.randomMap)
-                    StartCoroutine(screenTransition.instance.fadeOut(Random.Range(2, Application.levelCount - 1)));
+                    StartCoroutine(screenTransition.instance.fadeOut(Random.Range(3, Application.levelCount - 1)));
                 else
                     StartCoroutine(screenTransition.instance.fadeOut(levelName));
             }

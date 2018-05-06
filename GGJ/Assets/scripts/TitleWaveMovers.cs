@@ -16,18 +16,18 @@ public class TitleWaveMovers : MonoBehaviour {
         else
             GetComponent<SpriteRenderer>().color = ButtonActions.instance.waveColor;
 
-        originalYPos = transform.position.y;
+        originalYPos = transform.localPosition.y;
         yPos = originalYPos;
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
         if (!backWave)
-           yPos = originalYPos + Mathf.Sin(Time.time * (transform.position.x + 10) / 2) / 8;
+           yPos = originalYPos + Mathf.Sin(Time.time * (transform.localPosition.x + 10) / 2) / 8;
         else {
-            yPos = originalYPos + Mathf.Sin(Time.time * (transform.position.x + 10) / 8) / 4;
+           yPos = originalYPos + Mathf.Sin(Time.time * (transform.localPosition.x + 10) / 8) / 4;
         }
 
-        transform.position = new Vector3 (transform.position.x, yPos, transform.position.z);
+        transform.localPosition = new Vector3 (transform.localPosition.x, yPos, transform.localPosition.z);
 	}
 }

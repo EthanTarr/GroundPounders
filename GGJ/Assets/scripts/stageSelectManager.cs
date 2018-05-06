@@ -52,8 +52,10 @@ public class stageSelectManager : MonoBehaviour
     }
 
     public void changeSelectedLevel(string level) {
+        print("level here");
         selectedLevel = level;
-        if (input.enabled && curPlayer != null && Input.GetButtonDown(input.submitButton) && GameManager.instance.numOfPlayers >= 2) {
+        if (curPlayer != null && GameManager.instance.numOfPlayers >= 2) {
+            print("level here");
             input.enabled = false;
             StartCoroutine(screenTransition.instance.fadeOut(selectedLevel));
         }

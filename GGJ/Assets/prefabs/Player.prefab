@@ -389,7 +389,7 @@ MonoBehaviour:
   gravityStrength: 0.6
   gravityDirection: {x: 0, y: -1}
   centerOfGravity: {fileID: 0}
-  minSmashSpeed: 4
+  minSmashSpeed: 10
   maxSmashSpeed: 100
   minSmashPower: 3
   maxSmashPower: 25

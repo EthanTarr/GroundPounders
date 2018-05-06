@@ -54,7 +54,7 @@ MonoBehaviour:
   playerScores: 
   randomMap: 0
   ConeHeadMode: 0
-  gamesToWin: 1
+  gamesToWin: 5
   numOfPlayers: 0
   selectedCharacters:
   - {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b, type: 2}
@@ -64,7 +64,7 @@ MonoBehaviour:
   maxSmashPower: 12
   bounciness: 0.7
   airControl: 1
-  seperateDashCooldown: 0
+  seperateDashCooldown: 1
   canDashOnGround: 1
   instantBounceKill: 1
   maxSmashSpeed: 50

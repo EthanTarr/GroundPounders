@@ -97,5 +97,13 @@ public class pause : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(firstButton);
         }
+
+        foreach (Text t in GetComponentsInChildren<Text>()) {
+            t.color = Pause.GetComponentInChildren<Text>().color;
+        }
+
+        foreach (Slider s in FindObjectsOfType<Slider>()) {
+            s.fillRect.GetComponent<Image>().color = Pause.GetComponentInChildren<Text>().color;
+        }
     }
 }

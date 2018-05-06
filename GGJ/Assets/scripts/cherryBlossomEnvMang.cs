@@ -11,6 +11,7 @@ public class cherryBlossomEnvMang : enviornmentManager {
 	// Use this for initialization
 	void Start () {
         instance = this;
+        treeParts = FindObjectsOfType<objectShake>();
     }
 
     public override void enviornmentCall() {

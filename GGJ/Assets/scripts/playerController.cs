@@ -160,12 +160,12 @@ public class playerController : MonoBehaviour{
                 rigid.velocity = transform.TransformDirection(new Vector2(xSpeed, transform.InverseTransformDirection(rigid.velocity).y));
             }
 
-            if ((canSmash || !seperateDashCooldown || !tightDash)) {
+            if ((canSmash || !seperateDashCooldown || !tightDash) && !smashing) {
                 if (centerOfGravity == null) {
-                    rigid.velocity += gravityDirection * gravityStrength;
-                    if (Input.GetAxis("Vertical" + playerControl) < -0.7f) {
-                        rigid.velocity += gravityDirection * 0.25f;
-                    }
+                        rigid.velocity += gravityDirection * gravityStrength;
+                        if (Input.GetAxis("Vertical" + playerControl) < -0.7f) {
+                            rigid.velocity += gravityDirection * 0.25f;
+                        }
                 } else {
                     Vector2 gravityDirection = (-transform.position + centerOfGravity.position).normalized;
                     rigid.velocity -= (Vector2)transform.up * gravityStrength * Time.deltaTime;
@@ -188,8 +188,7 @@ public class playerController : MonoBehaviour{
         jumped = true;
     }
 
-
-    bool squishing = true;
+    bool squishing = false;
     protected virtual void movement(float horizInput) {
         
         touchingGround = checkGround();
@@ -222,17 +221,17 @@ public class playerController : MonoBehaviour{
                         sqetch.setAnimatedStretch(0.5f);
                         if (!squishing) {
                             squishing = true;
-                            audioManager.instance.Play(squash, 0.1f, UnityEngine.Random.Range(0.9f, 1.1f));
+                            audioManager.instance.Play(squash, 0.4f, UnityEngine.Random.Range(0.9f, 1.1f));
                         }
                     }
                 } else {
                     if(squishing) {
                         squishing = false;
-                        audioManager.instance.Play(unsqaush, 0.1f, UnityEngine.Random.Range(0.9f, 1.1f));
+                        audioManager.instance.Play(unsqaush, 0.4f, UnityEngine.Random.Range(0.9f, 1.1f));
                     }
                 }
                 //dashingOnGround
-                if (canDash && Mathf.Abs(Input.GetAxis("Dash" + playerControl)) > 0.5f && (canDashOnGround && canSmash)) {
+                if (canDash && Input.GetButtonDown("Dash" + playerControl) && (canDashOnGround && canSmash)) {
                     StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, true));
                 }
             } else {
@@ -247,7 +246,7 @@ public class playerController : MonoBehaviour{
                         Destroy(dashExpurosion, 1.5f);
                     }
 
-                    if (canDash && Mathf.Abs(Input.GetAxis("Dash" + playerControl)) > 0.5f && !smashing) {
+                    if (canDash && Input.GetButtonDown("Dash" + playerControl) && !smashing) {
                         StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, false));
                     }
 
@@ -296,15 +295,15 @@ public class playerController : MonoBehaviour{
 
     IEnumerator dropoutOfLobby() {
         float t = 1.5f;
-        active = false;
+        
         while (t > 0) {
             t -= Time.deltaTime;
             if (!Input.GetButton("Dropout" + playerControl)) {
+                active = true;
                 yield break;
             }
             yield return null;
         }
-
         audioManager.instance.Play(deathExplosion, 0.5f, UnityEngine.Random.Range(0.96f, 1.04f));
 
         GameObject particle = Instantiate(deathParticle, transform.position, Quaternion.identity) as GameObject;
@@ -358,10 +357,10 @@ public class playerController : MonoBehaviour{
             }
 
             //Dash out of charge
-            if (Mathf.Abs(Input.GetAxis("Dash" + playerControl)) > 0.5f && Input.GetAxis("Dash" + playerControl) != currentDirection && canDash) {
+            if (Input.GetButton("Dash" + playerControl) && canDash) {
                 chargeValue = 0;
                 chargeCircle.transform.localScale = Vector3.zero;
-                StartCoroutine(dash(chargeValue, direction, false));
+                StartCoroutine(dash(chargeValue * 20, direction, false));
                 yield break;
             }
 
@@ -392,7 +391,7 @@ public class playerController : MonoBehaviour{
                 rigid.velocity += (Vector2)transform.right * Input.GetAxis("Horizontal" + playerControl) * 0.2f;
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
 
         chargeValue = Mathf.Min(chargeValue, maxChargeTime);
@@ -407,30 +406,24 @@ public class playerController : MonoBehaviour{
     }
 
     protected IEnumerator dash(float chargeValue, bool direction, bool onGround) {
-        InvokeRepeating("SpawnTrail", 0, 0.035f);
+        StartCoroutine("spawnAfterImages");
         GetComponent<SpriteRenderer>().flipX = direction;
+        float dir = Input.GetAxisRaw("Horizontal" + playerControl);
 
-        float dir = Input.GetAxis("Dash" + playerControl);
-        // print(dir);
-        if (Mathf.Abs(dir) < 0.5f)
-           dir = (spriteAnim.GetComponent<SpriteRenderer>().flipX ? -1 : 1);
-
-        if (Input.GetAxis("Vertical" + playerControl) <= -0.9f) {
-            //dir *= 1.5f;
+        if (Mathf.Abs(dir) < 0.5f) {
+            dir = (spriteAnim.GetComponent<SpriteRenderer>().flipX ? -1 : 1);
         }
-
-        dashDirection += dashSpeed * dir/ (onGround ? 1.5f : 1);
+        dashDirection += dashSpeed * dir / (onGround ? 1.5f : 1);
         dashDirection *= 3f;
         dashDecel = tightDash ? 10f : 5f;
-
-        rigid.velocity = transform.TransformDirection(new Vector2(0, onGround ? -10 :  Mathf.Max(0, transform.InverseTransformDirection(rigid.velocity).y) / 2));
-
+        rigid.velocity = transform.TransformDirection(new Vector2(0, onGround ? -10 : Mathf.Max(0, transform.InverseTransformDirection(rigid.velocity).y) / 2));
+       
         smashing = false;
         chargeVisualEffects(0);
         SmashSpeed = 0;
         smashPower = 0;
 
-        spriteAnim.GetComponent<SpriteRenderer>().color = changeOpacity(spriteAnim.GetComponent<SpriteRenderer>().color, 0.5f);
+        spriteAnim.GetComponent<SpriteRenderer>().color = changeOpacity(spriteAnim.GetComponent<SpriteRenderer>().color, 0.65f);
 
         audioManager.instance.Play(this.cancel, 0.25f);
 
@@ -449,7 +442,7 @@ public class playerController : MonoBehaviour{
 
             chargeParticle.gameObject.transform.localScale = new Vector3(rigid.velocity.x, 0);
             yield return new WaitForSeconds(0.05f);
-            CancelInvoke("SpawnTrail");
+            StopCoroutine("spawnAfterImages");
         } else {
             canSmash = false;
             canDash = false;
@@ -464,8 +457,8 @@ public class playerController : MonoBehaviour{
 
             canSmash = true;
             chargeParticle.gameObject.transform.localScale = new Vector3(rigid.velocity.x, 0);
-            yield return new WaitForSeconds(0.05f);
-            CancelInvoke("SpawnTrail");
+            yield return new WaitForSeconds(0.3f);
+            StopCoroutine("spawnAfterImages");
 
             yield return new WaitForSeconds(0.95f);
             canDash = true;
@@ -476,10 +469,9 @@ public class playerController : MonoBehaviour{
 
     protected IEnumerator smashOutOFCharge(float chargeValue) {
         if (chargeValue > maxChargeTime / 2)
-            InvokeRepeating("SpawnTrail", 0, 0.035f);
+            StartCoroutine("spawnAfterImages");
 
         yield return new WaitForSeconds(0.05f);
-        
         rigid.velocity = transform.TransformDirection(new Vector3(0, -SmashSpeed));
         bounceDirection.y = 0;
         spriteAnim.SetAnimation("smash");
@@ -557,7 +549,7 @@ public class playerController : MonoBehaviour{
         if (smashing) {
             StopCoroutine("chargeSmash");
             StopCoroutine("smashAfterCharge");
-            CancelInvoke("SpawnTrail");
+            StopCoroutine("spawnAfterImages");
             canSmash = false;
 
             if (Shake.instance != null)
@@ -708,13 +700,28 @@ public class playerController : MonoBehaviour{
 
     }
 
+    IEnumerator spawnAfterImages() {
+        float distanceTravelled = 0;
+        Vector2 deltaPosition = transform.position;
+        float AFTERIMAGE_RATE = 1;
+        while (true) {
+            distanceTravelled += Vector2.Distance(transform.position, deltaPosition);
+            deltaPosition = transform.position;
+            if (distanceTravelled > AFTERIMAGE_RATE) {
+                distanceTravelled = 0;
+                SpawnTrail();
+            }
+            yield return null;
+        }
+    }
+
     void SpawnTrail() {
         GameObject trailPart = new GameObject();
         SpriteRenderer trailPartRenderer = trailPart.AddComponent<SpriteRenderer>();
         trailPartRenderer.sprite = spriteAnim.GetComponent<SpriteRenderer>().sprite;
         trailPartRenderer.flipX = spriteAnim.GetComponent<SpriteRenderer>().flipX;
 
-        trailPartRenderer.color = changeOpacity(GetComponent<SpriteRenderer>().color, 0.5f);
+        trailPartRenderer.color = changeOpacity(GetComponent<SpriteRenderer>().color, 0.75f);
 
         trailPart.transform.position = transform.position;
         trailPart.transform.localScale = transform.localScale;
@@ -747,8 +754,7 @@ public class playerController : MonoBehaviour{
         this.baseColor = baseColor;
         chargeParticle.startColor = Color.Lerp(baseColor, Color.white, 0.5f);
     }
-
-    
+ 
     private void OnDrawGizmos()
     {
         
@@ -767,6 +773,5 @@ public class playerController : MonoBehaviour{
         //Debug.DrawLine(transform.position, transform.position - downLazy / 1.25f * transform.up, Color.blue);
         //Debug.DrawRay(transform.position, angleFromCenter * 5, Color.green);
     }
-    
 }
 

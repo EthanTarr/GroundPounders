@@ -23,6 +23,7 @@ public class TerrainGenerator : MonoBehaviour {
 
     public float pulseSpeedMultiplier = 2;
     public float pulseAmplitudeMultiplier = 8;
+    private CustomStages customStages;
 
     //Later on this might not work if we end up using 
     //Terrain Generator to do background/enviornmental Objects
@@ -37,6 +38,7 @@ public class TerrainGenerator : MonoBehaviour {
     void Awake () {
         instance = this;
         boundary = FloorSpawns * 0.5f;
+        customStages = GetComponent<CustomStages>();
         Generate();
     }
 
@@ -111,12 +113,21 @@ public class TerrainGenerator : MonoBehaviour {
 
         if (Application.isPlaying)
             if (!mapDebug) {
-                mapIndex = 1;
-                mapIndex = GameManager.instance.totalScores() == 0 ? 1 : UnityEngine.Random.Range(1, 10);
+                if (customStages != null) {
+                    mapIndex = GameManager.instance.totalScores() == 0 ? 1 : UnityEngine.Random.Range(1, customStages.numberOfStages);
+                } else {
+                    mapIndex = GameManager.instance.totalScores() == 0 ? 1 : UnityEngine.Random.Range(1, 10);
+                }
             }
 
         for (float i = -spaceToFill / 2; i < spaceToFill / 2f; i++) {
-            GameObject child = Instantiate(Square, new Vector3((SquareWidth * i) + transform.position.x, customPlatformPos(mapIndex, i), 0), Quaternion.identity);
+            float yPos;
+            if (customStages != null) {
+                yPos = customStages.customPlatformPos(mapIndex, i);
+            } else {
+                yPos = customPlatformPos(mapIndex, i);
+            }
+            GameObject child = Instantiate(Square, new Vector3((SquareWidth * i) + transform.position.x, yPos, 0), Quaternion.identity);
             child.name = "Square" + i;
             child.transform.parent = this.gameObject.transform;
             child.GetComponentInChildren<MeshRenderer>().material = squareMaterial;
