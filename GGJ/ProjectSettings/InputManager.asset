@@ -666,9 +666,9 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 3 button 7
+    positiveButton: joystick 3 button 0
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 3 button 9
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -682,7 +682,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 3 button 8
+    positiveButton: joystick 3 button 7
     altNegativeButton: 
     altPositiveButton: joystick 3 button 9
     gravity: 1000
@@ -698,7 +698,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 4 button 8
+    positiveButton: joystick 4 button 0
     altNegativeButton: 
     altPositiveButton: joystick 4 button 9
     gravity: 1000
@@ -714,7 +714,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 4 button 8
+    positiveButton: joystick 4 button 7
     altNegativeButton: 
     altPositiveButton: joystick 4 button 9
     gravity: 1000

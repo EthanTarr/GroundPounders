@@ -11,7 +11,7 @@ public class horseBack : playerController {
     public GameObject tail;
     public GameObject[] allObjects;
 
-    void Start() {
+    protected override void Start() {
         setSettings();
         base.Start();
     }
@@ -88,7 +88,8 @@ public class horseBack : playerController {
         alreadyDead = true;
         audioManager.instance.Play(deathExplosion, 0.5f, UnityEngine.Random.Range(0.96f, 1.04f));
         GameObject particle = Instantiate(deathParticle, transform.position, Quaternion.identity) as GameObject;
-        particle.GetComponent<ParticleSystem>().startColor = fullColor;
+        ParticleSystem.MainModule ps = particle.GetComponent<ParticleSystem>().main;
+        ps.startColor = fullColor;
         GetComponent<SpriteRenderer>().color = fullColor;
         Shake.instance.shake(2, 3);
         Destroy(this.transform.parent.gameObject);

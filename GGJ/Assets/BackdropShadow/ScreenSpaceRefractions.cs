@@ -10,28 +10,19 @@ public class ScreenSpaceRefractions : MonoBehaviour
     private Camera _camera;
     private int _downResFactor = 1;
 
-    [SerializeField]
-    [Range(0, 1)]
-    [HideInInspector]
-    private float _refractionVisibility = 0;
-    [SerializeField]
-    [Range(0, 0.1f)]
-    [HideInInspector]
-    private float _refractionMagnitude = 0;
-
     [SerializeField]private Color32 changeColor;
 
     private string _globalTextureName = "_GlobalRefractionTex";
-    private string _globalVisibilityName = "_GlobalVisibility";
-    private string _globalMagnitudeName = "_GlobalRefractionMag";
-
 
     void OnEnable()
     {
         GenerateRT();
     }
 
-
+    private void Update()
+    {
+        GetComponent<Camera>().orthographicSize = Camera.main.orthographicSize;
+    }
 
     void GenerateRT()
     {

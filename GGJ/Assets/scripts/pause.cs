@@ -25,6 +25,7 @@ public class pause : MonoBehaviour
     }
 
     public void togglePause(playerController curPlayer) {
+        input.enabled = true;
         currentPlayer = curPlayer.playerControl;
 
         input.verticalAxis = "Vertical" + currentPlayer;
@@ -43,10 +44,9 @@ public class pause : MonoBehaviour
         togglePause();
     }
 
-    public void togglePause()
-    {
-        if (Pause.activeSelf || settings.activeSelf)
-        {
+    public void togglePause() {
+        if (Pause.activeSelf || settings.activeSelf) {
+            input.enabled = false;
             Pause.SetActive(false);
             settings.SetActive(false);
             StartCoroutine("zaWardo");
@@ -73,6 +73,7 @@ public class pause : MonoBehaviour
         Time.timeScale = 1;
         Destroy(GameManager.instance.gameObject);
         controllerHandler.controlOrder.Clear();
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 

@@ -71,20 +71,11 @@ public class PulseMove : MonoBehaviour {
 
     bool first;
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<SquareBehavior>() != null)
-        {
-            if (!other.gameObject.GetComponent<SquareBehavior>().firstBlock)
-            {
-                //audioManager.instance.Play(roll, 0.25f);
-            }
-            other.gameObject.GetComponent<SquareBehavior>().firstBlock = true;
-            other.gameObject.GetComponent<SpriteRenderer>().color = color;
-        }
-        else if (!startup && other.GetComponent<AntiPulseMove>() != null)
+        if (!startup && other.GetComponent<AntiPulseMove>() != null)
         {
             if (Mathf.Abs(other.GetComponent<AntiPulseMove>().Amplitude - Amplitude) <= 1.25f)
             {
-                if (Amplitude < .1f || speed < 1.25f)
+                if (Amplitude < .1f || speed < 1.25f || angularSpeed < 7)
                 {
                     Destroy(this.gameObject);
                 }

@@ -22,10 +22,7 @@ public class Player : MonoBehaviour {
     private Animator anim;
 
     Controller2D controller;
-    private float previousAmplitude = 0;
     public float bounceForce;
-
-    bool fart;
 
     void Start() {
         controller = GetComponent<Controller2D>();
@@ -37,12 +34,6 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
-
-        if (controller.collisions.above || controller.collisions.below) {
-            if(!fart)
-            velocity.y = 0;
-        }
-
         if (Input.GetButtonDown("Jump" + playerController) && controller.collisions.below) {
             velocity.y += maxJumpVelocity;
         }

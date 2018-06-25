@@ -75,33 +75,27 @@ public class AntiPulseMove : MonoBehaviour
 
     bool first;
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<SquareBehavior>() != null)
-        {
-            other.gameObject.GetComponent<SquareBehavior>().firstBlock = true;
-            //other.gameObject.GetComponent<SpriteRenderer>().color = color;
-        }
-        else if (other.GetComponent<PulseMove>() != null)
-        {
+        if (other.GetComponent<PulseMove>() != null) {
             if (!first)
             {
                 first = true;
             }
-            else if (!startup && Mathf.Abs(other.GetComponent<PulseMove>().Amplitude - Amplitude) <= 1.5f)
-            {
-                other.GetComponent<PulseMove>().Amplitude /= 2;
-                Amplitude /= 2;
+            else if (!startup && Mathf.Abs(other.GetComponent<PulseMove>().Amplitude - Amplitude) <= 1.5f){
+                other.GetComponent<PulseMove>().Amplitude /= (centerOfGravity != null) ? 2f : 2;
+                Amplitude /= (centerOfGravity != null) ? 2f : 2;
+
+              if (centerOfGravity != null) {
                 other.GetComponent<PulseMove>().speed /= 1.25f;
-
                 speed /= 1.25f;
-                angularSpeed /= 3f;
-                other.GetComponent<PulseMove>().angularSpeed /= 3f;
+              } else {
+                angularSpeed /= 10f;
+                other.GetComponent<PulseMove>().angularSpeed /= 10f;
+              }
 
-                if (Amplitude < .1f || speed < 1.25f) {
-                    Destroy(this.gameObject);
-                }
+            if (Amplitude < .1f || speed < 1.25f || angularSpeed < 10) {
+                Destroy(this.gameObject);
             }
-            else if (other.GetComponent<PulseMove>().Amplitude - Amplitude > 2)
-            {
+            } else if (other.GetComponent<PulseMove>().Amplitude - Amplitude > 2) {
                 Destroy(this.gameObject);
             }
         }

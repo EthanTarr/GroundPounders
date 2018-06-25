@@ -12,16 +12,12 @@ public class SquashAndStretch : MonoBehaviour
     [Space()]
 
     public float animatedStretch;
-    private float curAnimatedStretch;
 
     public float elasticForce = 25;
     public float collisionSquish = 0.75f;
 
     float verticalSquish;
     float verticalStretch;
-
-    float lastVelocity;
-
     void Start() {
         rigid = GetComponent<Rigidbody2D>();
     }
@@ -37,11 +33,9 @@ public class SquashAndStretch : MonoBehaviour
             verticalStretch = Mathf.Lerp(verticalStretch, yVel, Time.fixedDeltaTime * elasticForce);
 
             animatedStretch = Mathf.Lerp(animatedStretch, 0, Time.fixedDeltaTime * 15);
-            curAnimatedStretch = Mathf.Lerp(animatedStretch, animatedStretch, Time.fixedDeltaTime * 5);
 
             verticalSquish = Mathf.Lerp(verticalSquish, 0, Time.fixedDeltaTime * 10);
             verticalStretch = Mathf.Max(verticalStretch, 0.1f);
-            lastVelocity = rigid.velocity.y;
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {

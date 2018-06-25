@@ -17,14 +17,13 @@ public class victoryScreenManager : MonoBehaviour
     public AudioClip end;
     public AudioClip ding;
 
-    void Start()
-    {
+
+    void Start() {
         confetti.SetActive(false);
         if (settings.instance != null)
             settings.instance.musicAudio.Stop();
 
-
-
+        playerSpawner.instance.activatePlayers();
         playerNum[] p = FindObjectsOfType<playerNum>();
 
         foreach (playerNum popp in p) {
@@ -39,7 +38,7 @@ public class victoryScreenManager : MonoBehaviour
         playerController[] players = playerSpawner.instance.players;
 
         Array.Sort(players, (a,b) => GameManager.instance.playerScores[a.playerNum].CompareTo(GameManager.instance.playerScores[b.playerNum]));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(1f);
@@ -86,7 +85,8 @@ public class victoryScreenManager : MonoBehaviour
             }
 
             if (Input.GetButtonDown("Pause" + winner.playerControl)) {
-                Application.LoadLevel(1);
+                settings.instance.GetComponent<AudioSource>().enabled = true;
+                StartCoroutine(screenTransition.instance.fadeOut("Controller Setup"));
                 GameManager.instance.clearScore();
             }
         }

@@ -7,12 +7,11 @@ public class Shake : MonoBehaviour {
 	public Vector3 startTransform;
     public ParticleSystem dustParticles;
 
+    public delegate void shakeEvent();
+    public shakeEvent screenShake;
 
     [Space()]
     public AudioClip[] rumbles;
-
-
-    private int spikes = 0;
 
     void Awake(){
         instance = this;
@@ -20,12 +19,13 @@ public class Shake : MonoBehaviour {
 	}
 
 	public void shake(float t, float strength){
-        dustParticles.Emit(UnityEngine.Random.Range(5, 8));
+        if(dustParticles != null)
+            dustParticles.Emit(UnityEngine.Random.Range(5, 8));
 
         audioManager.instance.Play(rumbles[Random.Range(0, rumbles.Length - 1)], 0.25f, Random.Range(0.96f, 1.03f));
 
-        if(enviornmentManager.instance != null)
-            enviornmentManager.instance.enviornmentCall();
+        if (screenShake != null)
+            screenShake.Invoke();
 
         StartCoroutine(screenshake(t, strength));	
 	}

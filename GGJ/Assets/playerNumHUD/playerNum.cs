@@ -30,12 +30,12 @@ public class playerNum : MonoBehaviour {
         yield return new WaitForSeconds(displayTime);
 
         for (int i = 0; i < blinkNumber; i++) {
-            yield return displayNum(0.25f);
+            yield return displayHUD(0.25f);
             yield return new WaitForSeconds(0.25f);
         }
     }
 
-    IEnumerator displayNum(float seconds) {
+    IEnumerator displayHUD(float seconds) {
         GetComponent<SpriteRenderer>().enabled = true;
         playerNumText.gameObject.SetActive(true);
 

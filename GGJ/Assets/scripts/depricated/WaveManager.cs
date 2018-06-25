@@ -62,7 +62,7 @@ public class WaveManager : MonoBehaviour {
         piece.transform.parent = this.transform;
         //piece.GetComponentInChildren<MeshRenderer>().material = mat;
 
-        float spaceToFill = Mathf.Abs(minFloorPlacement) + Mathf.Abs(maxFloorPlacement) / width;
+        //float spaceToFill = Mathf.Abs(minFloorPlacement) + Mathf.Abs(maxFloorPlacement) / width;
 
         //piece.GetComponentInChildren<MeshRenderer>().material.SetTextureScale("_MainTex", new Vector2(1f / spaceToFill, yScale));
         //piece.GetComponentInChildren<MeshRenderer>().material.SetTextureOffset("_MainTex", new Vector2(xOffset + i * 1f / spaceToFill, 0));

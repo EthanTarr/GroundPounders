@@ -6,7 +6,6 @@ public class audioManager : MonoBehaviour {
     public AudioClip soundFX;
     public static audioManager instance;
 
-    int index = 0;
     void Start() {
         instance = this;
     }

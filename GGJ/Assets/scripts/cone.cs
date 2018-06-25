@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class cone : MonoBehaviour {
 
-	void Start () {
-        this.gameObject.SetActive(GameManager.instance.ConeHeadMode) ;
-	}
-
     void Update() {
         GetComponent<SpriteRenderer>().color = transform.parent.GetComponent<SpriteRenderer>().color;
     }

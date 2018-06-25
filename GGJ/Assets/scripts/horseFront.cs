@@ -7,7 +7,7 @@ public class horseFront : playerController{
     public horseBack back;
     public SpriteRenderer horseHead;
 
-    private void Start() {
+    protected override void Start() {
         fullColor = GetComponent<SpriteRenderer>().color;
         fullColor.a = 0.75f;
         base.Start(); 

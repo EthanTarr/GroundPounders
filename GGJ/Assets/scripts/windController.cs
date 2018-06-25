@@ -15,13 +15,8 @@ public class windController : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        
-    }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.DrawRay(transform.position, transform.right * 10, Color.red);
         if (collision.GetComponent<playerController>() != null) {
             Vector2 newDir = collision.transform.position;
             newDir += windDirection * speed;

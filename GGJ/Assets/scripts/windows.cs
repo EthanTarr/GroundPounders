@@ -5,11 +5,9 @@ using UnityEngine;
 public class windows : MonoBehaviour {
 
     public GameObject[] window;
-    TerrainGenerator mapTerrain;
-
+    
 	// Use this for initialization
 	void Start () {
-        mapTerrain = FindObjectOfType<TerrainGenerator>();
         startThing();
 	}
 

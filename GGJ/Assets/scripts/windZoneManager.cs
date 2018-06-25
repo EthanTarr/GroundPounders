@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class windZoneManager : MonoBehaviour {
 
     public static windZoneManager instance;
     public bool visible;
     public objectTranslate[] clouds;
 
-    [Range(0, 360)]public float windAngle;
+    [Range(0, 180)]public float windAngle;
     [HideInInspector] public Vector2 windDirection;
+    public GameObject flag;
 
     public bool randomDirection;
     public GameObject left;
@@ -30,20 +30,17 @@ public class windZoneManager : MonoBehaviour {
         left.SetActive(windAngle != 180);
         right.SetActive(windAngle == 180);
 
+        Vector3 flagScale = flag.transform.localScale;
+        flagScale.x *= (windAngle > 100) ? -1 : 1;
+        flag.transform.localScale = flagScale;
+
         foreach (objectTranslate cloud in clouds)
-            cloud.direction = windDirection;
+            cloud.direction = Vector3.right * (windAngle > 100 ? -1 : 1);
     }
 
     private void Update() {
-        if (Application.isPlaying) {
+        if (Application.isPlaying && Time.timeScale > 0) {
             windForce();
-        } else {
-            for (int i = 0; i < windZones.Length; i++) {
-                if(i != 0)
-                    windZones[i].height = Mathf.Max(windZones[i].height, windZones[i - 1].height);
-                windZones[i].height = Mathf.Max(windZones[i].height, floor);
-                windZones[i].height = Mathf.Min(windZones[i].height, cieling);
-            }
         }
     }
 
@@ -60,7 +57,6 @@ public class windZoneManager : MonoBehaviour {
 
     float getWindSpeed(float position) {
         position -= bottomOfSceen;
-        int lowerBound = 0;
         for (int i = 0; i < windZones.Length - 1; i++) {
             if (position < windZones[i + 1].height) { // we've found range
                 float windZonePercentage = (position - windZones[i].height) / (windZones[i+1].height - windZones[i].height);
@@ -80,6 +76,12 @@ public class windZoneManager : MonoBehaviour {
     }
 
     private void OnDrawGizmos() {
+        for (int i = 0; i < windZones.Length; i++) {
+            if (i != 0)
+                windZones[i].height = Mathf.Max(windZones[i].height, windZones[i - 1].height);
+            windZones[i].height = Mathf.Max(windZones[i].height, floor);
+            windZones[i].height = Mathf.Min(windZones[i].height, cieling);
+        }
         Gizmos.color = Color.blue;
         float center = (cieling + floor) / 2 + bottomOfSceen;
         Gizmos.DrawWireCube(new Vector3(transform.position.x, center), new Vector3(4,cieling + floor,1));

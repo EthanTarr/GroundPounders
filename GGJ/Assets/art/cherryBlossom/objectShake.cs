@@ -9,8 +9,8 @@ public class objectShake : MonoBehaviour
     public float time = 3;
     public float strength = 0.75f;
 
-    void Awake()
-    {
+    void Start() {
+        Shake.instance.screenShake += shake;
         startTransform = transform.localPosition;
     }
 
@@ -31,5 +31,10 @@ public class objectShake : MonoBehaviour
             yield return null;
         }
         transform.localPosition = startTransform;
+    }
+
+    private void OnDestroy()
+    {
+        Shake.instance.screenShake -= shake;
     }
 }

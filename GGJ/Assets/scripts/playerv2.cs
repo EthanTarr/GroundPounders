@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class playerv2 : MonoBehaviour {
-
+    
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;
     public LayerMask groundCheck;
@@ -97,7 +97,6 @@ public class playerv2 : MonoBehaviour {
 
     public bool checkGround()
     {
-        bool grounded = false;
         for (int i = 0; i < 5; i++) {
             float dir = -1 + (i % 2) * 2;
             Vector3 downward = transform.position - transform.up * 0.33f + transform.right * 0.1f * Mathf.Ceil(i / 2f) * dir;

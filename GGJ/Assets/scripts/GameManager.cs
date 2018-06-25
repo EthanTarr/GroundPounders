@@ -9,9 +9,7 @@ public class GameManager : MonoBehaviour {
     public int[] playerScores;
 
     public bool randomMap;
-	public bool ConeHeadMode = false;
     public int gamesToWin;
-    private UnityEngine.UI.Toggle ConeHeadToggle;
     [Space()]
     public int numOfPlayers = 2;
     public GameObject[] selectedCharacters;
@@ -32,7 +30,6 @@ public class GameManager : MonoBehaviour {
     public float dashDistance = 15;
 
     void Awake() {
-
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(this);
@@ -40,23 +37,11 @@ public class GameManager : MonoBehaviour {
 			Destroy(this.gameObject);
         }
         playerScores = new int[numOfPlayers];
-        if (ConeHeadToggle == null) {
-            //ConeHeadToggle = GameObject.Find("ConeHeadToggle").GetComponent<UnityEngine.UI.Toggle>();
-            //Debug.Log("1" + ConeHeadToggle);
-            //GameObject.Find("GameOptions").active = false;
-        }
-
-        
-    }
+     }
 
     private void Start() {
-        if(GameObject.Find("ConeHeadToggle") != null)
-            ConeHeadToggle = GameObject.Find("ConeHeadToggle").GetComponent<UnityEngine.UI.Toggle>();
-
-        GameManager.instance.isConeHeadMode();
-
         if(GameObject.Find("GameOptions") != null)
-            GameObject.Find("GameOptions").active = false;
+            GameObject.Find("GameOptions").SetActive(false);
     }
 
     public int totalScores() {
@@ -74,11 +59,6 @@ public class GameManager : MonoBehaviour {
             max = Mathf.Max(max, i);
         }
         return max;
-    }
-
-    public void isConeHeadMode() {
-        ConeHeadMode = !ConeHeadMode;
-
     }
 
     public void maxGames() {

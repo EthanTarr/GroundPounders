@@ -15,7 +15,7 @@ public class sphericalWorld : MonoBehaviour {
         transform.position = Vector2.Lerp(transform.position, startingPosition, Time.deltaTime * 5);
 
         velocity = Vector2.Lerp(velocity, Vector2.zero, Time.deltaTime * 6);
-        float gravity = 0;
+        //float gravity = 0;
 
         transform.position += (Vector3)velocity;
 

@@ -21,7 +21,7 @@ public class TerrainTilt : MonoBehaviour {
     }
 
     private void Update() {
-        if (!pause.instance.Pause.active) {
+        if (!pause.instance.Pause.activeSelf) {
             playerController[] players = FindObjectsOfType<playerController>();
             targetRotation = 0;
             foreach (playerController player in players) {

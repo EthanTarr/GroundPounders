@@ -26,6 +26,7 @@ public class ButtonActions : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
+        Time.timeScale = 1;
         instance = this;
         //scoreCard.instance.isConeHeadMode();
 

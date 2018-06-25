@@ -18,10 +18,10 @@ public class enviornmentManager : MonoBehaviour {
         for(int i = 0; i < transform.childCount; i++) {
             spikes.Add(transform.GetChild(i).gameObject);
         }
+        Shake.instance.screenShake += enviornmentCall;
     }
 
     GameObject targetSpike;
-	// Update is called once per frame
 	public virtual void enviornmentCall() {
         if (targetSpike != null) {
             audioManager.instance.Play(spikeFall, 1f, Random.Range(0.96f, 1.03f));
@@ -37,5 +37,9 @@ public class enviornmentManager : MonoBehaviour {
             targetSpike.transform.Translate(new Vector2(0.1f, -0.1f));
             targetSpike.transform.Rotate(new Vector3(0, 0, (UnityEngine.Random.value < 0.5f) ? -15 : 15));
         }
+    }
+
+    private void OnDestroy() {
+        Shake.instance.screenShake -= enviornmentCall;
     }
 }

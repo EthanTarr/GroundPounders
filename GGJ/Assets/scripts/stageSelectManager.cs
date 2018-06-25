@@ -26,17 +26,14 @@ public class stageSelectManager : MonoBehaviour
     }
 
     IEnumerator turnOnInput(string controller) {
-        input.enabled = false;
-        yield return new WaitForSeconds(0.05f);
-        extraOptions.SetActive(false);
-        stageSelect.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
-        EventSystem.current.SetSelectedGameObject(firstMap);
-
-        yield return new WaitForSeconds(2f);
         input.horizontalAxis = "Horizontal" + controller;
         input.submitButton = "Enter" + controller;
         input.cancelButton = "Cancel" + controller;
+        yield return new WaitForSeconds(0.05f);
+        extraOptions.SetActive(false);
+        stageSelect.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(firstMap);
+        yield return new WaitForSeconds(1f);
         input.enabled = true;
     }
 
@@ -75,7 +72,7 @@ public class stageSelectManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<playerController>() && curPlayer == null && !hitA.active)
+        if (collision.gameObject.GetComponent<playerController>() && curPlayer == null && !hitA.activeSelf)
         {
             hitA.SetActive(true);
             hitA.GetComponent<Animator>().Play("SelectAnim");
