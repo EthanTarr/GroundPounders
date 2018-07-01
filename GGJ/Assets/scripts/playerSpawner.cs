@@ -23,7 +23,7 @@ public class playerSpawner : MonoBehaviour
     { // this might throw things for a loop if its start instead of Awake. keep an eye out to see if stuff happens
         instance = this;
 
-
+        numOfPlayers = GameManager.instance.numOfPlayers;
         int[] randomPosition = new int[(int)numOfPlayers];
         randomizePlayerOrder(randomPosition);
         Vector3[] pos = new Vector3[(int)numOfPlayers];

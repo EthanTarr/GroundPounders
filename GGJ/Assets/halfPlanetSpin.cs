@@ -8,11 +8,11 @@ public class halfPlanetSpin : MonoBehaviour {
 
     private void Update()
     {
+
         if (!pause.instance.Pause.activeSelf)
         {
             playerController[] players = FindObjectsOfType<playerController>();
-            foreach (playerController player in players)
-            {
+            foreach (playerController player in players) {
             }
         }
     }

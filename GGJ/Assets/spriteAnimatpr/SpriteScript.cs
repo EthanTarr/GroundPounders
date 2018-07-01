@@ -12,6 +12,7 @@ public class SpriteScript : MonoBehaviour {
 	private SpriteLookupScript lookup;
 
     public string spriteSheetName;
+    private string curAnimationName;
 
 	public EditorAnimation[] editorAnimations;
 	private Dictionary<string, Animation> animations;
@@ -91,7 +92,12 @@ public class SpriteScript : MonoBehaviour {
 	// New animations can be added in the editor or by using AddAnimation.
 	public void SetAnimation(string name) {
 		currentAnimation = animations[name];
+        curAnimationName = name;
 	}
+
+    public string GetAnimation() {
+        return curAnimationName;
+    }
 
     public void SetAnimation(string name, float fps) {
         SetFramesPerSecond(fps);

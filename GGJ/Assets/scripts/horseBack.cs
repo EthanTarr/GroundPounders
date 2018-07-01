@@ -27,7 +27,7 @@ public class horseBack : playerController {
 
     protected override void movement(float horizInput) {
         bool touchingGround = checkGround();
-        if (!smashing && !vunrabilityFrames && playerControl != "" && rigid.bodyType == RigidbodyType2D.Dynamic) {
+        if (smashStateEnum == null && !vunrabilityFrames && playerControl != "" && rigid.bodyType == RigidbodyType2D.Dynamic) {
             Vector2 targetLocation = front.transform.position - front.transform.right * followDistance * (front.GetComponent<horseFront>().spriteAnim.GetComponent<SpriteRenderer>().flipX ? -1 : 1);
             float distance = targetLocation.x - transform.position.x;
 
@@ -46,7 +46,7 @@ public class horseBack : playerController {
         }
 
         if (Input.GetButtonDown("Smash" + playerControl)
-                && canSmash && !smashing && !touchingGround) {
+                && canSmash && smashStateEnum == null && !touchingGround) {
             StartCoroutine(chargeSmash(Input.GetAxis("Horizontal" + playerControl)));
         }
 

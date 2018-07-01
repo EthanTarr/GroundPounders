@@ -20,12 +20,16 @@ public class stageSelectManager : MonoBehaviour
     public string selectedLevel;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
+        if(!settings.instance.musicAudio.isPlaying)
+            settings.instance.musicAudio.Play();
+
         input = EventSystem.current.gameObject.GetComponent<StandaloneInputModule>();
     }
 
     IEnumerator turnOnInput(string controller) {
+        EventSystem.current.firstSelectedGameObject = firstMap;
+
         input.horizontalAxis = "Horizontal" + controller;
         input.submitButton = "Enter" + controller;
         input.cancelButton = "Cancel" + controller;

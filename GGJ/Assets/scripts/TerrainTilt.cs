@@ -46,7 +46,10 @@ public class TerrainTilt : MonoBehaviour {
                     i.speed = Mathf.Sign(rotation) * Mathf.Lerp(0, 0.05f, Mathf.Abs(rotation) / rotationMax);
                 }
             }
-            snowman.transform.Translate(-Vector3.right * rotation / 15); 
+
+            if(Time.timeScale == 1)
+                snowman.transform.Translate(-Vector3.right * rotation / 15); 
+
             transform.eulerAngles = Vector3.forward * rotation;
         }
     }

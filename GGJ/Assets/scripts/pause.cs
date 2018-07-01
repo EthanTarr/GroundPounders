@@ -33,7 +33,10 @@ public class pause : MonoBehaviour
         input.submitButton = "Enter" + currentPlayer;
 
         if (currentPlayer == "WASD" || currentPlayer == "Arrow")
+        {
             input.verticalAxis = "VerticalArrow";
+            input.horizontalAxis = "HorizontalArrow";
+        }
 
         Pause.transform.GetChild(0).GetComponent<Text>().text = "- pause p" + (curPlayer.playerNum + 1) + " -";
 
@@ -51,11 +54,11 @@ public class pause : MonoBehaviour
             settings.SetActive(false);
             StartCoroutine("zaWardo");
         }
-        else
-        {
+        else {
             Pause.SetActive(true);
             EventSystem.current.SetSelectedGameObject(firstButton);
             //EventSystem.current.gameObject.GetComponent<myInputModule>().submitButton = "Submit";
+            EventSystem.current.firstSelectedGameObject = firstButton;
             Time.timeScale = 0;
         }
         audioManager.instance.Play(pauseBeep, 0.25f, 1);
@@ -67,8 +70,7 @@ public class pause : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void gotoMenu()
-    {
+    public void gotoMenu() {
         Pause.SetActive(false);
         Time.timeScale = 1;
         Destroy(GameManager.instance.gameObject);
@@ -90,12 +92,11 @@ public class pause : MonoBehaviour
     {
         settings.SetActive(!settings.activeSelf);
         Pause.SetActive(!Pause.activeSelf);
-        if (settings.activeSelf)
-        {
+        if (settings.activeSelf) {
             EventSystem.current.SetSelectedGameObject(firstSettingsButton);
-        }
-        else
-        {
+            EventSystem.current.firstSelectedGameObject = firstSettingsButton;
+        } else {
+            EventSystem.current.firstSelectedGameObject = firstButton;
             EventSystem.current.SetSelectedGameObject(firstButton);
         }
 
