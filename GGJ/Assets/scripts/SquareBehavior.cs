@@ -90,12 +90,10 @@ public class SquareBehavior : MonoBehaviour {
     void setPosition() {
         TotalAmplitude = 0;
         if (Amplitudes.Count != 0) {
-            foreach (float value in Amplitudes)
-            {
+            foreach (float value in Amplitudes) {
                 TotalAmplitude += value;
             }
-
-            Amplitudes = new ArrayList();
+            Amplitudes.Clear();
         }
 
 

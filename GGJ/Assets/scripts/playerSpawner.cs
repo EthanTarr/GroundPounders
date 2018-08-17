@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerSpawner : MonoBehaviour
-{
+public class playerSpawner : MonoBehaviour {
 
     public static playerSpawner instance;
     public float width;
     public float numOfPlayers = 2;
     public GameObject playerPrefab;
+    public GameObject dropoutHUD;
 
     public bool showSpawners;
     public bool lobby;
 
     public Color[] characterColors;
-
-    //onlineManagement
     public playerController[] players;
-    public int queuedPlayer;
 
     protected virtual void Awake()
     { // this might throw things for a loop if its start instead of Awake. keep an eye out to see if stuff happens
@@ -57,9 +54,10 @@ public class playerSpawner : MonoBehaviour
     protected void spawnPlayers(Vector3[] pos) {
         for (int i = 0; i < numOfPlayers; i++)
         {
-
-            GameObject player = Instantiate(GameManager.instance.selectedCharacters[i], pos[i], transform.rotation);
-
+            
+            GameObject player = Instantiate(GameManager.instance.selectedCharacters[i]);
+            player.transform.position = pos[i];
+            player.transform.rotation = transform.rotation;
             if (TerrainGenerator.instance.shape == Shape.Sphere)
             {
                 player.GetComponent<playerController>().centerOfGravity = TerrainGenerator.instance.transform;
@@ -73,7 +71,11 @@ public class playerSpawner : MonoBehaviour
             if (!lobby)
             {
                 player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            } else {
+                GameObject dr = Instantiate(dropoutHUD, player.transform.position + Vector3.up * 1.5f, Quaternion.Euler(0, 0, -90));
+                dr.transform.SetParent(player.transform, true);
             }
+
             players[i] = player.GetComponent<playerController>();
             if (i < controllerHandler.controlOrder.Count)
             {
@@ -105,7 +107,7 @@ public class playerSpawner : MonoBehaviour
 
     public void activatePlayers() {
         foreach (playerController player in players) {
-            if (player.GetComponent<Rigidbody2D>() != null)
+            if (player != null && player.GetComponent<Rigidbody2D>() != null)
                 player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }

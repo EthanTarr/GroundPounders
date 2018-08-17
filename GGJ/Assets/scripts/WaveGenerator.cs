@@ -10,6 +10,9 @@ public class WaveGenerator : MonoBehaviour
     public float wavelengthModifier = .25f;
     public static WaveGenerator instance;
 
+    public delegate void waveImapct(float amplitude, Vector2 position);
+    public static waveImapct wave;
+
     public Color fadeIn;
 
 	// Use this for initialization
@@ -24,8 +27,7 @@ public class WaveGenerator : MonoBehaviour
 		}
 	}
 
-    public void timeFreeze(float timescale, float freezeDuration)
-    {
+    public void timeFreeze(float timescale, float freezeDuration) {
         StartCoroutine(zaWardo(timescale, freezeDuration));
     }
 
@@ -50,6 +52,8 @@ public class WaveGenerator : MonoBehaviour
     }
 
     public void makeWave(Vector2 position, float amplitude, Color color, float velocity, Transform centerOfGravity) {
+        if (wave != null)
+            wave.Invoke(amplitude, position);
 
         GameObject Pulse = Instantiate(pulse, new Vector3(position.x, position.y, 0), Quaternion.identity);
 

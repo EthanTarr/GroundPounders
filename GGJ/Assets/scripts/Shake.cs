@@ -15,10 +15,10 @@ public class Shake : MonoBehaviour {
 
     void Awake(){
         instance = this;
-        startTransform = transform.position;
+        startTransform = transform.position;        
 	}
 
-	public void shake(float t, float strength){
+	public virtual void shake(float t, float strength){
         if(dustParticles != null)
             dustParticles.Emit(UnityEngine.Random.Range(5, 8));
 

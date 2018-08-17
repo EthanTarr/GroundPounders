@@ -14,8 +14,12 @@
 		_fade("fade", Range(0,1)) = 0
 	}
 	SubShader {
+		Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" }
+		LOD 200
+
 		// No culling or depth
 		Cull Off ZWrite Off ZTest Always
+		Blend SrcAlpha OneMinusSrcAlpha
 
 		Pass {
 			CGPROGRAM

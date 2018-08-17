@@ -10,7 +10,7 @@ public class settings : MonoBehaviour {
     [Range(0, 1)] public float fx;
     [HideInInspector] public AudioSource musicAudio;
 
-    void Start() {
+    void Awake() {
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
@@ -19,5 +19,8 @@ public class settings : MonoBehaviour {
         }
 
         musicAudio = GetComponent<AudioSource>();
+        volume = PlayerPrefs.GetFloat("Volume", 0.75f);
+        fx = PlayerPrefs.GetFloat("SoundFX", 0.75f);
+        musicAudio.volume = volume;
     }
 }

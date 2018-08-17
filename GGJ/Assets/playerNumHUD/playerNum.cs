@@ -15,6 +15,7 @@ public class playerNum : MonoBehaviour {
         playerNumText = GetComponentInChildren<TextMesh>();
 
         GetComponent<SpriteRenderer>().color = player.GetComponent<SpriteRenderer>().color;
+        playerNumText.color = player.GetComponent<SpriteRenderer>().color;
         if (player.playerControl.Contains("Joy")) {
             GetComponent<SpriteRenderer>().sprite = controllerImage;
         } else {

@@ -73,19 +73,23 @@ public class ButtonActions : MonoBehaviour {
     }
 
     public void PlayGame() {
+        EventSystem.current.enabled = false;
         StartCoroutine(screenTransition.instance.fadeOut("Controller Setup"));
 	}
 
     public void backToMenu() {
+        EventSystem.current.enabled = false;
         StartCoroutine(screenTransition.instance.fadeOut("Title"));
     }
 
     public void gotoSettings()
     {
+        EventSystem.current.enabled = false;
         StartCoroutine(screenTransition.instance.fadeOut("audioSettings"));
     }
 
     public void Quit() {
+        EventSystem.current.enabled = false;
         Application.Quit();
     }
 

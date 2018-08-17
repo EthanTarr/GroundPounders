@@ -6,6 +6,7 @@ using UnityEngine;
 public class victoryScreenManager : MonoBehaviour
 {
 
+    public GameObject followConfetti;
     public GameObject confetti;
     public playerController winner;
     public GameObject placeUI;
@@ -19,10 +20,8 @@ public class victoryScreenManager : MonoBehaviour
 
 
     void Start() {
+        followConfetti.SetActive(false);
         confetti.SetActive(false);
-        if (settings.instance != null)
-            settings.instance.musicAudio.Stop();
-
         playerSpawner.instance.activatePlayers();
         playerNum[] p = FindObjectsOfType<playerNum>();
 
@@ -78,14 +77,19 @@ public class victoryScreenManager : MonoBehaviour
     void Update()
     {
         if (winner != null) {
+            followConfetti.SetActive(true);
+            followConfetti.transform.position = winner.transform.position + Vector3.up * 11;
+            followConfetti.transform.SetParent(winner.transform, false);
             confetti.SetActive(true);
+            confetti.transform.position = winner.transform.position + Vector3.up * 11;
+            int i = 3;
             foreach (GameObject light in spotLights) {
-                light.transform.position = Vector3.Lerp(light.transform.position, winner.transform.position + Vector3.forward * 10, Time.deltaTime * 10);
+                light.transform.position = Vector3.Lerp(light.transform.position, winner.transform.position + Vector3.forward * 10, Time.deltaTime * (0.5f + i));
+                i += UnityEngine.Random.Range(1, 3);
                 light.transform.parent.GetComponent<SpriteRenderer>().enabled = false;
             }
 
             if (Input.GetButtonDown("Pause" + winner.playerControl)) {
-                settings.instance.GetComponent<AudioSource>().enabled = true;
                 StartCoroutine(screenTransition.instance.fadeOut("Controller Setup"));
                 GameManager.instance.clearScore();
             }

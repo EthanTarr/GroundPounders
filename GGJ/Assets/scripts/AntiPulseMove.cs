@@ -13,6 +13,7 @@ public class AntiPulseMove : MonoBehaviour
     public Transform centerOfGravity;
     private bool forward = true;
     bool startup = true;
+    public LayerMask waveLayers;
 
     private void Start() {
         Invoke("endStartup", 0.5f);
@@ -44,7 +45,7 @@ public class AntiPulseMove : MonoBehaviour
                 Pulse.GetComponent<PulseMove>().color = color;
                 Pulse.GetComponent<PulseMove>().Amplitude = Amplitude / 2;
                 Pulse.GetComponent<PulseMove>().speed = speed / 2;
-                
+
                 Destroy(this.gameObject);
                 
             } else if (!forward) {
@@ -65,9 +66,8 @@ public class AntiPulseMove : MonoBehaviour
     }
 
     void setPositions() {
-        Collider2D[] hitSquares = Physics2D.OverlapCircleAll(transform.position, Wavelength, 1 << 8);
-        foreach (Collider2D square in hitSquares)
-        {
+        Collider2D[] hitSquares = Physics2D.OverlapCircleAll(transform.position, Wavelength, waveLayers);
+        foreach (Collider2D square in hitSquares) {
             if (square.GetComponent<SquareBehavior>() != null)
                 square.GetComponent<SquareBehavior>().getPosition(-Amplitude, speed, Wavelength, transform.position);
         }

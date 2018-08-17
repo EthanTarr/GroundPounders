@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class controlAssigmentManager : MonoBehaviour {
 
-    public List<string> controllers = new List<string> { "Arrow", "WASD", "Joy1", "Joy2", "Joy3", "Joy4" };
+    public List<string> possibleControls = new List<string> { "Arrow", "WASD", "Joy1", "Joy2", "Joy3", "Joy4" };
+    public static List<string> controllers = new List<string>();
     string[] inputs = new string[] { "Jump", "Smash" };
     public GameObject player;
     int setControls = 0;
     public Color[] colors;
     public List<playerController> players;
+
+    public delegate void spawnerAction();
+    public static spawnerAction spawned;
 
     [Header("Camera Position")]
     public Vector3 regularPosition;
@@ -17,12 +21,17 @@ public class controlAssigmentManager : MonoBehaviour {
     bool modifierMenu;
     [Space()]
     public AudioClip elevatorDing;
+    public GameObject dropout;
 
     void Start() {
         //controllerHandler.controlOrder.Clear();
+        controllers = new List<string>(possibleControls);
         grabOldControllerSet();
-    }
+        players = new List<playerController>(playerSpawner.instance.players);
+        setControls = players.Count;
 
+        if (spawned != null) { spawned.Invoke(); }
+    }
 
     void grabOldControllerSet() {
         foreach (string control in controllerHandler.controlOrder) {
@@ -71,8 +80,13 @@ public class controlAssigmentManager : MonoBehaviour {
         newPlayer.playerControl = control;
         newPlayer.playerNum = setControls;
         newPlayer.GetComponent<SpriteRenderer>().color = colors[setControls];
+
+        GameObject dr = Instantiate(dropout, newPlayer.transform.position + Vector3.up * 1.5f, Quaternion.Euler(0,0,-90));
+        dr.transform.SetParent(newPlayer.transform, true);
+
         players.Add(newPlayer);
         print("player " + setControls + " mapped to " + newPlayer.playerControl);
+        if (spawned != null) { spawned.Invoke(); }
     }
 
     public void swapToModifierMenu() {
@@ -105,6 +119,7 @@ public class controlAssigmentManager : MonoBehaviour {
             players[i].setColors(colors[i]);
             players[i].fullColor = colors[i];
         }
+        if (spawned != null) { spawned.Invoke(); }
     }
 
     public void clearCharacterSelection() {

@@ -44,13 +44,16 @@ Shader "Spelonko/IceCrystal"
 				half4 color : COLOR;
 			};
 
-			v2f vert(appdata v)
-			{
+			v2f vert(appdata v) {
+				
+				//v.uv.y = 1 - v.uv.y;
+
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv;
 				o.screenuv = ((o.vertex.xy / o.vertex.w) + 1) * 0.5;
 				o.color = v.color;
+
 				return o;
 			}
 

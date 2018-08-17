@@ -11,23 +11,55 @@ public class stageSelectManager : MonoBehaviour
     playerController curPlayer;
     public GameObject stageSelect;
     public GameObject extraOptions;
-
+    [Space()]
+    public GameObject settingsMenu;
+    public GameObject firstSetting;
+    [Space()]
+    public GameObject mapsMenu;
     public GameObject firstMap;
+    [Space()]
     public GameObject hitA;
-
     public GameObject cursor;
 
     public string selectedLevel;
+    private CameraPositioning camPos;
 
     // Use this for initialization
     void Start() {
         if(!settings.instance.musicAudio.isPlaying)
             settings.instance.musicAudio.Play();
 
+        camPos = GetComponent<CameraPositioning>();
         input = EventSystem.current.gameObject.GetComponent<StandaloneInputModule>();
     }
 
-    IEnumerator turnOnInput(string controller) {
+    private void Update() {
+        if (curPlayer != null && Input.GetButtonDown("Cancel" + curPlayer.playerControl)) {
+            turnOffInput();
+        }
+    }
+
+    public void changeSelectedLevel(string level) {
+        selectedLevel = level;
+        if (curPlayer != null && GameManager.instance.numOfPlayers >= 2) {
+            input.enabled = false;
+            EventSystem.current.enabled = false;
+            StartCoroutine(screenTransition.instance.fadeOut(selectedLevel, 0.5f, true));
+        }
+    }
+
+    public void switchToSettings(bool toSettings) {
+        settingsMenu.SetActive(toSettings);
+        mapsMenu.SetActive(!toSettings);
+        EventSystem.current.SetSelectedGameObject(toSettings ? firstSetting : firstMap);
+        stageSelect.GetComponent<Animator>().Play(toSettings ? "settingsAnim": "defaultAnim");
+    }
+
+    IEnumerator turnOnInput(string controller)
+    {        
+        camPos.repositionCamera("PosSelection",5);
+        switchToSettings(false);
+        EventSystem.current.SetSelectedGameObject(null); // im lazy.this is pretyt lazy
         EventSystem.current.firstSelectedGameObject = firstMap;
 
         input.horizontalAxis = "Horizontal" + controller;
@@ -41,28 +73,17 @@ public class stageSelectManager : MonoBehaviour
         input.enabled = true;
     }
 
-    private void Update() {
-        if (curPlayer != null && Input.GetButtonDown("Cancel" + curPlayer.playerControl)) {
-            curPlayer.active = true;
-            curPlayer.transform.gameObject.layer = LayerMask.NameToLayer("Player");
-            curPlayer.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-            curPlayer = null;
-            stageSelect.GetComponent<Animator>().Play("exitAnim");
-            Invoke("turnOffInput", 0.25f);
-        }
+    public void turnOffInput() {
+        camPos.repositionCamera("PosDefault", 5);
+        curPlayer.active = true;
+        curPlayer.transform.gameObject.layer = LayerMask.NameToLayer("Player");
+        curPlayer.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        curPlayer = null;
+        stageSelect.GetComponent<Animator>().Play("exitAnim");
+        Invoke("turnOffInputHelper", 0.25f);
     }
 
-    public void changeSelectedLevel(string level) {
-        print("level here");
-        selectedLevel = level;
-        if (curPlayer != null && GameManager.instance.numOfPlayers >= 2) {
-            print("level here");
-            input.enabled = false;
-            StartCoroutine(screenTransition.instance.fadeOut(selectedLevel));
-        }
-    }
-
-    void turnOffInput() {
+    void turnOffInputHelper() {
         extraOptions.SetActive(true);
         stageSelect.SetActive(false);
         hitA.SetActive(true);

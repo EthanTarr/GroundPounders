@@ -7,7 +7,10 @@ public class stageSelectCursor : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
-        Vector2 cursorPos = EventSystem.current.currentSelectedGameObject.transform.position;
-        transform.position = Vector2.Lerp(transform.position, cursorPos, Time.deltaTime * 15);
+        if (EventSystem.current != null)
+        {
+            Vector2 cursorPos = EventSystem.current.currentSelectedGameObject.transform.position;
+            transform.position = Vector2.Lerp(transform.position, cursorPos, Time.deltaTime * 15);
+        }
     }
 }

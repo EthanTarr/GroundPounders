@@ -85,6 +85,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 777cf14dc2a39da48b9b6a819fd5265a, type: 3}
   m_StaticBatchInfo:
@@ -138,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8559b918e4b84f24fbf08cee2173a21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyboardImage: {fileID: 21300004, guid: b9c8f418ba13b2545af526a82241dcc7, type: 3}
-  controllerImage: {fileID: 21300000, guid: b9c8f418ba13b2545af526a82241dcc7, type: 3}
+  keyboardImage: {fileID: 21300006, guid: b9c8f418ba13b2545af526a82241dcc7, type: 3}
+  controllerImage: {fileID: 21300002, guid: b9c8f418ba13b2545af526a82241dcc7, type: 3}
 --- !u!212 &212353171790979684
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -153,6 +154,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

@@ -13,6 +13,7 @@ public class PulseMove : MonoBehaviour {
     private bool forward = true;
     public AudioClip roll;
     bool startup = true;
+    public LayerMask waveLayers;
 
     private void Start() {
         Invoke("endStartup", 0.5f);
@@ -38,11 +39,13 @@ public class PulseMove : MonoBehaviour {
 			    }
 			    //Amplitude = Amplitude / 4;
 		    } else if (!forward && transform.position.x > -TerrainGenerator.boundary) {
+                
                 transform.Translate(new Vector3(Time.deltaTime * speed, 0, 0));
                 GameObject Pulse = Instantiate(WaveGenerator.instance.antiPulse, transform.position, Quaternion.identity);
                 Pulse.GetComponent<AntiPulseMove>().color = color;
                 Pulse.GetComponent<AntiPulseMove>().Amplitude = Amplitude / 2;
                 Pulse.GetComponent<AntiPulseMove>().speed = speed / 2;
+                
                 Destroy(this.gameObject);
             } else if (!forward) {
 			    forward = true;
@@ -62,7 +65,7 @@ public class PulseMove : MonoBehaviour {
     }
 
     void setPositions() {
-        Collider2D[] hitSquares = Physics2D.OverlapCircleAll(transform.position, Wavelength, 1 << 8);
+        Collider2D[] hitSquares = Physics2D.OverlapCircleAll(transform.position, Wavelength, waveLayers);
         foreach (Collider2D square in hitSquares) {
             if (square.GetComponent<SquareBehavior>() != null)
                 square.GetComponent<SquareBehavior>().getPosition(Amplitude, speed, Wavelength, transform.position);

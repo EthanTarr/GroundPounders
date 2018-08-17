@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
     public bool tightDash;
     public bool doubleJump;
     public float dashDistance = 15;
+    public float suddenDeathTimer = 60;
 
     void Awake() {
         if (instance == null) {
@@ -65,9 +66,9 @@ public class GameManager : MonoBehaviour {
         int.TryParse(GameObject.Find("GameCounter").GetComponent<UnityEngine.UI.InputField>().text, out gamesToWin);
     }
 
-    public void increaseGames(int increment) {
-        gamesToWin += increment;
-        GameObject.Find("GameCounter").GetComponent<Text>().text = "" + gamesToWin;
+    public int increaseGames(int increment) {
+        gamesToWin = increment;
+        return gamesToWin;
     }
 
     public void setRandom(bool random) {

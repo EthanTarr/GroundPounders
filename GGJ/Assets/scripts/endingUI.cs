@@ -32,7 +32,7 @@ public class endingUI : MonoBehaviour {
         if (inputallowed && Input.anyKeyDown) {
             inputallowed = false;
             if (GameManager.instance.highestScore() >= GameManager.instance.gamesToWin) {
-                StartCoroutine(screenTransition.instance.fadeOut("VictoryScreen"));
+                StartCoroutine(screenTransition.instance.fadeOut("VictoryScreen", 1f, true));
             } else {
                 if(GameManager.instance.randomMap)
                     StartCoroutine(screenTransition.instance.fadeOut(Random.Range(3, Application.levelCount - 1)));
