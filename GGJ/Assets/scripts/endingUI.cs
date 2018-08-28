@@ -32,6 +32,10 @@ public class endingUI : MonoBehaviour {
         if (inputallowed && Input.anyKeyDown) {
             inputallowed = false;
             if (GameManager.instance.highestScore() >= GameManager.instance.gamesToWin) {
+                if (AchievemtManager.instance != null) {
+                    AchievemtManager.instance.updateMapStats(Application.loadedLevel);
+                    AchievemtManager.instance.checkMaps();
+                }
                 StartCoroutine(screenTransition.instance.fadeOut("VictoryScreen", 1f, true));
             } else {
                 if(GameManager.instance.randomMap)
@@ -75,7 +79,6 @@ public class endingUI : MonoBehaviour {
 
     IEnumerator ending(int playerId) {
         setupLayout();
-
         yield return new WaitForSeconds(0.5f);
         cameraAnim.Play("endingTransition");
         yield return new WaitForSeconds(0.25f);
@@ -97,6 +100,10 @@ public class endingUI : MonoBehaviour {
             scoreText[i].text = "" + GameManager.instance.playerScores[i];
         }
         yield return new WaitForSeconds(1f);
+
+        if (AchievemtManager.instance != null) {
+            AchievemtManager.instance.updateRoundCount();
+        }
     }
 
     void setupLayout() {

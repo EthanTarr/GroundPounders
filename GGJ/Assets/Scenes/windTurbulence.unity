@@ -17358,7 +17358,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 38912
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1831655768}
+  m_TargetTexture: {fileID: 1605714362}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -17374,8 +17374,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359883368}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 246.04001, z: -1.6400003}
+  m_LocalRotation: {x: 0.9999619, y: -0.00000004332829, z: -0.00000004332829, w: 0.008726203}
+  m_LocalPosition: {x: -0.09, y: 246.04001, z: 8.36}
   m_LocalScale: {x: 2.0416555, y: 3.1551514, z: 1}
   m_Children:
   - {fileID: 157849769}
@@ -49590,6 +49590,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!84 &1605714362
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 972
+  m_Height: 546
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1609892222
 GameObject:
   m_ObjectHideFlags: 0
@@ -51944,37 +51975,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80040e8a73dd43a4fb110e629d3cdf4a, type: 2}
   m_IsPrefabParent: 0
---- !u!84 &1831655768
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 948
-  m_Height: 534
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1849462499
 GameObject:
   m_ObjectHideFlags: 0
@@ -52167,6 +52167,11 @@ Prefab:
       propertyPath: cutoff
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114835705865882920, guid: 40407fa0295872e4ab4e3fb712abdae6,
+        type: 2}
+      propertyPath: stageMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c586d186b4b6074792e3c290e034924, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40407fa0295872e4ab4e3fb712abdae6, type: 2}
   m_IsPrefabParent: 0

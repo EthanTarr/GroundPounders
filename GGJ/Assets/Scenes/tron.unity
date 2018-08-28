@@ -4917,7 +4917,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 420798424}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6c022c7855b3d81478c859b7fd3f6840, type: 3}
@@ -21149,6 +21149,7 @@ GameObject:
   - component: {fileID: 1371258311}
   - component: {fileID: 1371258314}
   - component: {fileID: 1371258301}
+  - component: {fileID: 1371258304}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -21184,6 +21185,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1371258300}
   m_Enabled: 1
+--- !u!114 &1371258304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1371258300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeaa1848cd42d946b1e18fed86d0175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageMusic: {fileID: 8300000, guid: d358c86506d778246855467bf2ed795c, type: 3}
 --- !u!20 &1371258305
 Camera:
   m_ObjectHideFlags: 0
@@ -22953,15 +22966,15 @@ MonoBehaviour:
   numOfPlayers: 4
   playerPrefab: {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b,
     type: 2}
+  dropoutHUD: {fileID: 0}
   showSpawners: 1
   lobby: 0
   characterColors:
-  - {r: 0.7633336, g: 0.4282007, b: 0.88235295, a: 0.94509804}
-  - {r: 0.9261664, g: 1, b: 0.58823526, a: 0.9529412}
-  - {r: 0.24264705, g: 1, b: 0.4359025, a: 0.9529412}
-  - {r: 0.31106064, g: 0.25692043, b: 0.9705882, a: 0.95686275}
+  - {r: 0.7633336, g: 0.4282007, b: 0.88235295, a: 1}
+  - {r: 0.9261664, g: 1, b: 0.58823526, a: 1}
+  - {r: 0.24264705, g: 1, b: 0.4359025, a: 1}
+  - {r: 0.31106064, g: 0.25692043, b: 0.9705882, a: 1}
   players: []
-  queuedPlayer: 0
 --- !u!4 &1469090322
 Transform:
   m_ObjectHideFlags: 0

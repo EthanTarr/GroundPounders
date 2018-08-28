@@ -77,6 +77,13 @@ public class ButtonActions : MonoBehaviour {
         StartCoroutine(screenTransition.instance.fadeOut("Controller Setup"));
 	}
 
+
+    public void toTutorial()
+    {
+        EventSystem.current.enabled = false;
+        StartCoroutine(screenTransition.instance.fadeOut("tutorial"));
+    }
+
     public void backToMenu() {
         EventSystem.current.enabled = false;
         StartCoroutine(screenTransition.instance.fadeOut("Title"));

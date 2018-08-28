@@ -88,7 +88,7 @@ public class playerController : MonoBehaviour{
 
     [Header("Bounciness")]
     public float bounciness;
-    [HideInInspector] public Vector2 bounceDirection;
+    public Vector2 bounceDirection;
 
     [Header("Modifiers")]
     public bool airControl;
@@ -138,7 +138,7 @@ public class playerController : MonoBehaviour{
         doubleJump = GameManager.instance.doubleJump;
     }
 
-    bool onGround;
+    protected bool onGround;
 
     void jumpDelay() {
         jumped = true;
@@ -146,81 +146,82 @@ public class playerController : MonoBehaviour{
 
     bool squishing = false;
     protected virtual void movement(float horizInput) {
-        
+        if (!active) return;
+
         touchingGround = onGround;
-        if (active) {
-            //Horizontal Movement
-            if (Mathf.Abs(horizInput) > 0.75f && (canSmash || !seperateDashCooldown)) {
-                xSpeed += horizInput * Time.deltaTime * (Mathf.Abs(horizInput - xSpeed) > 0.1f ? turnSpeed : accelerate);
-                spriteAnim.GetComponent<SpriteRenderer>().flipX = Mathf.Sign(horizInput) < 0.05f;             
-            } else {
-                xSpeed = Mathf.Lerp(xSpeed, 0, Time.deltaTime *  decelerate);         
-            }
-            xSpeed = Mathf.Clamp(xSpeed, -speed, speed);
-            slopeCheck();
-
-            //Vertical Movement
-            if (touchingGround) {
-                canDoubleJump = true;
-
-                if (Input.GetButtonDown("Jump" + playerControl) && (canSmash || !seperateDashCooldown || !tightDash)) {
-                    rigid.velocity += (Vector2)transform.up * maxJumpHeight;
-                    audioManager.instance.Play(jump, 0.5f, UnityEngine.Random.Range(0.93f, 1.05f));
-                    Invoke("jumpDelay", 0.05f);
-                }
-
-                if (Input.GetAxis("Vertical" + playerControl) < -0.7f) {
-                    if (sqetch.animatedStretch < 0.5f) {
-                        sqetch.setAnimatedStretch(0.5f);
-                        if (!squishing) {
-                            squishing = true;
-                            audioManager.instance.Play(squash, 0.4f, UnityEngine.Random.Range(0.9f, 1.1f));
-                        }
-                    }
-                } else {
-                    if(squishing) {
-                        squishing = false;
-                        audioManager.instance.Play(unsqaush, 0.4f, UnityEngine.Random.Range(0.9f, 1.1f));
-                    }
-                }
-                //dashingOnGround
-                if (canDash && Input.GetButtonDown("Dash" + playerControl) && (canDashOnGround && canSmash)) {
-                    StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, true));
-                }
-            } else {
-                if (canSmash) {
-                    if (Input.GetButtonDown("Jump" + playerControl) && doubleJump && canDoubleJump) {
-                        canDoubleJump = false;
-                        rigid.velocity += (Vector2)transform.up * maxJumpHeight / 1.5f;
-                        audioManager.instance.Play(jump, 0.5f, UnityEngine.Random.Range(0.93f, 1.05f));
-
-                        GameObject dashExpurosion = Instantiate(dashCancelParticle, transform.position, transform.rotation);
-                        ParticleSystem.MainModule ps = dashExpurosion.GetComponent<ParticleSystem>().main;
-                        ps.startColor = spriteAnim.GetComponent<SpriteRenderer>().color;
-                        Destroy(dashExpurosion, 1.5f);
-                    }
-
-                    if (canDash && Input.GetButtonDown("Dash" + playerControl) && smashStateEnum == null) {
-                        StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, false));
-                    }
-
-                    if (Input.GetButtonDown("Smash" + playerControl) && smashStateEnum == null) {
-                        smashStateEnum = chargeSmash(Input.GetAxis("Horizontal" + playerControl));
-                        StartCoroutine(smashStateEnum);
-                    }               
-                }
-            }
-            //shortHop
-            if (Input.GetButtonUp("Jump" + playerControl) && transform.InverseTransformDirection(rigid.velocity).y > minJumpHeight && jumped)
-            {
-                rigid.velocity = (Vector2)transform.up * minJumpHeight;
-            }
-            spriteAnimationManager(horizInput, touchingGround);
+        
+        //Horizontal Movement
+        if (Mathf.Abs(horizInput) > 0.75f && (canSmash || !seperateDashCooldown)) {
+            xSpeed += horizInput * Time.deltaTime * (Mathf.Abs(horizInput - xSpeed) > 0.1f ? turnSpeed : accelerate);
+            spriteAnim.GetComponent<SpriteRenderer>().flipX = Mathf.Sign(horizInput) < 0.05f;             
+        } else {
+            xSpeed = Mathf.Lerp(xSpeed, 0, Time.deltaTime *  decelerate);         
         }
+        xSpeed = Mathf.Clamp(xSpeed, -speed, speed);
+        slopeCheck();
+        
+        //Vertical Movement
+        if (touchingGround) {
+            canDoubleJump = true;
+
+            if (Input.GetButtonDown("Jump" + playerControl) && (canSmash || !seperateDashCooldown || !tightDash)) {
+                rigid.velocity += (Vector2)transform.up * maxJumpHeight;
+                audioManager.instance.Play(jump, 0.5f, UnityEngine.Random.Range(0.93f, 1.05f));
+                Invoke("jumpDelay", 0.05f);
+            }
+
+            if (Input.GetAxis("Vertical" + playerControl) < -0.7f) {
+                if (sqetch.animatedStretch < 0.5f) {
+                    sqetch.setAnimatedStretch(0.5f);
+                    if (!squishing) {
+                        squishing = true;
+                        audioManager.instance.Play(squash, 0.4f, UnityEngine.Random.Range(0.9f, 1.1f));
+                    }
+                }
+            } else {
+                if(squishing) {
+                    squishing = false;
+                    audioManager.instance.Play(unsqaush, 0.4f, UnityEngine.Random.Range(0.9f, 1.1f));
+                }
+            }
+            //dashingOnGround
+            if (canDash && Input.GetButtonDown("Dash" + playerControl) && (canDashOnGround && canSmash)) {
+                StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, true));
+            }
+        } else {
+            if (canSmash) {
+                if (Input.GetButtonDown("Jump" + playerControl) && doubleJump && canDoubleJump) {
+                    canDoubleJump = false;
+                    rigid.velocity += (Vector2)transform.up * maxJumpHeight / 1.5f;
+                    audioManager.instance.Play(jump, 0.5f, UnityEngine.Random.Range(0.93f, 1.05f));
+
+                    GameObject dashExpurosion = Instantiate(dashCancelParticle, transform.position, transform.rotation);
+                    ParticleSystem.MainModule ps = dashExpurosion.GetComponent<ParticleSystem>().main;
+                    ps.startColor = spriteAnim.GetComponent<SpriteRenderer>().color;
+                    Destroy(dashExpurosion, 1.5f);
+                }
+
+                if (canDash && Input.GetButtonDown("Dash" + playerControl) && smashStateEnum == null) {
+                    StartCoroutine(dash(Input.GetAxis("Dash" + playerControl), true, false));
+                }
+
+                if (Input.GetButtonDown("Smash" + playerControl) && smashStateEnum == null) {
+                    smashStateEnum = chargeSmash(Input.GetAxis("Horizontal" + playerControl));
+                    StartCoroutine(smashStateEnum);
+                }               
+            }
+        }
+            
+        //shortHop
+        if (Input.GetButtonUp("Jump" + playerControl) && transform.InverseTransformDirection(rigid.velocity).y > minJumpHeight && jumped)
+        {
+            rigid.velocity = (Vector2)transform.up * minJumpHeight;
+        }
+        spriteAnimationManager(horizInput, touchingGround);
+                   
     }
 
-    private void LateUpdate() {
-
+    private void LateUpdate() {       
         float HorizInput = Input.GetAxis("Horizontal" + playerControl);
         bool smashing = smashStateEnum != null;
         if (Time.timeScale > 0)
@@ -235,7 +236,6 @@ public class playerController : MonoBehaviour{
     private void FixedUpdate() {
         if (Time.timeScale > 0) {
             onGround = checkGround();
-
             float HorizInput = Input.GetAxis("Horizontal" + playerControl);
             if (centerOfGravity != null) {
                 gravityDirection = (transform.position - centerOfGravity.position).normalized;
@@ -412,7 +412,8 @@ public class playerController : MonoBehaviour{
     }
 
     protected IEnumerator dash(float chargeValue, bool direction, bool onGround) {
-        StartCoroutine("spawnAfterImages");
+        afterImageEnum = spawnAfterImages();
+        StartCoroutine(afterImageEnum);
         GetComponent<SpriteRenderer>().flipX = direction;
         float dir = Input.GetAxisRaw("Horizontal" + playerControl);
 
@@ -448,7 +449,7 @@ public class playerController : MonoBehaviour{
 
             chargeParticle.gameObject.transform.localScale = new Vector3(rigid.velocity.x, 0);
             yield return new WaitForSeconds(0.05f);
-            StopCoroutine("spawnAfterImages");
+            StopCoroutine(afterImageEnum);
         } else {
             canSmash = false;
             canDash = false;
@@ -464,7 +465,7 @@ public class playerController : MonoBehaviour{
             canSmash = true;
             chargeParticle.gameObject.transform.localScale = new Vector3(rigid.velocity.x, 0);
             yield return new WaitForSeconds(0.3f);
-            StopCoroutine("spawnAfterImages");
+            StopCoroutine(afterImageEnum);
 
             yield return new WaitForSeconds(0.95f);
             canDash = true;
@@ -475,7 +476,10 @@ public class playerController : MonoBehaviour{
 
     protected IEnumerator smashOutOFCharge(float chargeValue) {
         if (chargeValue > maxChargeTime / 2)
-            StartCoroutine("spawnAfterImages");
+        {
+            afterImageEnum = spawnAfterImages();
+            StartCoroutine(afterImageEnum);
+        }
 
         yield return new WaitForSeconds(0.05f);
         rigid.velocity = transform.TransformDirection(new Vector3(0, -SmashSpeed));
@@ -499,7 +503,6 @@ public class playerController : MonoBehaviour{
     //this is really lazy to position raycasts to size
     [HideInInspector] public float downLazy = 0.56f;
 	public bool checkGround() {
-       
         bool grounded = false;
         for (int i = 0; i < 5; i++) {
             float dir = -1 + (i % 2) * 2;
@@ -564,9 +567,11 @@ public class playerController : MonoBehaviour{
                 bounceDirection.y *= 100;
                 bounceDirection.y = Mathf.Max(50, bounceDirection.y);
                 print(bounceDirection.y);
-            } else {
+            } else if (other.gameObject.GetComponent<SquareBehavior>() != null  ){
                 StopCoroutine(smashStateEnum);
-                StopCoroutine("spawnAfterImages");
+
+                if(afterImageEnum != null)
+                    StopCoroutine(afterImageEnum);
                 canSmash = false;
 
                 if (Shake.instance != null)
@@ -633,6 +638,8 @@ public class playerController : MonoBehaviour{
             other.transform.GetComponent<Rigidbody2D>().velocity = new Vector3(other.transform.GetComponent<Rigidbody2D>().velocity.x, -10);
             bounceDirection.y += 100;
             WaveGenerator.instance.timeFreeze(0.2f, 0.15f);
+
+            if(AchievemtManager.instance != null){ AchievemtManager.instance.updateInterceptCount(); };
         } else {
             Vector2 dir = Vector2.zero;
 
@@ -643,7 +650,7 @@ public class playerController : MonoBehaviour{
            
             if (onTop) {
                 dir.y = Mathf.Max(50, dir.y);
-                sqetch.setAnimatedStretch(1);
+                //sqetch.setAnimatedStretch(1);
                 other.transform.GetComponent<playerController>().sqetch.setAnimatedStretch(smashStateEnum == null ? 50 : 2);
                 audioManager.instance.Play(softLanding[UnityEngine.Random.Range(0, softLanding.Length - 1)], 1, UnityEngine.Random.Range(0.96f, 1.03f));
             }
@@ -684,12 +691,16 @@ public class playerController : MonoBehaviour{
 
     //checks neighboring wave segments and allows player to walk up slopes to some extent
     protected void slopeCheck() {
+        
         float littleHeight = 0.15f;
         float height = -1;
 
+        float xVel = rigid.velocity.x;
+        Vector3 rayDir = (Mathf.Abs(xVel) < 0.5f) ?   Vector3.zero : transform.right * Mathf.Sign(xVel) * 0.6f;
+
         for (int i = 1; i < 10; i++) {
-            Debug.DrawRay(transform.position - transform.up * 0.66f + transform.up * littleHeight * i, transform.right * Mathf.Sign(rigid.velocity.x) * 0.7f, Color.blue);
-            RaycastHit2D slopeDetect = Physics2D.Raycast(transform.position - transform.up * 0.6f + transform.up * littleHeight * i, transform.right * Mathf.Sign(rigid.velocity.x), 0.7f, groundCheck);
+            Debug.DrawRay(transform.position - transform.up * 0.66f + transform.up * littleHeight * i, rayDir, Color.blue);
+            RaycastHit2D slopeDetect = Physics2D.Raycast(transform.position - transform.up * 0.6f + transform.up * littleHeight * i, rayDir, 0.7f, groundCheck);
             if (slopeDetect) {
                 height = i;
             }
@@ -697,9 +708,10 @@ public class playerController : MonoBehaviour{
         
 
         if (height > -1 && height < 9) {
-            checkGround();
+            //checkGround();
             transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x, transform.position.y + littleHeight * height + 0.4f), Time.deltaTime * 12);
         }
+        
     }
 
     IEnumerator recovery(float recoveryTime) {
@@ -719,7 +731,7 @@ public class playerController : MonoBehaviour{
 
     protected bool alreadyDead;
     public virtual void die() {
-        if (!endingUI.instance.endConditionMet) {
+        if (endingUI.instance != null && !endingUI.instance.endConditionMet) {
             alreadyDead = true;
             audioManager.instance.Play(deathExplosion, 0.5f, UnityEngine.Random.Range(0.96f, 1.04f));
 
@@ -733,10 +745,11 @@ public class playerController : MonoBehaviour{
             endingUI.instance.StopAllCoroutines();
             endingUI.instance.StartCoroutine(endingUI.instance.checkPlayersLeft());
             Destroy(this.gameObject);
-        }
+       }
 
     }
 
+    private IEnumerator afterImageEnum;
     IEnumerator spawnAfterImages() {
         float distanceTravelled = 0;
         Vector2 deltaPosition = transform.position;

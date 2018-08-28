@@ -11,6 +11,7 @@ public class controlAssigmentManager : MonoBehaviour {
     int setControls = 0;
     public Color[] colors;
     public List<playerController> players;
+    public float maxNumOfPlayere = 4;
 
     public delegate void spawnerAction();
     public static spawnerAction spawned;
@@ -46,7 +47,7 @@ public class controlAssigmentManager : MonoBehaviour {
     }
 
     void Update() {
-        if (controllerHandler.controlOrder.Count < 4 && Time.timeScale > 0) {
+        if (controllerHandler.controlOrder.Count < maxNumOfPlayere && Time.timeScale > 0) {
             foreach (string control in controllers) {
                 bool inputFound = Mathf.Abs(Input.GetAxisRaw("Horizontal" + control)) > 0.1f;
                 foreach (string input in inputs) {

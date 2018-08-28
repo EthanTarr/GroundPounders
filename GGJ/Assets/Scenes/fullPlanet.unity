@@ -37004,6 +37004,7 @@ MonoBehaviour:
   numOfPlayers: 4
   playerPrefab: {fileID: 1338795899029746, guid: 50cd42bc3cfe9cd4c893de18bcc7c56b,
     type: 2}
+  dropoutHUD: {fileID: 0}
   showSpawners: 1
   lobby: 0
   characterColors:
@@ -37012,7 +37013,6 @@ MonoBehaviour:
   - {r: 0.8235294, g: 1, b: 0.8685598, a: 1}
   - {r: 0.64705884, g: 0.97079104, b: 1, a: 1}
   players: []
-  queuedPlayer: 0
   radius: 9.6
   offset: 0
 --- !u!1 &1040367390
@@ -40110,7 +40110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1225991997
 MonoBehaviour:
   m_ObjectHideFlags: 0

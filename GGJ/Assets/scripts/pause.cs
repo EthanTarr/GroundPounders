@@ -48,13 +48,13 @@ public class pause : MonoBehaviour
     }
 
     public void togglePause() {
-        if (Pause.activeSelf || settings.activeSelf) {
+        if (Pause.active || settings.active) {
+            print("Im here");
             input.enabled = false;
             Pause.SetActive(false);
             settings.SetActive(false);
             StartCoroutine("zaWardo");
-        }
-        else {
+        } else {
             Pause.SetActive(true);
             EventSystem.current.SetSelectedGameObject(firstButton);
             //EventSystem.current.gameObject.GetComponent<myInputModule>().submitButton = "Submit";
